@@ -41,4 +41,10 @@
     .toolbar-title, .bar-button-default{
         color: white;
     }
+    
+    ion-content {
+        background-color: map-get($colors, ligth-gray-green);
+        
+    }
+    
 }

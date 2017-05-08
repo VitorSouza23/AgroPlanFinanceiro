@@ -9,29 +9,34 @@ import {OpcoesPage} from '../pages/opcoes/opcoes';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
-import {EstimativaDeInvestimentosFixos} from '../providers/estimativa-de-investimentos-fixos';
+import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-investimentos-fixos-service';
+import {EstimativaDeInvestimentosFixosPage} from '../pages/estimativa-de-investimentos-fixos/estimativa-de-investimentos-fixos';
+
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
-        OpcoesPage
+        OpcoesPage,
+        EstimativaDeInvestimentosFixosPage
     ],
     imports: [
         BrowserModule,
-        IonicModule.forRoot(MyApp),
+        IonicModule.forRoot(MyApp)
+        
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
         HomePage,
-        OpcoesPage
+        OpcoesPage,
+        EstimativaDeInvestimentosFixosPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        EstimativaDeInvestimentosFixos
+        EstimativaDeInvestimentosFixosService
     ]
 })
 export class AppModule {}

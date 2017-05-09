@@ -17,71 +17,138 @@
 
     <ion-card>
         <ion-card-header>
-            Maquinas
+            <ion-item>
+                Maquinas
+                <button ion-button round item-right icon-right (click)="addMaquina()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
         </ion-card-header>
         <ion-list>
-            <ion-item>
-                <ion-icon name="cog"></ion-icon>
-            </ion-item>
+            <ion-item-sliding>
+                <ion-item *ngFor="let maquina of maquinas" (click)="updateMaquina(maquina)">
+                    <ion-icon name="cog"></ion-icon>
+                    {{maquina.descricao}}
+                </ion-item>
+                <ion-item-options side="right" (ionSwipe)="removeMaquina(item)"></ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeMaquina(item)"></ion-item-options>
+            </ion-item-sliding>
         </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Sub-total: R$ {{subtotalMaquinas}}</span>
+        </ion-item>
     </ion-card>
 
     <ion-card>
         <ion-card-header>
-            Equipamentos
+            <ion-item>
+                Equipamentos
+                <button ion-button round item-right icon-right (click)="addEquipamento()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
         </ion-card-header>
         <ion-list>
-            <ion-item>
-                <ion-icon name="construct"></ion-icon>
-            </ion-item>
+            <ion-item-sliding>
+                <ion-item *ngFor="let equipamento of equipamentos" (click)="upadateEquipamento(equipamento)">
+                    <ion-icon name="construct"></ion-icon>
+                    {{equipamento.descricao}}
+                </ion-item>
+                <ion-item-options side="right" (ionSwipe)="removeEquipamento(item)"></ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeEquipamento(item)"></ion-item-options>
+            </ion-item-sliding>
         </ion-list>
-        <ion-item>
-            
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Sub-total: R$ {{subtotalEquipamentos}}</span>
         </ion-item>
     </ion-card>
 
 
     <ion-card>
         <ion-card-header>
-            Moveis
+            <ion-item>
+                Móveis
+                <button ion-button round item-right icon-right (click)="addMovel()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
         </ion-card-header>
         <ion-list>
-            <ion-item>
-                <ion-icon name="cube"></ion-icon>
-            </ion-item>
+            <ion-item-sliding>
+                <ion-item *ngFor="let movel of moveis" (click)="updateMovel(movel)">
+                    <ion-icon name="cube"></ion-icon>
+                    {{movel.descricao}}
+                </ion-item>
+                <ion-item-options side="right" (ionSwipe)="removeMovel(item)"></ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeMovel(item)"></ion-item-options>
+            </ion-item-sliding>
         </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Sub-total: R$ {{subtotalMoveis}}</span>
+        </ion-item>
     </ion-card>
 
     <ion-card>
         <ion-card-header>
-            Utensílios
+            <ion-item>
+                Utensílios
+                <button ion-button round item-right icon-right (click)="addUtensilio()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
         </ion-card-header>
         <ion-list>
-            <ion-item>
-                <ion-icon name="cut"></ion-icon>
-            </ion-item>
+            <ion-item-sliding>
+                <ion-item *ngFor="let utensilio of utensilios" (click)="upadateUtensilio(utensilio)">
+                    <ion-icon name="cut"></ion-icon>
+                    {{utensilio.descricao}}
+                </ion-item>
+                <ion-item-options side="right" (ionSwipe)="removeUtensilio(item)"></ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeUtensilio(item)"></ion-item-options>
+            </ion-item-sliding>
         </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Sub-total: R$ {{subtotalUtensilios}}</span>
+        </ion-item>
     </ion-card>
 
     <ion-card>
         <ion-card-header>
-            Veículos
+            <ion-item>
+                Veículos
+                <button ion-button round item-right icon-right (click)="addVeiculo()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
         </ion-card-header>
         <ion-list>
-            <ion-item>
-                <ion-icon name="car"></ion-icon>
-            </ion-item>
+            <ion-item-sliding>
+                <ion-item *ngFor="let veiculo of veiculos" (click)="updateVeiculo(veiculo)">
+                    <ion-icon name="car"></ion-icon>
+                    {{veiculo.descricao}}
+                </ion-item>
+                <ion-item-options side="right" (ionSwipe)="removeVeiculo(item)"></ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeVeiculo(item)"></ion-item-options>
+            </ion-item-sliding>
         </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Sub-total: R$ {{subtotalVeiculos}}</span>
+        </ion-item>
     </ion-card>
 
     <ion-card>
         <ion-card-header>
-            Subtotal de Investimentos Fixos
+            Sub-total de Investimentos Fixos
         </ion-card-header>
         <ion-item>
             <ion-icon name="logo-usd"></ion-icon>
-            R$ Valor
-            <ion-badge item-right>Qtd. Itens</ion-badge>
+            Valor: R$ {{subtotal}}
+            <ion-badge item-right>Qtd. Itens: {{quantidadeDeItens}}</ion-badge>
         </ion-item>
     </ion-card>
 

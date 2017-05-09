@@ -26,6 +26,17 @@
         font-size: 18px;
         color: white;
     }
+    
+    ion-card-header ion-item{
+        background-color: map-get($colors, dark-green);
+        color: white;
+        font-size: 18px;
+    }
+    
+    ion-card-header ion-item button{
+        background-color: map-get($colors, secondary);
+        color: white;
+    }
 
     ion-card-content{
         margin-top: 15px;
@@ -46,5 +57,12 @@
         background-color: map-get($colors, ligth-gray-green);
         
     }
+    
+    .sub-total{
+        border-style: dashed;
+        border-top-width: 2px;
+        border-color: map-get($colors, ligth-green);
+    }
+    
     
 }

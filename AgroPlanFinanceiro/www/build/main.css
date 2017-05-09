@@ -35432,6 +35432,17 @@ ion-navbar.toolbar {
   color: white;
 }
 
+.ios ion-card-header ion-item, .md ion-card-header ion-item {
+  background-color: #006400;
+  color: white;
+  font-size: 18px;
+}
+
+.ios ion-card-header ion-item button, .md ion-card-header ion-item button {
+  background-color: #32db64;
+  color: white;
+}
+
 .ios ion-card-content, .md ion-card-content {
   margin-top: 15px;
 }
@@ -35450,4 +35461,10 @@ ion-navbar.toolbar {
 
 .ios ion-content, .md ion-content {
   background-color: #d9f2d9;
+}
+
+.ios .sub-total, .md .sub-total {
+  border-style: dashed;
+  border-top-width: 2px;
+  border-color: #70db70;
 }

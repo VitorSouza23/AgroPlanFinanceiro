@@ -11,6 +11,7 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 
 import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-investimentos-fixos-service';
 import {EstimativaDeInvestimentosFixosPage} from '../pages/estimativa-de-investimentos-fixos/estimativa-de-investimentos-fixos';
+import {ModalItem} from '../pages/modal-item/modal-item';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {EstimativaDeInvestimentosFixosPage} from '../pages/estimativa-de-investi
         MyApp,
         HomePage,
         OpcoesPage,
-        EstimativaDeInvestimentosFixosPage
+        EstimativaDeInvestimentosFixosPage,
+        ModalItem
     ],
     imports: [
         BrowserModule,
@@ -30,7 +32,8 @@ import {EstimativaDeInvestimentosFixosPage} from '../pages/estimativa-de-investi
         MyApp,
         HomePage,
         OpcoesPage,
-        EstimativaDeInvestimentosFixosPage
+        EstimativaDeInvestimentosFixosPage,
+        ModalItem
     ],
     providers: [
         StatusBar,

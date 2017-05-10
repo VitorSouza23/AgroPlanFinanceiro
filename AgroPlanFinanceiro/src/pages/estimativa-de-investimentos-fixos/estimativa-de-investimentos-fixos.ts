@@ -31,7 +31,6 @@ export class EstimativaDeInvestimentosFixosPage {
     private subtotal: number;
 
     private quantidadeDeItens: number;
-    private htmlEnum: ItemEnum;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private estimativaDeInvestimetnosFixosService: EstimativaDeInvestimentosFixosService,
@@ -43,12 +42,12 @@ export class EstimativaDeInvestimentosFixosPage {
         this.utensilios = this.estimativaDeInvestimetnosFixosService.getUtensilios();
         this.veiculos = this.estimativaDeInvestimetnosFixosService.getVeiculos();
         
-        this.subtotalMaquinas = this.estimativaDeInvestimetnosFixosService.calcularSubtotalMaquinas();
-        this.subtotalEquipamentos = this.estimativaDeInvestimetnosFixosService.calcularSubtotalEquipamentos();
-        this.subtotalMoveis = this.estimativaDeInvestimetnosFixosService.calcularSubtotalMoveis();
-        this.subtotalUtensilio = this.estimativaDeInvestimetnosFixosService.calcularSubtotalVeiculos();
-        this.subtotalVeiculos = this.estimativaDeInvestimetnosFixosService.calcularSubtotalVeiculos();
-        this.subtotal = this.estimativaDeInvestimetnosFixosService.calcularSubTotal();
+        this.subtotalMaquinas = this.estimativaDeInvestimetnosFixosService.subtotalMaquinas;
+        this.subtotalEquipamentos = this.estimativaDeInvestimetnosFixosService.subtotalEquipamentos;
+        this.subtotalMoveis = this.estimativaDeInvestimetnosFixosService.subtotalMoveis;
+        this.subtotalUtensilio = this.estimativaDeInvestimetnosFixosService.subtotalUtensilio;
+        this.subtotalVeiculos = this.estimativaDeInvestimetnosFixosService.subtotalVeiculos;
+        this.subtotal = this.estimativaDeInvestimetnosFixosService.subtotal;
 
         this.quantidadeDeItens = this.estimativaDeInvestimetnosFixosService.calcularQuantidadeDeItens();
     }
@@ -57,12 +56,14 @@ export class EstimativaDeInvestimentosFixosPage {
     
     
     private openModal(tipo: ItemEnum, titulo: String, item: Item, editar: boolean): void {
-        this.modalController.create(ModalItem, {
+        let modal = this.modalController.create(ModalItem, {
             titulo: titulo,
             tipo: tipo,
             item: item,
             editar: editar
-        }).present();
+        });
+        modal.onDidDismiss(() => this.atualizarSubtotais());
+        modal.present();
     }
 
     private addMaquina(): void {
@@ -107,23 +108,38 @@ export class EstimativaDeInvestimentosFixosPage {
     
     private removeMaquina(maquina: Item){
         this.estimativaDeInvestimetnosFixosService.removeMaquina(maquina);
+        this.atualizarSubtotais();
     }
     
     private removeEquipamento(equipamento: Item){
         this.estimativaDeInvestimetnosFixosService.removeEquipamento(equipamento);
+        this.atualizarSubtotais();
     }
     
     private removeMovel(movel: Item){
         this.estimativaDeInvestimetnosFixosService.removeMovel(movel);
+        this.atualizarSubtotais();
     }
     
     private removeUtensilio(utensilio: Item){
         this.estimativaDeInvestimetnosFixosService.removeUtensilio(utensilio);
+        this.atualizarSubtotais();
     }
     
     
     private removeVeiculo(veiculo: Item){
         this.estimativaDeInvestimetnosFixosService.removeVeiculo(veiculo);
+        this.atualizarSubtotais();
+    }
+    
+    atualizarSubtotais(){
+        this.subtotalMaquinas = this.estimativaDeInvestimetnosFixosService.subtotalMaquinas;
+        this.subtotalEquipamentos = this.estimativaDeInvestimetnosFixosService.subtotalEquipamentos;
+        this.subtotalMoveis = this.estimativaDeInvestimetnosFixosService.subtotalMoveis;
+        this.subtotalUtensilio = this.estimativaDeInvestimetnosFixosService.subtotalUtensilio;
+        this.subtotalVeiculos = this.estimativaDeInvestimetnosFixosService.subtotalVeiculos;
+        this.subtotal = this.estimativaDeInvestimetnosFixosService.subtotal;
+        this.quantidadeDeItens = this.estimativaDeInvestimetnosFixosService.quantidadeDeItens;
     }
 
 

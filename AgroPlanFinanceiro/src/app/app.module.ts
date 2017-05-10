@@ -13,6 +13,8 @@ import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-
 import {EstimativaDeInvestimentosFixosPage} from '../pages/estimativa-de-investimentos-fixos/estimativa-de-investimentos-fixos';
 import {ModalItem} from '../pages/modal-item/modal-item';
 
+import {CapitalDeGiroService} from '../providers/capital-de-giro-service';
+
 
 @NgModule({
     declarations: [
@@ -39,7 +41,8 @@ import {ModalItem} from '../pages/modal-item/modal-item';
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
-        EstimativaDeInvestimentosFixosService
+        EstimativaDeInvestimentosFixosService,
+        CapitalDeGiroService
     ]
 })
 export class AppModule {}

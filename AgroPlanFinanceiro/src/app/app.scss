@@ -34,7 +34,7 @@
     }
     
     ion-card-header ion-item button{
-        background-color: map-get($colors, secondary);
+        background-color: map-get($colors, primary);
         color: white;
     }
 

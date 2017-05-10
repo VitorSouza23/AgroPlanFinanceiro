@@ -12,20 +12,20 @@ import {ItemEnum} from '../enums/ItemEnum';
 */
 @Injectable()
 export class EstimativaDeInvestimentosFixosService {
-    private maquinas: Item[];
-    private equipamentos: Item[];
-    private moveis: Item[];
-    private utensilios: Item[];
-    private veiculos: Item[];
+    maquinas: Item[];
+    equipamentos: Item[];
+    moveis: Item[];
+    utensilios: Item[];
+    veiculos: Item[];
     
-    private subtotalMaquinas: number;
-    private subtotalEquipamentos: number;
-    private subtotalMoveis: number;
-    private subtotalUtensilio: number;
-    private subtotalVeiculos: number;
-    private subtotal: number;
+    subtotalMaquinas: number;
+    subtotalEquipamentos: number;
+    subtotalMoveis: number;
+    subtotalUtensilio: number;
+    subtotalVeiculos: number;
+    subtotal: number;
     
-    private quantidadeDeItens: number;
+    quantidadeDeItens: number;
 
     constructor() {
         this.maquinas = [];
@@ -47,22 +47,27 @@ export class EstimativaDeInvestimentosFixosService {
 
     addMaquina(maquina: Item): void {
         this.maquinas.push(maquina);
+        this.atualizarSubtotais();
     }
 
     addEquipamento(equipamento: Item): void {
         this.equipamentos.push(equipamento);
+        this.atualizarSubtotais();
     }
 
     addMovel(movel: Item): void {
         this.moveis.push(movel);
+        this.atualizarSubtotais();
     }
 
     addUtensilio(utensilio: Item): void {
         this.utensilios.push(utensilio);
+        this.atualizarSubtotais();
     }
 
     addVeiculo(veiculo: Item): void {
         this.veiculos.push(veiculo);
+        this.atualizarSubtotais();
     }
     
     addViaEnum(tipo: ItemEnum, item: Item): void{
@@ -84,37 +89,37 @@ export class EstimativaDeInvestimentosFixosService {
                 break;
         }
         
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
 
     removeMaquina(maquina: Item): void {
         let index: number = this.maquinas.indexOf(maquina);
         this.maquinas.splice(index, 1);
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
 
     removeEquipamento(equipamento: Item): void {
         let index: number = this.equipamentos.indexOf(equipamento);
         this.equipamentos.splice(index, 1);
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
 
     removeMovel(movel: Item): void {
         let index: number = this.moveis.indexOf(movel);
         this.moveis.splice(index, 1);
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
 
     removeUtensilio(utensilio: Item): void {
         let index: number = this.utensilios.indexOf(utensilio);
         this.utensilios.splice(index, 1);
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
 
     removeVeiculo(veiculo: Item): void {
         let index: number = this.veiculos.indexOf(veiculo);
         this.veiculos.splice(index, 1);
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
     
     removeViaEnum(tipo: ItemEnum, item: Item): void{
@@ -135,6 +140,7 @@ export class EstimativaDeInvestimentosFixosService {
                 this.removeVeiculo(item);
                 break;
         }
+        this.atualizarSubtotais();
     }
     
 
@@ -200,22 +206,27 @@ export class EstimativaDeInvestimentosFixosService {
     
     updateMaquina(maquina: Item, index: number): void {
         this.maquinas[index] = maquina;
+        this.atualizarSubtotais();
     }
 
     upadateEquipamento(equipamento: Item, index: number): void {
         this.equipamentos[index]= equipamento;
+        this.atualizarSubtotais();
     }
 
     updateMovel(movel: Item, index: number): void {
         this.moveis[index] = movel;
+        this.atualizarSubtotais();
     }
 
     updateUtensilio(utensilio: Item, index: number): void {
         this.utensilios[index] = utensilio;
+        this.atualizarSubtotais();
     }
 
     updateVeiculo(veiculo: Item, index: number): void {
         this.veiculos[index] = veiculo;
+        this.atualizarSubtotais();
     }
     
     updateViaEnum(tipo: ItemEnum, item: Item, index: number): void{
@@ -236,7 +247,7 @@ export class EstimativaDeInvestimentosFixosService {
                 this.updateVeiculo(item, index);
                 break;
         }
-        this.calcularSubTotal();
+        this.atualizarSubtotais();
     }
     
     indexOfViaEnum(tipo: ItemEnum, item: Item): number{
@@ -288,6 +299,16 @@ export class EstimativaDeInvestimentosFixosService {
         this.subtotal = 0;
         this.subtotal = this.calcularSubtotalMaquinas() + this.calcularSubtotalEquipamentos() + this.calcularSubtotalMoveis() + this.calcularSubtotalUtensilios() + this.calcularSubtotalVeiculos();
         return this.subtotal;
+    }
+    
+    atualizarSubtotais(){
+        this.calcularSubtotalMaquinas();
+        this.calcularSubtotalEquipamentos();
+        this.calcularSubtotalMoveis();
+        this.calcularSubtotalVeiculos();
+        this.calcularSubtotalVeiculos();
+        this.calcularSubTotal();
+        this.calcularQuantidadeDeItens();
     }
     
     calcularQuantidadeDeItens(): number {

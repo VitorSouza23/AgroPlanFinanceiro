@@ -1,3 +1,8 @@
 page-estimativa-de-investimentos-fixos {
-
+    .sub-total-final ion-card-header{
+        background-color: map-get($colors, orange);
+    }
+    .sub-total-final > ion-item{
+        color: map-get($colors, primary);
+    }
 }

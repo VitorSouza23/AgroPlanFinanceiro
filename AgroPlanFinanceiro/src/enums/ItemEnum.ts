@@ -9,5 +9,6 @@ export enum ItemEnum{
     Equipamento, 
     Movel,
     Utensilio,
-    Veiculo
+    Veiculo,
+    Material
 }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {EstimativaDeInvestimentosFixosPage} from '../estimativa-de-investimentos-fixos/estimativa-de-investimentos-fixos' 
+import {CapitalDeGiroPage} from '../capital-de-giro-page/capital-de-giro-page';
 
 @Component({
     selector: 'page-home',
@@ -14,6 +15,10 @@ export class HomePage {
     
     gotToEstimativaDeInvestimentosFixosPage(): void {
         this.navCtrl.push(EstimativaDeInvestimentosFixosPage);
+    }
+    
+    goToCapitalDeGiroPage(): void {
+        this.navCtrl.push(CapitalDeGiroPage);
     }
 
 }

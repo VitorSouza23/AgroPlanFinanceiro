@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Item} from '../class/Item';
+import {Prazo} from '../class/Prazo';
+import {PrazoEnum} from '../enums/PrazoEnum';
 
 /*
   Generated class for the CapitalDeGiroService provider.
@@ -12,35 +14,133 @@ import {Item} from '../class/Item';
 export class CapitalDeGiroService {
     materiais: Item[];
     totalEstimativaEstoqueInicial: number;
-    
+    vendas: Prazo[];
+    compras: Prazo[];
+    prazoMedioTotalVendas: number;
+    prazoMedioTotalCompras: number;
+    necessidadeMediaDeEstoques: number;
+    subtotalDiasRecursoDaEmpresaForaDoSeuCaixa: number;
+    subtotalDiasNecessidadeLiquidaDeCapitalDeGiro: number;
+
     constructor() {
         this.materiais = [];
         this.totalEstimativaEstoqueInicial = 0;
+        this.vendas = [];
+        this.compras = [];
+        this.prazoMedioTotalVendas = 0;
+        this.prazoMedioTotalCompras = 0;
+        this.necessidadeMediaDeEstoques = 0;
+        this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = 0;
+        this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = 0;
+
+
     }
-    
+
     addMaterial(material: Item): void {
         this.materiais.push(material);
     }
-    
+
     getMaterial(index: number): Item {
         return this.materiais[index];
     }
-    
-    removeMaterial(material: Item){
+
+    removeMaterial(material: Item) {
         let index: number = this.materiais.indexOf(material);
         this.materiais.splice(index, 1);
     }
-    
+
     updateMaterial(material: Item, index: number): void {
         this.materiais[index] = material;
     }
-    
-    calcularTotalEstimativaEstoqueInicial(): number{
+
+    addPrazoViaEnum(tipo: PrazoEnum, prazo: Prazo) {
+        switch (tipo) {
+            case PrazoEnum.Compra:
+                this.compras.push(prazo);
+                break;
+            case PrazoEnum.Venda:
+                this.vendas.push(prazo);
+                break;
+        }
+    }
+
+    updatePrazoViaEnum(tipo: PrazoEnum, prazo: Prazo, index: number) {
+        switch (tipo) {
+            case PrazoEnum.Compra:
+                this.compras[index] = prazo;
+                break;
+            case PrazoEnum.Venda:
+                this.vendas[index] = prazo;
+                break;
+        }
+    }
+
+    removeVenda(venda: Prazo): void {
+        let index: number = this.vendas.indexOf(venda);
+        this.vendas.splice(index, 1);
+    }
+
+    removeCompra(compra: Prazo): void {
+        let index: number = this.compras.indexOf(compra);
+        this.compras.splice(index, 1);
+    }
+
+    getCompra(index: number): Prazo {
+        return this.compras[index];
+    }
+
+    getVenda(index: number): Prazo {
+        return this.vendas[index];
+    }
+
+    calcularTotalEstimativaEstoqueInicial(): number {
         this.totalEstimativaEstoqueInicial = 0;
         this.materiais.forEach(material => this.totalEstimativaEstoqueInicial += material.calcularValorTotal());
         return this.totalEstimativaEstoqueInicial;
     }
-    
-    
+
+    calcularPrazoMedioTotalVendas(): number {
+        this.prazoMedioTotalVendas = 0;
+        this.vendas.forEach(venda => this.prazoMedioTotalVendas += venda.calcularMediaPonderaEmDias());
+        return this.prazoMedioTotalVendas
+    }
+
+    calcularPrazoMedioTotalCompras(): number {
+        this.prazoMedioTotalCompras = 0;
+        this.compras.forEach(compra => this.prazoMedioTotalCompras += compra.calcularMediaPonderaEmDias());
+        return this.prazoMedioTotalCompras;
+    }
+
+    calcularSubtotalDiasRecursoDaEmpresaForaDoSeuCaixa(): number {
+        return this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = this.calcularPrazoMedioTotalVendas() + this.necessidadeMediaDeEstoques;
+    }
+
+    calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro(): number {
+        return this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = this.calcularSubtotalDiasRecursoDaEmpresaForaDoSeuCaixa() - this.calcularPrazoMedioTotalCompras();
+    }
+
+    indexOfMaterial(material: Item): number {
+        return this.materiais.indexOf(material);
+    }
+
+    indexOfVenda(venda: Prazo): number {
+        return this.vendas.indexOf(venda);
+    }
+
+    indexOfCompra(compra: Prazo): number {
+        return this.compras.indexOf(compra);
+    }
+
+    indexOfPrazoViaEnum(tipo: PrazoEnum, prazo: Prazo): number {
+        switch (tipo) {
+            case PrazoEnum.Compra:
+                return this.compras.indexOf(prazo);
+            case PrazoEnum.Venda:
+                return this.vendas.indexOf(prazo);
+        }
+    }
+
+
+
 
 }

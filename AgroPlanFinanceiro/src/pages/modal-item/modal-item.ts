@@ -3,7 +3,7 @@ import {NavParams, ViewController} from 'ionic-angular';
 import {Item} from '../../class/Item';
 import {ItemEnum} from '../../enums/ItemEnum';
 import {EstimativaDeInvestimentosFixosService} from '../../providers/estimativa-de-investimentos-fixos-service';
-
+import {CapitalDeGiroService} from '../../providers/capital-de-giro-service';
 /**
  * Generated class for the ModalItem page.
  *
@@ -27,7 +27,8 @@ export class ModalItem {
     private valor: number;
 
     constructor(public viewCtrl: ViewController, public navParams: NavParams,
-        private estimativaDeInvestimentoFixosService: EstimativaDeInvestimentosFixosService) {
+        private estimativaDeInvestimentoFixosService: EstimativaDeInvestimentosFixosService,
+        private capitalDeGiroService: CapitalDeGiroService) {
         this.titulo = this.navParams.get('titulo');
         this.tipo = this.navParams.get('tipo');
         this.item = this.navParams.get('item');
@@ -44,10 +45,20 @@ export class ModalItem {
         this.item.quantidade = this.quantidade;
         this.item.valor = this.valor;
         if (this.editar == false) {
-            this.estimativaDeInvestimentoFixosService.addViaEnum(this.tipo, this.item);
+            if (this.tipo == ItemEnum.Material) {
+                this.capitalDeGiroService.addMaterial(this.item);
+            } else {
+                this.estimativaDeInvestimentoFixosService.addViaEnum(this.tipo, this.item);
+            }
         } else {
-            let index: number = this.estimativaDeInvestimentoFixosService.indexOfViaEnum(this.tipo, this.item);
-            this.estimativaDeInvestimentoFixosService.updateViaEnum(this.tipo, this.item, index);
+            let index: number;
+            if (this.tipo == ItemEnum.Material) {
+                index = this.capitalDeGiroService.indexOfMaterial(this.item);
+                this.capitalDeGiroService.updateMaterial(this.item, index);
+            } else {
+                index = this.estimativaDeInvestimentoFixosService.indexOfViaEnum(this.tipo, this.item);
+                this.estimativaDeInvestimentoFixosService.updateViaEnum(this.tipo, this.item, index);
+            }
         }
         this.closeModal();
     }

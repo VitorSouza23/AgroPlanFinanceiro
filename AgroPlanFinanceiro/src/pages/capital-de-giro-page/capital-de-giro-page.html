@@ -1,0 +1,93 @@
+<!--
+  Generated template for the CapitalDeGiroPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Capital de Giro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                Materiais
+                <button ion-button round item-right icon-right (click)="addMaterial()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
+        </ion-card-header>
+        <ion-list>
+            <ion-item-sliding *ngFor="let material of materiais">
+                <ion-item  (click)="updateMaterial(material)">
+                    <ion-icon name="cog"></ion-icon>
+                    {{material.descricao}}
+                </ion-item>
+                <ion-item-options side="right" ></ion-item-options>
+                <ion-item-options side="left"></ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Sub-total: R$ {{totalEstimativaEstoqueInicial}}</span>
+        </ion-item>
+    </ion-card>
+    
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                Compras
+                <button ion-button round item-right icon-right (click)="addCompra()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
+        </ion-card-header>
+        <ion-list>
+            <ion-item-sliding *ngFor="let compra of compras">
+                <ion-item  (click)="updateCompra(compra)">
+                    <ion-icon name="cog"></ion-icon>
+                    {{compra.descricao}}
+                </ion-item>
+                <ion-item-options side="right" ></ion-item-options>
+                <ion-item-options side="left"></ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="sunny"></ion-icon>
+            <span>Prazo Médio Total de Compras: {{prazoMedioCompras}} dias</span>
+        </ion-item>
+    </ion-card>
+    
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                Vendas
+                <button ion-button round item-right icon-right (click)="addVenda()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
+        </ion-card-header>
+        <ion-list>
+            <ion-item-sliding *ngFor="let venda of vendas">
+                <ion-item  (click)="updateVenda(venda)">
+                    <ion-icon name="cog"></ion-icon>
+                    {{venda.descricao}}
+                </ion-item>
+                <ion-item-options side="right" ></ion-item-options>
+                <ion-item-options side="left"></ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="sunny"></ion-icon>
+            <span>Prazo Médio Total Vendas: {{prazoMedioDeVendas}} dias</span>
+        </ion-item>
+    </ion-card>
+
+</ion-content>

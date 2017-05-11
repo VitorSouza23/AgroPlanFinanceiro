@@ -14,6 +14,8 @@ import {EstimativaDeInvestimentosFixosPage} from '../pages/estimativa-de-investi
 import {ModalItem} from '../pages/modal-item/modal-item';
 
 import {CapitalDeGiroService} from '../providers/capital-de-giro-service';
+import {CapitalDeGiroPageModule} from '../pages/capital-de-giro-page/capital-de-giro-page.module';
+import {ModalPrazoModule} from '../pages/modal-prazo/modal-prazo.module';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import {CapitalDeGiroService} from '../providers/capital-de-giro-service';
     ],
     imports: [
         BrowserModule,
+        CapitalDeGiroPageModule,
+        ModalPrazoModule,
         IonicModule.forRoot(MyApp)
         
     ],

@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ModalPrazo page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{titulo}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list>
+        <ion-item>
+            <ion-label color="primary" floating>Descricao</ion-label>
+            <ion-input type="text" [(ngModel)]="descricao"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Porcentagem</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="porcentagem" (keyup)="calcularMediaPonderadaEmdias()"
+                       (click)="calcularMediaPonderadaEmdias()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Número de Dias</ion-label>
+            <ion-input type="number" min="0"[(ngModel)]="numeroDeDias" 
+                       (keyup)="calcularMediaPonderadaEmdias()" (click)="calcularMediaPonderadaEmdias()"></ion-input>
+        </ion-item>
+    <ion-item class="sub-total">
+            <ion-icon name="sunny"></ion-icon>
+            <span>Média Ponderada em Dias: {{mediaPonderadaEmDias}}</span>
+        </ion-item>
+    </ion-list>
+    <button ion-button full round (click)="confirmar()">Confirmar</button>
+    <button ion-button full round color="danger" (click)="closeModal()">Cancelar</button>
+</ion-content>

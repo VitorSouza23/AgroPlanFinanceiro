@@ -16,38 +16,6 @@ export class Prazo {
         this.mediaPonderadaEmDias = 0;
     }
 
-    getDescricao(): String {
-        return this.descricao;
-    }
-
-    setDescricao(descricao: String): void {
-        this.descricao = descricao;
-    }
-
-    getPorcentagem(): number {
-        return this.porcentagem;
-    }
-    
-    setPorcentagem(porcentagem: number): void {
-        this.porcentagem = porcentagem
-    }
-    
-    getNumeroDeDias(): number {
-        return this.numeroDeDias;
-    }
-    
-    setNumeroDeDias(numeroDeDias: number){
-        this.numeroDeDias = numeroDeDias;
-    }
-    
-    getMediaPonderadaEmdias(): number {
-        return this.mediaPonderadaEmDias;
-    }
-    
-    setMediaPonderadaEmDias(mediaPonderadaEmDias: number){
-        this.mediaPonderadaEmDias = mediaPonderadaEmDias;
-    }
-    
     calcularMediaPonderaEmDias(): number {
         return this.mediaPonderadaEmDias = (this.porcentagem / 100) * this.numeroDeDias; 
     }

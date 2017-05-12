@@ -21,6 +21,14 @@ export class CapitalDeGiroService {
     necessidadeMediaDeEstoques: number;
     subtotalDiasRecursoDaEmpresaForaDoSeuCaixa: number;
     subtotalDiasNecessidadeLiquidaDeCapitalDeGiro: number;
+    
+    custoFixoMensal: number;
+    custoVariavelMensal: number;
+    custoTotalDaEmpresa: number;
+    custoTotalDiario: number;
+    caixaMinimo: number;
+    
+    capitalDeGiro: number;
 
     constructor() {
         this.materiais = [];
@@ -33,7 +41,13 @@ export class CapitalDeGiroService {
         this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = 0;
         this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = 0;
 
-
+        this.custoFixoMensal = 0;
+        this.custoVariavelMensal = 0;
+        this.custoTotalDaEmpresa = 0;
+        this.custoTotalDiario = 0;
+        this.caixaMinimo = 0;
+        
+        this.capitalDeGiro = 0;
     }
 
     addMaterial(material: Item): void {
@@ -102,7 +116,7 @@ export class CapitalDeGiroService {
     calcularPrazoMedioTotalVendas(): number {
         this.prazoMedioTotalVendas = 0;
         this.vendas.forEach(venda => this.prazoMedioTotalVendas += venda.calcularMediaPonderaEmDias());
-        return this.prazoMedioTotalVendas
+        return this.prazoMedioTotalVendas;
     }
 
     calcularPrazoMedioTotalCompras(): number {
@@ -112,7 +126,7 @@ export class CapitalDeGiroService {
     }
 
     calcularSubtotalDiasRecursoDaEmpresaForaDoSeuCaixa(): number {
-        return this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = this.calcularPrazoMedioTotalVendas() + this.necessidadeMediaDeEstoques;
+        return this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = parseFloat(this.calcularPrazoMedioTotalVendas().toString()) + parseFloat(this.necessidadeMediaDeEstoques.toString());
     }
 
     calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro(): number {
@@ -140,7 +154,19 @@ export class CapitalDeGiroService {
         }
     }
 
+    calcularCustoTotalDaEmpresa(): number {
+        return this.custoTotalDaEmpresa = parseFloat(this.custoFixoMensal.toString()) + parseFloat(this.custoVariavelMensal.toString());
+    }
+    
+    caluclarCustoTotalDiario(): number {
+        return this.custoTotalDiario = this.custoTotalDaEmpresa / 30;
+    }
+    
+    calcularCaixaMinimo(): number {
+        return this.caixaMinimo = this.custoTotalDiario * this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro;
+    }
 
-
-
+    calcularCapitalDeGiro(): number {
+        return this.capitalDeGiro = parseFloat(this.caixaMinimo.toString()) + parseFloat(this.toString());
+    }
 }

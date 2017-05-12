@@ -17,6 +17,8 @@ import {CapitalDeGiroService} from '../providers/capital-de-giro-service';
 import {CapitalDeGiroPageModule} from '../pages/capital-de-giro-page/capital-de-giro-page.module';
 import {ModalPrazoModule} from '../pages/modal-prazo/modal-prazo.module';
 
+import {InvestimentosPreoperacionaisService} from '../providers/investimentos-preoperacionais-service';
+import {InvestimentosPreoperacionaisModule} from '../pages/investimentos-preoperacionais/investimentos-preoperacionais.module';
 
 @NgModule({
     declarations: [
@@ -30,6 +32,7 @@ import {ModalPrazoModule} from '../pages/modal-prazo/modal-prazo.module';
         BrowserModule,
         CapitalDeGiroPageModule,
         ModalPrazoModule,
+        InvestimentosPreoperacionaisModule,
         IonicModule.forRoot(MyApp)
         
     ],
@@ -46,7 +49,8 @@ import {ModalPrazoModule} from '../pages/modal-prazo/modal-prazo.module';
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         EstimativaDeInvestimentosFixosService,
-        CapitalDeGiroService
+        CapitalDeGiroService,
+        InvestimentosPreoperacionaisService
     ]
 })
 export class AppModule {}

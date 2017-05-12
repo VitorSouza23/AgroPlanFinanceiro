@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ModalController, AlertController} from 'ionic-angular';
 import {CapitalDeGiroService} from '../../providers/capital-de-giro-service';
 import {Item} from '../../class/Item';
 import {Prazo} from '../../class/Prazo';
@@ -30,9 +30,19 @@ export class CapitalDeGiroPage {
     necessidadeMediaDeEstoques: number;
     subtotalDiasRecursoDaEmpresaForaDoSeuCaixa: number;
     subtotalDiasNecessidadeLiquidaDeCapitalDeGiro: number;
+    
+    custoFixoMensal: number;
+    custoVariavelMensal: number;
+    custoTotalDaEmpresa: number;
+    custoTotalDiario: number;
+    caixaMinimo: number;
+    
+    capitalDeGiro: number;
+
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
-        private capitaldeGiroService: CapitalDeGiroService, private modalController: ModalController) {
+        private capitaldeGiroService: CapitalDeGiroService, private modalController: ModalController,
+        private alertCtrl: AlertController) {
         this.materiais = this.capitaldeGiroService.materiais;
         this.totalEstimativaEstoqueInicial = this.capitaldeGiroService.totalEstimativaEstoqueInicial;
         this.vendas = this.capitaldeGiroService.vendas;
@@ -42,6 +52,13 @@ export class CapitalDeGiroPage {
         this.necessidadeMediaDeEstoques = this.capitaldeGiroService.necessidadeMediaDeEstoques;
         this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = this.capitaldeGiroService.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa;
         this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = this.capitaldeGiroService.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro;
+        
+        this.custoFixoMensal = this.capitaldeGiroService.custoFixoMensal;
+        this.custoVariavelMensal = this.capitaldeGiroService.custoVariavelMensal;
+        this.custoTotalDaEmpresa = this.capitaldeGiroService.calcularCustoTotalDaEmpresa();
+        this.custoTotalDiario = this.capitaldeGiroService.caluclarCustoTotalDiario();
+        this.caixaMinimo = this.capitaldeGiroService.calcularCaixaMinimo();
+        this.capitalDeGiro = this.capitaldeGiroService.calcularCapitalDeGiro();
     }
 
     openModalItem(tipo: ItemEnum, titulo: String, item: Item, editar: boolean): void {
@@ -56,11 +73,14 @@ export class CapitalDeGiroPage {
     }
 
     atualizarSubtotais(): void {
+        this.capitaldeGiroService.necessidadeMediaDeEstoques = this.necessidadeMediaDeEstoques;
         this.totalEstimativaEstoqueInicial = this.capitaldeGiroService.calcularTotalEstimativaEstoqueInicial();
         this.prazoMedioCompras = this.capitaldeGiroService.calcularPrazoMedioTotalCompras();
         this.prazoMedioDeVendas = this.capitaldeGiroService.calcularPrazoMedioTotalVendas();
         this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = this.capitaldeGiroService.calcularSubtotalDiasRecursoDaEmpresaForaDoSeuCaixa();
         this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = this.capitaldeGiroService.calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro();
+        this.caixaMinimo = this.capitaldeGiroService.calcularCaixaMinimo();
+        this.capitalDeGiro = this.capitaldeGiroService.calcularCapitalDeGiro();
     }
 
     addMaterial(): void {
@@ -100,7 +120,7 @@ export class CapitalDeGiroPage {
         this.atualizarSubtotais();
     }
 
-    addvenda(): void {
+    addVenda(): void {
         this.openModalPrazo(PrazoEnum.Venda, "Venda", new Prazo(), false);
     }
 
@@ -108,9 +128,18 @@ export class CapitalDeGiroPage {
         this.openModalPrazo(PrazoEnum.Venda, "Venda", venda, true);
     }
 
-    removevenda(venda: Prazo): void {
+    removeVenda(venda: Prazo): void {
         this.capitaldeGiroService.removeVenda(venda);
         this.atualizarSubtotais();
+    }
+
+    showMensagemCaixaMinimo(): void {
+        this.alertCtrl.create({
+            title: 'Informações do Caixa Mínimo',
+            subTitle: 'As informações necessários para o calculo do Caixa Mínimo são definidas nas seções\n\
+ do Menu Principal:  Estimativas do Custo Fixo Mensal e Demostrativo de Resultados.',
+            buttons: ['OK']
+        }).present();
     }
 
 }

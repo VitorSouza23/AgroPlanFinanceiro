@@ -6,15 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Capital de Giro</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Capital de Giro</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    
+
     <ion-card>
         <ion-card-header>
             <ion-item>
@@ -30,38 +30,21 @@
                     <ion-icon name="cog"></ion-icon>
                     {{material.descricao}}
                 </ion-item>
-                <ion-item-options side="right" ></ion-item-options>
-                <ion-item-options side="left"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeMaterial(material)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeMaterial(material)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">
             <ion-icon name="logo-usd"></ion-icon>
             <span>Sub-total: R$ {{totalEstimativaEstoqueInicial}}</span>
-        </ion-item>
-    </ion-card>
-    
-    <ion-card>
-        <ion-card-header>
-            <ion-item>
-                Compras
-                <button ion-button round item-right icon-right (click)="addCompra()">
-                        Adicionar 
-                        <ion-icon name="add-circle"></ion-icon></button>
-            </ion-item>
-        </ion-card-header>
-        <ion-list>
-            <ion-item-sliding *ngFor="let compra of compras">
-                <ion-item  (click)="updateCompra(compra)">
-                    <ion-icon name="cog"></ion-icon>
-                    {{compra.descricao}}
-                </ion-item>
-                <ion-item-options side="right" ></ion-item-options>
-                <ion-item-options side="left"></ion-item-options>
-            </ion-item-sliding>
-        </ion-list>
-        <ion-item class="sub-total">
-            <ion-icon name="sunny"></ion-icon>
-            <span>Prazo Médio Total de Compras: {{prazoMedioCompras}} dias</span>
         </ion-item>
     </ion-card>
     
@@ -80,14 +63,171 @@
                     <ion-icon name="cog"></ion-icon>
                     {{venda.descricao}}
                 </ion-item>
-                <ion-item-options side="right" ></ion-item-options>
-                <ion-item-options side="left"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeVenda(venda)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeVenda(venda)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">
             <ion-icon name="sunny"></ion-icon>
             <span>Prazo Médio Total Vendas: {{prazoMedioDeVendas}} dias</span>
         </ion-item>
+    </ion-card>
+    
+
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                Compras
+                <button ion-button round item-right icon-right (click)="addCompra()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon></button>
+            </ion-item>
+        </ion-card-header>
+        <ion-list>
+            <ion-item-sliding *ngFor="let compra of compras">
+                <ion-item  (click)="updateCompra(compra)">
+                    <ion-icon name="cog"></ion-icon>
+                    {{compra.descricao}}
+                </ion-item>
+                <ion-item-options side="right" (ionSwipe)="removeComrpa(compra)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeComrpa(compra)">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="sunny"></ion-icon>
+            <span>Prazo Médio Total de Compras: {{prazoMedioCompras}} dias</span>
+        </ion-item>
+    </ion-card>
+
+    
+
+    <ion-card>
+        <ion-card-header>
+            Necessidade Média dos Estoques
+        </ion-card-header>
+        <ion-item>
+            <ion-label color="primary" floating>Número de dias</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="necessidadeMediaDeEstoques" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+    </ion-card>
+    
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Recuros da Empresa Fora do Seu Caixa
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="sunny"></ion-icon>
+                Contas a Receber (Vendas): {{prazoMedioDeVendas}} dias
+            </ion-item>
+            <ion-item>
+                <ion-icon name="sunny"></ion-icon>
+                Estoques (Necess. Média): {{necessidadeMediaDeEstoques}} dias
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="sunny"></ion-icon>
+                Subtoal 1 (Vendas + Necess. Média): {{subtotalDiasRecursoDaEmpresaForaDoSeuCaixa}} dias
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Recuros da Terceiros no Caixa da Empresa
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="sunny"></ion-icon>
+                Contas a Pagar (Compras): {{prazoMedioCompras}} dias
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="sunny"></ion-icon>
+                Subtoal 2 (Fornecedores): {{prazoMedioCompras}} dias
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Necess. Líquida de Capital de Giro em Dias
+        </ion-card-header>
+        <ion-list>
+            <ion-item class="sub-total">
+                <ion-icon name="sunny"></ion-icon>
+                Subtoal 1 + Subtotal 2: {{subtotalDiasNecessidadeLiquidaDeCapitalDeGiro}} dias
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Caixa Mínimo
+            <ion-icon name="help-circle"(click)="showMensagemCaixaMinimo()"></ion-icon>
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custo Fixo Total: R$ {{custoFixoMensal}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custo Variavel Mensal: R$ {{custoVariavelMensal}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custo Total da Empresa: R$ {{custoTotalDaEmpresa}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custo Total Diário: R$ {{custoTotalDiario}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="sunny"></ion-icon>
+                Necess. Líquida de Capital de Giro em Dias: {{subtotalDiasNecessidadeLiquidaDeCapitalDeGiro}} dias
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                Total: R$ {{caixaMinimo}}
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Capital de Giro (Resumo)
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                A - Estimativa de Estoque Inicial: R$ {{totalEstimativaEstoqueInicial}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                B - Caíxa Mínimo: R$ {{caixaMinimo}}
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                Capital de Giro (A + B): R$ {{capitalDeGiro}}
+            </ion-item>
+        </ion-list>
     </ion-card>
 
 </ion-content>

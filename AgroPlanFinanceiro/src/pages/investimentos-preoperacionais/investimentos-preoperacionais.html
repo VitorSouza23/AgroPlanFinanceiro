@@ -1,0 +1,53 @@
+<!--
+  Generated template for the InvestimentosPreoperacionais page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Investimentos Pré-operacionais</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            Valores (R$)
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-label color="primary" floating>Despesas de Legalização</ion-label>
+                <ion-input type="number" min="0" [(ngModel)]="despesasDeLegalizacao"
+                           (keyup)="calcularTotal()" (click)="calcularTotal()"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" floating>Obras Civis e/ou Reformas</ion-label>
+                <ion-input type="number" min="0" [(ngModel)]="obrasCivisReformas"
+                           (keyup)="calcularTotal()" (click)="calcularTotal()"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" floating>Divulgação</ion-label>
+                <ion-input type="number" min="0"[(ngModel)]="divulgacao" 
+                           (keyup)="calcularTotal()" (click)="calcularTotal()"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" floating>Cursos e Treinamentos</ion-label>
+                <ion-input type="number" min="0"[(ngModel)]="curosETreinamentos" 
+                           (keyup)="calcularTotal()" (click)="calcularTotal()"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" floating>Outras Despesas</ion-label>
+                <ion-input type="number" min="0"[(ngModel)]="outrasDespesas" 
+                           (keyup)="calcularTotal()" (click)="calcularTotal()"></ion-input>
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                <span>Total: R$ {{total}}</span>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

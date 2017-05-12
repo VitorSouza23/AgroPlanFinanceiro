@@ -42398,6 +42398,7 @@ ion-navbar.toolbar {
   background-color: #006400;
   color: white;
   font-size: 18px;
+  padding: 0px;
 }
 
 .ios ion-card-header ion-item button, .md ion-card-header ion-item button {
@@ -42427,14 +42428,26 @@ ion-navbar.toolbar {
 
 .ios .sub-total, .md .sub-total {
   border-style: dashed;
-  border-top-width: 2px;
-  border-color: #70db70;
+  border-top-width: 3px;
+  border-color: #ff8000;
 }
 
-page-estimativa-de-investimentos-fixos .sub-total-final ion-card-header {
+.ios .sub-total span, .ios .sub-total ion-icon, .md .sub-total span, .md .sub-total ion-icon {
+  color: #ff8000;
+}
+
+.ios .sub-total-final ion-card-header, .md .sub-total-final ion-card-header {
   background-color: #ff8000;
 }
 
-page-estimativa-de-investimentos-fixos .sub-total-final > ion-item {
+.ios .sub-total-final > ion-item, .md .sub-total-final > ion-item {
+  color: #ff8000;
+}
+
+.ios .sub-total-final ion-list > ion-item, .md .sub-total-final ion-list > ion-item {
+  color: #488aff;
+}
+
+.ios ion-list button ion-icon, .md ion-list button ion-icon {
   color: #488aff;
 }

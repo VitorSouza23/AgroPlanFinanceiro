@@ -31,6 +31,7 @@
         background-color: map-get($colors, dark-green);
         color: white;
         font-size: 18px;
+        padding: 0px;
     }
     
     ion-card-header ion-item button{
@@ -60,8 +61,29 @@
     
     .sub-total{
         border-style: dashed;
-        border-top-width: 2px;
-        border-color: map-get($colors, ligth-green);
+        border-top-width: 3px;
+        border-color: map-get($colors, orange);
+    }
+    
+    
+    .sub-total span, .sub-total ion-icon{
+        color: map-get($colors, orange);
+    }
+   
+    
+    .sub-total-final ion-card-header{
+        background-color: map-get($colors, orange);
+    }
+    .sub-total-final > ion-item{
+        color: map-get($colors, orange);
+    }
+    
+    .sub-total-final ion-list > ion-item{
+        color: map-get($colors, primary);
+    }
+    
+    ion-list button ion-icon{
+        color: map-get($colors, primary);
     }
     
     

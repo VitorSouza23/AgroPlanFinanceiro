@@ -30,8 +30,16 @@
                     <ion-icon name="cog"></ion-icon>
                     {{maquina.descricao}}
                 </ion-item>
-                <ion-item-options side="right" (ionSwipe)="removeMaquina(item)"></ion-item-options>
-                <ion-item-options side="left" (ionSwipe)="removeMaquina(item)"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeMaquina(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeMaquina(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">
@@ -55,8 +63,16 @@
                     <ion-icon name="construct"></ion-icon>
                     {{equipamento.descricao}}
                 </ion-item>
-                <ion-item-options side="right" (ionSwipe)="removeEquipamento(item)"></ion-item-options>
-                <ion-item-options side="left" (ionSwipe)="removeEquipamento(item)"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeEquipamento(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeEquipamento(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">
@@ -81,8 +97,16 @@
                     <ion-icon name="cube"></ion-icon>
                     {{movel.descricao}}
                 </ion-item>
-                <ion-item-options side="right" (ionSwipe)="removeMovel(item)"></ion-item-options>
-                <ion-item-options side="left" (ionSwipe)="removeMovel(item)"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeMovel(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeMovel(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">
@@ -106,8 +130,16 @@
                     <ion-icon name="cut"></ion-icon>
                     {{utensilio.descricao}}
                 </ion-item>
-                <ion-item-options side="right" (ionSwipe)="removeUtensilio(item)"></ion-item-options>
-                <ion-item-options side="left" (ionSwipe)="removeUtensilio(item)"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeUtensilio(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeUtensilio(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">
@@ -131,8 +163,16 @@
                     <ion-icon name="car"></ion-icon>
                     {{veiculo.descricao}}
                 </ion-item>
-                <ion-item-options side="right" (ionSwipe)="removeVeiculo(item)"></ion-item-options>
-                <ion-item-options side="left" (ionSwipe)="removeVeiculo(item)"></ion-item-options>
+                <ion-item-options side="right" (ionSwipe)="removeVeiculo(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+                <ion-item-options side="left" (ionSwipe)="removeVeiculo(item)">
+                    <button ion-button color="danger">
+                         <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
             </ion-item-sliding>
         </ion-list>
         <ion-item class="sub-total">

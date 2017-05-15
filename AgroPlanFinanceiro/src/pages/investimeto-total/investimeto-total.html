@@ -1,0 +1,73 @@
+<!--
+  Generated template for the InvestimetoTotal page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Investimeto Total</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <ion-card class="sub-total-final">
+        <ion-card-header>
+            Descrição dos Investimentos
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Investimentos Fixos: R$ {{investimentosFixos}}
+                <ion-badge item-right>{{percentoInvestimentoFixo}}%</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Capital de Giro: R$ {{capitalDeGiro}}
+                <ion-badge item-right>{{percentocapitalDeGiro}}%</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Investimentos Pré-operacionais: R$ {{investimentosPreOperacionais}}
+                <ion-badge item-right>{{percentoInvestimentoPreOperacionais}}%</ion-badge>
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                Total: R$ {{totalDescricaoDosInvestimentos}}
+                <ion-badge item-right>100%</ion-badge>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    
+    <ion-card>
+        <ion-card-header>
+            Fontes de Recursos
+        </ion-card-header>
+        <ion-item>
+            <ion-label color="primary" floating>Recursos Próprios</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="recursosProprios" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-badge item-right>{{percentoRecursosProprios}}%</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Recursos de Terceiros</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="recurosDeTerceiros" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-badge item-right>{{percentoRecursosDeTerceiros}}%</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>outros</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="outros" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-badge item-right>{{percentoOutros}}%</ion-badge>
+        </ion-item>
+        <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                Total: R$ {{totalFontesDeRecursos}}
+                <ion-badge item-right>100%</ion-badge>
+            </ion-item>
+    </ion-card>
+</ion-content>

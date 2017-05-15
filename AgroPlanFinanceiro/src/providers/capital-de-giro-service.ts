@@ -158,15 +158,15 @@ export class CapitalDeGiroService {
         return this.custoTotalDaEmpresa = parseFloat(this.custoFixoMensal.toString()) + parseFloat(this.custoVariavelMensal.toString());
     }
     
-    caluclarCustoTotalDiario(): number {
-        return this.custoTotalDiario = this.custoTotalDaEmpresa / 30;
+    calcuclarCustoTotalDiario(): number {
+        return this.custoTotalDiario = this.calcularCustoTotalDaEmpresa() / 30;
     }
     
     calcularCaixaMinimo(): number {
-        return this.caixaMinimo = this.custoTotalDiario * this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro;
+        return this.caixaMinimo = this.calcuclarCustoTotalDiario() * this.calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro();
     }
 
     calcularCapitalDeGiro(): number {
-        return this.capitalDeGiro = parseFloat(this.caixaMinimo.toString()) + parseFloat(this.toString());
+        return this.capitalDeGiro = parseFloat(this.calcularCaixaMinimo().toString()) + parseFloat(this.calcularTotalEstimativaEstoqueInicial().toString());
     }
 }

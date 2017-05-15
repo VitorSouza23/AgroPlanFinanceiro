@@ -20,6 +20,14 @@ import {ModalPrazoModule} from '../pages/modal-prazo/modal-prazo.module';
 import {InvestimentosPreoperacionaisService} from '../providers/investimentos-preoperacionais-service';
 import {InvestimentosPreoperacionaisModule} from '../pages/investimentos-preoperacionais/investimentos-preoperacionais.module';
 
+import {InvestimentoTotalService} from '../providers/investimento-total-service';
+import {InvestimetoTotalModule} from '../pages/investimeto-total/investimeto-total.module';
+
+import {EstimativaDoFaturamentoMensalService} from '../providers/estimativa-do-faturamento-mensal-service';
+import {EstimativaDoFaturamentoMensalModule} from '../pages/estimativa-do-faturamento-mensal/estimativa-do-faturamento-mensal.module';
+import {ModalProdutoModule} from '../pages/modal-produto/modal-produto.module';
+
+import {EstimativaDeCustoUnitarioService} from '../providers/estimativa-de-custo-unitario-service';
 @NgModule({
     declarations: [
         MyApp,
@@ -33,6 +41,9 @@ import {InvestimentosPreoperacionaisModule} from '../pages/investimentos-preoper
         CapitalDeGiroPageModule,
         ModalPrazoModule,
         InvestimentosPreoperacionaisModule,
+        InvestimetoTotalModule,
+        EstimativaDoFaturamentoMensalModule,
+        ModalProdutoModule,
         IonicModule.forRoot(MyApp)
         
     ],
@@ -50,7 +61,10 @@ import {InvestimentosPreoperacionaisModule} from '../pages/investimentos-preoper
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         EstimativaDeInvestimentosFixosService,
         CapitalDeGiroService,
-        InvestimentosPreoperacionaisService
+        InvestimentosPreoperacionaisService,
+        InvestimentoTotalService,
+        EstimativaDoFaturamentoMensalService,
+        EstimativaDeCustoUnitarioService
     ]
 })
 export class AppModule {}

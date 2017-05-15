@@ -56,7 +56,7 @@ export class CapitalDeGiroPage {
         this.custoFixoMensal = this.capitaldeGiroService.custoFixoMensal;
         this.custoVariavelMensal = this.capitaldeGiroService.custoVariavelMensal;
         this.custoTotalDaEmpresa = this.capitaldeGiroService.calcularCustoTotalDaEmpresa();
-        this.custoTotalDiario = this.capitaldeGiroService.caluclarCustoTotalDiario();
+        this.custoTotalDiario = this.capitaldeGiroService.calcuclarCustoTotalDiario();
         this.caixaMinimo = this.capitaldeGiroService.calcularCaixaMinimo();
         this.capitalDeGiro = this.capitaldeGiroService.calcularCapitalDeGiro();
     }

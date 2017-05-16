@@ -10,6 +10,10 @@ import {InvestimentosPreoperacionaisService} from '../../providers/investimentos
 import {EstimativaDeInvestimentosFixosService} from '../../providers/estimativa-de-investimentos-fixos-service';
 
 import {EstimativaDoFaturamentoMensal} from '../estimativa-do-faturamento-mensal/estimativa-do-faturamento-mensal';
+import {EstimativaDoFaturamentoMensalService} from '../../providers/estimativa-do-faturamento-mensal-service';
+import {EstimativaCustoUnitarioPage} from '../estimativa-custo-unitario/estimativa-custo-unitario';
+
+import {EstimativaDosCustosDeComercializacaoPage} from '../estimativa-dos-custos-de-comercializacao/estimativa-dos-custos-de-comercializacao';
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -18,7 +22,8 @@ export class HomePage {
 
     constructor(public navCtrl: NavController, private estimativaDeInvestimentosFixosService: EstimativaDeInvestimentosFixosService,
         private investimentosPreOperacionaisService: InvestimentosPreoperacionaisService,
-        private capitalDeGiroService: CapitalDeGiroService) {
+        private capitalDeGiroService: CapitalDeGiroService,
+        private estimativaDoFaturamentoMensalService: EstimativaDoFaturamentoMensalService) {
 
     }
 
@@ -44,6 +49,18 @@ export class HomePage {
     
     goToEstimativaDoFaturamentoMensal(): void {
         this.navCtrl.push(EstimativaDoFaturamentoMensal);
+    }
+    
+    goToEstimativaCustoUnitarioPage(): void {
+        this.navCtrl.push(EstimativaCustoUnitarioPage, {
+            produtos: this.estimativaDoFaturamentoMensalService.produtos
+        });
+    }
+    
+    goToEstimatiDosCustosComerciais(): void {
+        this.navCtrl.push(EstimativaDosCustosDeComercializacaoPage, {
+            faturamentoEsperado: this.estimativaDoFaturamentoMensalService.calcularTotal()
+        })
     }
 
 }

@@ -1,0 +1,105 @@
+<!--
+  Generated template for the EstimativaDosCustosDeComercializacao page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Estimativa dos Custos de Comercialização</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Faturamento Esperado
+        </ion-card-header>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            R$ {{faturamentoEsperado}}
+        </ion-item>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            Impostos
+        </ion-card-header>
+        <ion-item>
+            <ion-label color="primary" floating>SIMPLES</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="simples" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>IRPJ</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="irpj" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>PIS</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="pis" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>COFINS</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="cofins" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>CSLL</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="csll" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>ICMS</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="icms" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>ISS</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="iss" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            Subtotal 1: R$ {{subtotal1}}
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Gastos com Vendas
+        </ion-card-header>
+        <ion-item>
+            <ion-label color="primary" floating>Comissões</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="comissao" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Propaganda</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="propaganda" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" floating>Taxa de Administração de Cartão de Crédito</ion-label>
+            <ion-input type="number" min="0" [(ngModel)]="taxaCartaoDeCredito" 
+                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+        </ion-item>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            Subtotal 2: R$ {{subtotal2}}
+        </ion-item>
+    </ion-card>
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Total
+        </ion-card-header>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            Subtotal 1 + Subtotal 2: R$ {{total}}
+        </ion-item>
+    </ion-card>
+</ion-content>

@@ -3,7 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import {CustoMaterial} from './CustoMaterial';
+import {Item} from './Item'; 
+export class CustoMaterial{
+    material: Item;
+    total: number;
+    constructor(){
+        this.material = new Item();
+        this.total = 0;
+    }
+    
+    calcularTotal(): number {
+        return this.material.calcularValorTotal();
+    }
+}
+
+
 export class Produto{
     descricao: String;
     quantidade: number;
@@ -53,3 +67,4 @@ export class Produto{
         return this.totalCustoMaterial;
     }
 }
+

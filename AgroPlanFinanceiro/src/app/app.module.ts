@@ -28,6 +28,12 @@ import {EstimativaDoFaturamentoMensalModule} from '../pages/estimativa-do-fatura
 import {ModalProdutoModule} from '../pages/modal-produto/modal-produto.module';
 
 import {EstimativaDeCustoUnitarioService} from '../providers/estimativa-de-custo-unitario-service';
+import {EstimativaCustoUnitarioModule} from '../pages/estimativa-custo-unitario/estimativa-custo-unitario.module';
+import {ModalCustoMaterialModule} from '../pages/modal-custo-material/modal-custo-material.module';
+
+import {EstimativaDosCustosDeComercializacaoService} from '../providers/estimativa-dos-custos-de-comercializacao-service';
+import {EstimativaDosCustosDeComercializacaoModule} from  '../pages/estimativa-dos-custos-de-comercializacao/estimativa-dos-custos-de-comercializacao.module';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -44,6 +50,9 @@ import {EstimativaDeCustoUnitarioService} from '../providers/estimativa-de-custo
         InvestimetoTotalModule,
         EstimativaDoFaturamentoMensalModule,
         ModalProdutoModule,
+        EstimativaCustoUnitarioModule,
+        ModalCustoMaterialModule,
+        EstimativaDosCustosDeComercializacaoModule,
         IonicModule.forRoot(MyApp)
         
     ],
@@ -64,7 +73,8 @@ import {EstimativaDeCustoUnitarioService} from '../providers/estimativa-de-custo
         InvestimentosPreoperacionaisService,
         InvestimentoTotalService,
         EstimativaDoFaturamentoMensalService,
-        EstimativaDeCustoUnitarioService
+        EstimativaDeCustoUnitarioService,
+        EstimativaDosCustosDeComercializacaoService
     ]
 })
 export class AppModule {}

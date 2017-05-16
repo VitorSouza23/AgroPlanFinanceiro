@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {Produto} from '../class/Produto';
-import {CustoMaterial} from '../class/CustoMaterial';
+import {Produto, CustoMaterial} from '../class/Produto';
+
 /*
   Generated class for the EstimativaDeCustoUnitarioService provider.
 

@@ -34,6 +34,9 @@ import {ModalCustoMaterialModule} from '../pages/modal-custo-material/modal-cust
 import {EstimativaDosCustosDeComercializacaoService} from '../providers/estimativa-dos-custos-de-comercializacao-service';
 import {EstimativaDosCustosDeComercializacaoModule} from  '../pages/estimativa-dos-custos-de-comercializacao/estimativa-dos-custos-de-comercializacao.module';
 
+import {ApuracaoDosCustosMateriaisService} from '../providers/apuracao-dos-custos-materiais-service';
+import {ApuracaoDosCustosMateriaisModule} from '../pages/apuracao-dos-custos-materiais/apuracao-dos-custos-materiais.module';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -53,6 +56,7 @@ import {EstimativaDosCustosDeComercializacaoModule} from  '../pages/estimativa-d
         EstimativaCustoUnitarioModule,
         ModalCustoMaterialModule,
         EstimativaDosCustosDeComercializacaoModule,
+        ApuracaoDosCustosMateriaisModule,
         IonicModule.forRoot(MyApp)
         
     ],
@@ -74,7 +78,8 @@ import {EstimativaDosCustosDeComercializacaoModule} from  '../pages/estimativa-d
         InvestimentoTotalService,
         EstimativaDoFaturamentoMensalService,
         EstimativaDeCustoUnitarioService,
-        EstimativaDosCustosDeComercializacaoService
+        EstimativaDosCustosDeComercializacaoService,
+        ApuracaoDosCustosMateriaisService
     ]
 })
 export class AppModule {}

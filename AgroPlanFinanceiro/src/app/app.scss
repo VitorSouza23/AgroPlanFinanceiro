@@ -86,5 +86,20 @@
         color: map-get($colors, primary);
     }
     
+    ion-grid{
+        background-color: white;
+    }
+    
+    ion-grid ion-row ion-col{
+        font-size: 18px;
+        border-style: double;
+        border-color: map-get($colors, orange);
+        color: map-get($colors, orange);
+        text-align: center;
+    }
+    
+    ion-grid ion-row ion-col ion-item{
+        color: map-get($colors, primary);
+    }
     
 }

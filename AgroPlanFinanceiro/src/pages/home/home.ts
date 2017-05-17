@@ -14,6 +14,9 @@ import {EstimativaDoFaturamentoMensalService} from '../../providers/estimativa-d
 import {EstimativaCustoUnitarioPage} from '../estimativa-custo-unitario/estimativa-custo-unitario';
 
 import {EstimativaDosCustosDeComercializacaoPage} from '../estimativa-dos-custos-de-comercializacao/estimativa-dos-custos-de-comercializacao';
+
+import {ApuracaoDosCustosMateriaisPage} from '../apuracao-dos-custos-materiais/apuracao-dos-custos-materiais';
+
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -44,22 +47,28 @@ export class HomePage {
             investimentosFixos: this.estimativaDeInvestimentosFixosService.calcularSubTotal(),
             capitalDeGiro: this.capitalDeGiroService.calcularCapitalDeGiro(),
             investimentosPreOperacionais: this.investimentosPreOperacionaisService.calcularTotal()
-            });
+        });
     }
-    
+
     goToEstimativaDoFaturamentoMensal(): void {
         this.navCtrl.push(EstimativaDoFaturamentoMensal);
     }
-    
+
     goToEstimativaCustoUnitarioPage(): void {
         this.navCtrl.push(EstimativaCustoUnitarioPage, {
             produtos: this.estimativaDoFaturamentoMensalService.produtos
         });
     }
-    
+
     goToEstimatiDosCustosComerciais(): void {
         this.navCtrl.push(EstimativaDosCustosDeComercializacaoPage, {
             faturamentoEsperado: this.estimativaDoFaturamentoMensalService.calcularTotal()
+        })
+    }
+
+    goToApuracaoDosCustosMateriaisPage(): void {
+        this.navCtrl.push(ApuracaoDosCustosMateriaisPage, {
+            produtos: this.estimativaDoFaturamentoMensalService.produtos
         })
     }
 

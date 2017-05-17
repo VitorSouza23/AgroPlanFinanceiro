@@ -1,0 +1,83 @@
+<!--
+  Generated template for the ApuracaoDosCustosMateriais page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Apuracao dos Custos Materiais</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            CMD/CMV
+        </ion-card-header>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    Produto
+                </ion-col>
+                <ion-col>
+                    Estimat. Venda
+                </ion-col>
+                <ion-col>
+                    Custo Un. Mat.
+                </ion-col>
+                <ion-col>
+                    CMD/CMV
+                </ion-col>
+            </ion-row>
+            
+            <ion-row *ngFor="let produto of produtos">
+                <ion-col>
+                    <ion-item>
+                        <ion-icon name="cart"></ion-icon>
+                        {{produto.descricao}}
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <ion-icon name="podium"></ion-icon>
+                        {{produto.quantidade}}
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <ion-icon name="logo-usd"></ion-icon>
+                        {{produto.calcularTotalCustoMateriais()}}
+                    </ion-item>
+                </ion-col>
+                <ion-col>
+                    <ion-item>
+                        <ion-icon name="logo-usd"></ion-icon>
+                        {{produto.calcularTotalCustoMateriais() * produto.quantidade}}
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Totais 
+        </ion-card-header>
+        <ion-item>
+            <ion-icon name="cart"></ion-icon>
+            Estimativa de Vendas (Em Unidades): {{totalEstimativaVendas}}
+        </ion-item>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            Custo Unitário de Materiais/Aquisisção: R$ {{totalCustoUnitario}}
+        </ion-item>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            CMD/CMV: R$ {{totalCMD}}
+        </ion-item>
+    </ion-card>
+</ion-content>

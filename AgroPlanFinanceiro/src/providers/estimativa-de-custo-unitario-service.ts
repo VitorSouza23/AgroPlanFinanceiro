@@ -33,7 +33,7 @@ export class EstimativaDeCustoUnitarioService {
     
     calcularTotalCustosMateriais(produtos: Produto[]): number {
         this.totalCustoMaterial = 0;
-        produtos.forEach(produto => this.totalCustoMaterial += produto.calcularTotalCustoMateriais());
+        produtos.forEach(produto => this.totalCustoMaterial += parseFloat(produto.calcularTotalCustoMateriais().toString()));
         return this.totalCustoMaterial;
     }
 

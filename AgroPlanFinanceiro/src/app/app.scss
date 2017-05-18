@@ -34,7 +34,7 @@
         padding: 0px;
     }
     
-    ion-card-header ion-item button{
+    ion-card-header ion-item > button{
         background-color: map-get($colors, primary);
         color: white;
     }
@@ -101,5 +101,10 @@
     ion-grid ion-row ion-col ion-item{
         color: map-get($colors, primary);
     }
+    
+    .grid-title > ion-col{
+        border-style: none;
+    }
+    
     
 }

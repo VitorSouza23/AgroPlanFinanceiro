@@ -17,6 +17,7 @@ import {EstimativaDosCustosDeComercializacaoPage} from '../estimativa-dos-custos
 
 import {ApuracaoDosCustosMateriaisPage} from '../apuracao-dos-custos-materiais/apuracao-dos-custos-materiais';
 
+import {EstimativaDosCustosComMaoDeObraPage} from '../estimativa-dos-custos-com-mao-de-obra/estimativa-dos-custos-com-mao-de-obra';
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -70,6 +71,10 @@ export class HomePage {
         this.navCtrl.push(ApuracaoDosCustosMateriaisPage, {
             produtos: this.estimativaDoFaturamentoMensalService.produtos
         })
+    }
+    
+    goToEstimativaDosCustosComMaoDeObra(): void {
+        this.navCtrl.push(EstimativaDosCustosComMaoDeObraPage);
     }
 
 }

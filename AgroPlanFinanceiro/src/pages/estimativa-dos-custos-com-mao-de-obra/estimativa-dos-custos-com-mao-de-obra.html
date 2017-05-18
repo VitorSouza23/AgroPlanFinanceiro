@@ -1,0 +1,115 @@
+<!--
+  Generated template for the EstimativaDosCustosComMaoDeObra page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Estimativa dos Custos com Mão de Obra</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            <ion-item>
+                Função
+                <button ion-button round item-right icon-right (click)="addCargo()">
+                        Adicionar 
+                        <ion-icon name="add-circle"></ion-icon>
+                </button>
+            </ion-item>
+        </ion-card-header>
+        <ion-grid>
+            <ion-row class="grid-title">
+                <ion-col col-2>
+                    Função
+                </ion-col>
+                <ion-col col-2>
+                    Nº Empreg.
+                </ion-col>
+                <ion-col>
+                    Salar. Mens.
+                </ion-col>
+                <ion-col col-2>
+                    % de Encar.
+                </ion-col>
+                <ion-col>
+                    Encarg.
+                </ion-col>
+                <ion-col col-2>
+                    Total
+                </ion-col>
+            </ion-row>
+            
+            <ion-row *ngFor="let cargo of cargos" (click)="selecionarOpcao(cargo)">
+                <ion-col col-2>
+                    <ion-item>
+                        <ion-icon name="contact"></ion-icon>
+                        {{cargo.funcao}}
+                    </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-item>
+                        <ion-icon name="contacts"></ion-icon>
+                        {{cargo.numero}}
+                    </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-item>
+                        <ion-icon name="logo-usd"></ion-icon>
+                        {{cargo.salario}}
+                    </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-item>
+                        <ion-icon name="information-circle"></ion-icon>
+                        {{cargo.percentualEncargos}}%
+                    </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-item>
+                        <ion-icon name="logo-usd"></ion-icon>
+                        {{cargo.calcularValorEncargo()}}
+                    </ion-item>
+                </ion-col>
+                <ion-col col-2>
+                    <ion-item>
+                        <ion-icon name="logo-usd"></ion-icon>
+                        {{cargo.calcularValorTotal()}}
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Totais 
+        </ion-card-header>
+        <ion-item>
+            <ion-icon name="cart"></ion-icon>
+            Nº de Empregados: {{totalNumeroEmpregados}}
+        </ion-item>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            Salarios: R$ {{totalSalarios}}
+        </ion-item>
+        <ion-item>
+            <ion-icon name="cart"></ion-icon>
+            (%) de Encar.: {{totalPercentualDeEncargos}}%
+        </ion-item>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            Encargos: R$ {{totalEncargos}}
+        </ion-item>
+        <ion-item>
+            <ion-icon name="logo-usd"></ion-icon>
+            Total: R$ {{total}}
+        </ion-item>
+    </ion-card>
+</ion-content>

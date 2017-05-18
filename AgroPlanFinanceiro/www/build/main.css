@@ -46278,7 +46278,7 @@ ion-navbar.toolbar {
   padding: 0px;
 }
 
-.ios ion-card-header ion-item button, .md ion-card-header ion-item button {
+.ios ion-card-header ion-item > button, .md ion-card-header ion-item > button {
   background-color: #488aff;
   color: white;
 }
@@ -46343,4 +46343,8 @@ ion-navbar.toolbar {
 
 .ios ion-grid ion-row ion-col ion-item, .md ion-grid ion-row ion-col ion-item {
   color: #488aff;
+}
+
+.ios .grid-title > ion-col, .md .grid-title > ion-col {
+  border-style: none;
 }

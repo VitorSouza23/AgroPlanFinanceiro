@@ -7,15 +7,25 @@ export class Item{
     descricao: String;
     quantidade: number;
     valor: number;
+    vidaUtil: number;
     
     constructor(){
         this.descricao = "";
         this.quantidade = 0;
         this.valor = 0.0;
+        this.vidaUtil = 0;
     }
     
     calcularValorTotal(): number{
         return this.quantidade * this.valor;
+    }
+    
+    calcularDepreciacaoAnual(): String {
+        return parseFloat((this.valor / this.vidaUtil).toString()).toFixed(2);
+    }
+    
+    calcularDepreciacaoMensal(): String {
+        return parseFloat((parseFloat(this.calcularDepreciacaoAnual().toString()) / 12).toString()).toFixed(2);
     }
 }
 

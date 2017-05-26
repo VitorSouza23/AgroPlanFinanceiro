@@ -41,6 +41,11 @@ import {EstimativaDosCustosComMaoDeObraService} from '../providers/estimativa-do
 import {EstimativaDosCustosComMaoDeObraModule} from '../pages/estimativa-dos-custos-com-mao-de-obra/estimativa-dos-custos-com-mao-de-obra.module';
 import {ModalCargoModule} from '../pages/modal-cargo/modal-cargo.module';
 
+import {EstimativaDoCustoComDepreciacaoService} from  '../providers/estimativa-do-custo-com-depreciacao-service';
+import {EstimativaDoCustoComDepreciacaoModule} from '../pages/estimativa-do-custo-com-depreciacao/estimativa-do-custo-com-depreciacao.module';
+
+import {EstimativaDoCustoFixoMensalService} from '../providers/estimativa-do-custo-fixo-mensal-service';
+import {EstimativaDoCustoFixoMensalModule} from '../pages/estimativa-do-custo-fixo-mensal/estimativa-do-custo-fixo-mensal.module';
     @NgModule({
     declarations: [
         MyApp,
@@ -63,6 +68,8 @@ import {ModalCargoModule} from '../pages/modal-cargo/modal-cargo.module';
         ApuracaoDosCustosMateriaisModule,
         EstimativaDosCustosComMaoDeObraModule,
         ModalCargoModule,
+        EstimativaDoCustoComDepreciacaoModule,
+        EstimativaDoCustoFixoMensalModule,
         IonicModule.forRoot(MyApp)
         
     ],
@@ -86,7 +93,9 @@ import {ModalCargoModule} from '../pages/modal-cargo/modal-cargo.module';
         EstimativaDeCustoUnitarioService,
         EstimativaDosCustosDeComercializacaoService,
         ApuracaoDosCustosMateriaisService,
-        EstimativaDosCustosComMaoDeObraService
+        EstimativaDosCustosComMaoDeObraService,
+        EstimativaDoCustoComDepreciacaoService,
+        EstimativaDoCustoFixoMensalService
     ]
 })
 export class AppModule {}

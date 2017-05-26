@@ -1,0 +1,141 @@
+<!--
+  Generated template for the EstimativaDoCustoComDepreciacao page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Estimativa do Custo com Depreciação</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-header>
+            Maquinas
+        </ion-card-header>
+        <ion-list>
+            <ion-item  *ngFor="let item of maquinas" (click)="openAlertVidaUtil(item)">
+                <ion-icon name="arrow-forward" item-left></ion-icon>
+                {{item.descricao}}
+                <ion-badge item-right>Vida Útil: {{item.vidaUtil}} anos</ion-badge>
+            </ion-item>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Anual: R$ {{depreciacaoAnualMaquinas}}</span>
+        </ion-item>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Mensal: R$ {{depreciacaoMensalMaquinas}}</span>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Equipamentos
+        </ion-card-header>
+        <ion-list>
+            <ion-item  *ngFor="let item of equipamentos" (click)="openAlertVidaUtil(item)">
+                <ion-icon name="arrow-forward" item-left></ion-icon>
+                {{item.descricao}}
+                <ion-badge item-right>Vida Útil: {{item.vidaUtil}} anos</ion-badge>
+            </ion-item>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Anual: R$ {{depreciacaoAnualEquipamentos}}</span>
+        </ion-item>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Mensal: R$ {{depreciacaoMensalEquipamentos}}</span>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Moveis
+        </ion-card-header>
+        <ion-list>
+            <ion-item  *ngFor="let item of moveis" (click)="openAlertVidaUtil(item)">
+                <ion-icon name="arrow-forward" item-left></ion-icon>
+                {{item.descricao}}
+                <ion-badge item-right>Vida Útil: {{item.vidaUtil}} anos</ion-badge>
+            </ion-item>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Anual: R$ {{depreciacaoAnualMoveis}}</span>
+        </ion-item>
+         <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Mensal: R$ {{depreciacaoMensalMoveis}}</span>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Utensilios
+        </ion-card-header>
+        <ion-list>
+            <ion-item  *ngFor="let item of utensilios" (click)="openAlertVidaUtil(item)">
+                <ion-icon name="arrow-forward" item-left></ion-icon>
+                {{item.descricao}}
+                <ion-badge item-right>Vida Útil: {{item.vidaUtil}} anos</ion-badge>
+            </ion-item>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Anual: R$ {{depreciacaoAnualUtensilios}}</span>
+        </ion-item>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Mensal: R$ {{depreciacaoMensalUtensilios}}</span>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Veículos
+        </ion-card-header>
+        <ion-list>
+            <ion-item  *ngFor="let item of veiculos" (click)="openAlertVidaUtil(item)">
+                <ion-icon name="arrow-forward" item-left></ion-icon>
+                {{item.descricao}}
+                <ion-badge item-right>Vida Útil: {{item.vidaUtil}} anos</ion-badge>
+            </ion-item>
+        </ion-list>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Anual: R$ {{depreciacaoAnualVeiculos}}</span>
+        </ion-item>
+        <ion-item class="sub-total">
+            <ion-icon name="logo-usd"></ion-icon>
+            <span>Depreciação Anual: R$ {{depreciacaoMensalVeiculos}}</span>
+        </ion-item>
+    </ion-card>
+    
+    <ion-card class="sub-total-final">
+        <ion-card-header>
+            Totais Finais
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Vida Útil em Anos: R$ {{totalVidaUtilEmAnos}} 
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Depreciação Anual: R$ {{totalDepreciacaoAnual}}
+            </ion-item>
+            <ion-item >
+                <ion-icon name="logo-usd"></ion-icon>
+                Depreciação Mensal: R$ {{totalDepreciacaoMensal}}
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

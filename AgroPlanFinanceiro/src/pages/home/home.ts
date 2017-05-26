@@ -18,6 +18,8 @@ import {EstimativaDosCustosDeComercializacaoPage} from '../estimativa-dos-custos
 import {ApuracaoDosCustosMateriaisPage} from '../apuracao-dos-custos-materiais/apuracao-dos-custos-materiais';
 
 import {EstimativaDosCustosComMaoDeObraPage} from '../estimativa-dos-custos-com-mao-de-obra/estimativa-dos-custos-com-mao-de-obra';
+
+import {EstimativaDoCustoComDepreciacao} from '../estimativa-do-custo-com-depreciacao/estimativa-do-custo-com-depreciacao';
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -75,6 +77,10 @@ export class HomePage {
     
     goToEstimativaDosCustosComMaoDeObra(): void {
         this.navCtrl.push(EstimativaDosCustosComMaoDeObraPage);
+    }
+    
+    goToEstimativaDoCustoComDepreciacao(): void {
+        this.navCtrl.push(EstimativaDoCustoComDepreciacao);
     }
 
 }

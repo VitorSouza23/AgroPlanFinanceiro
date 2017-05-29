@@ -31,6 +31,12 @@ export class DemonstrativoDeResultados {
             this.demonstrativoDeResultadosService.receitaTotalComVendas = this.navParams.get('receitaTotalComVendas');
         }
         
+         if (this.navParams.get('custosVariaveisTotais') == undefined){
+            this.demonstrativoDeResultadosService.custosVariaveisTotais = 0;
+        }else{
+            this.demonstrativoDeResultadosService.custosVariaveisTotais = this.navParams.get('custosVariaveisTotais');
+        }
+        
         if(this.navParams.get('custosComMateriaisDiretos') == undefined){
             this.demonstrativoDeResultadosService.custosComMateriaisDiretos = 0;
         }else{

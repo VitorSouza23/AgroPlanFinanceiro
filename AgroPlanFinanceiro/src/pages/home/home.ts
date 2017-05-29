@@ -29,6 +29,11 @@ import {DemonstrativoDeResultados} from '../demonstrativo-de-resultados/demonstr
 import {ApuracaoDosCustosMateriaisService} from '../../providers/apuracao-dos-custos-materiais-service';
 import {EstimativaDosCustosDeComercializacaoService} from '../../providers/estimativa-dos-custos-de-comercializacao-service';
 import {EstimativaDoCustoFixoMensalService} from '../../providers/estimativa-do-custo-fixo-mensal-service';
+
+import {IndicadoresDeViabilidade} from '../indicadores-de-viabilidade/indicadores-de-viabilidade';
+import {DemostrativoDeResultadosService} from '../../providers/demostrativo-de-resultados-service';
+import {InvestimentoTotalService} from '../../providers/investimento-total-service';
+import {EstimativaDeCustoUnitarioService} from '../../providers/estimativa-de-custo-unitario-service';
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -43,7 +48,10 @@ export class HomePage {
         private estimativaDoCustoComDeprecisacaoService: EstimativaDoCustoComDepreciacaoService,
         private apuracaoDosCustosMateriaisService: ApuracaoDosCustosMateriaisService,
         private estimacaoDosCustosComComercializacaoService: EstimativaDosCustosDeComercializacaoService,
-        private estimativaDoCustoMensalService: EstimativaDoCustoFixoMensalService) {
+        private estimativaDoCustoMensalService: EstimativaDoCustoFixoMensalService,
+        private demonstrativoDeResultadosService: DemostrativoDeResultadosService,
+        private investimentoTotalService: InvestimentoTotalService,
+        private estimativaDoCustoUnitarioService: EstimativaDeCustoUnitarioService) {
 
     }
 
@@ -108,11 +116,22 @@ export class HomePage {
     goToDemonstrativoDeResultados(): void {
         this.navCtrl.push(DemonstrativoDeResultados, {
             receitaTotalComVendas: this.estimativaDoFaturamentoMensalService.calcularTotal(),
+            custosVariaveisTotais: this.estimativaDoCustoUnitarioService.calcularTotalCustosMateriais(this.estimativaDoFaturamentoMensalService.produtos),
             custosComMateriaisDiretos: this.apuracaoDosCustosMateriaisService.calcularTotalCMV(),
             impostoSobreVendas: this.estimacaoDosCustosComComercializacaoService.calcularSubtotal1(),
             gastosComVendas: this.estimacaoDosCustosComComercializacaoService.calcularSubtotal2(),
             custosFixosTotais: this.estimativaDoCustoMensalService.calcularTotal()
         });
+    }
+    
+    goToIndicadoresDeViabilidade(): void {
+        this.navCtrl.push(IndicadoresDeViabilidade, {
+            custoFixoTotal: this.demonstrativoDeResultadosService.custosFixosTotais,
+            receitaTotal: this.demonstrativoDeResultadosService.receitaTotalComVendas,
+            custoVariavelTotal: this.demonstrativoDeResultadosService.custosVariaveisTotais,
+            lucroLiquido: this.demonstrativoDeResultadosService.calcularSubtotal(),
+            investimentoTotal: this.investimentoTotalService.calcularTotalDescricaoDosInvestimentos()
+        })
     }
 
 

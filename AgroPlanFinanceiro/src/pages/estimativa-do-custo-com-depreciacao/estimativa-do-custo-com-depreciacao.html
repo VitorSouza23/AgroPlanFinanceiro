@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-    <ion-card>
+    <ion-card [hidden]="maquinas.length == 0">
         <ion-card-header>
             Maquinas
         </ion-card-header>
@@ -35,7 +35,7 @@
         </ion-item>
     </ion-card>
 
-    <ion-card>
+    <ion-card [hidden]="equipamentos.length == 0">
         <ion-card-header>
             Equipamentos
         </ion-card-header>
@@ -56,7 +56,7 @@
         </ion-item>
     </ion-card>
 
-    <ion-card>
+    <ion-card [hidden]="moveis.length == 0">
         <ion-card-header>
             Moveis
         </ion-card-header>
@@ -77,7 +77,7 @@
         </ion-item>
     </ion-card>
 
-    <ion-card>
+    <ion-card [hidden]="utensilios.length == 0">
         <ion-card-header>
             Utensilios
         </ion-card-header>
@@ -98,7 +98,7 @@
         </ion-item>
     </ion-card>
 
-    <ion-card>
+    <ion-card [hidden]="veiculos.length == 0">
         <ion-card-header>
             Veículos
         </ion-card-header>

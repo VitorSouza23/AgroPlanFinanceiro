@@ -20,6 +20,15 @@ import {ApuracaoDosCustosMateriaisPage} from '../apuracao-dos-custos-materiais/a
 import {EstimativaDosCustosComMaoDeObraPage} from '../estimativa-dos-custos-com-mao-de-obra/estimativa-dos-custos-com-mao-de-obra';
 
 import {EstimativaDoCustoComDepreciacao} from '../estimativa-do-custo-com-depreciacao/estimativa-do-custo-com-depreciacao';
+
+import {EstimativaDoCustoFixoMensal} from '../estimativa-do-custo-fixo-mensal/estimativa-do-custo-fixo-mensal';
+import {EstimativaDosCustosComMaoDeObraService} from '../../providers/estimativa-dos-custos-com-mao-de-obra-service';
+import {EstimativaDoCustoComDepreciacaoService} from  '../../providers/estimativa-do-custo-com-depreciacao-service';
+
+import {DemonstrativoDeResultados} from '../demonstrativo-de-resultados/demonstrativo-de-resultados';
+import {ApuracaoDosCustosMateriaisService} from '../../providers/apuracao-dos-custos-materiais-service';
+import {EstimativaDosCustosDeComercializacaoService} from '../../providers/estimativa-dos-custos-de-comercializacao-service';
+import {EstimativaDoCustoFixoMensalService} from '../../providers/estimativa-do-custo-fixo-mensal-service';
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -29,7 +38,12 @@ export class HomePage {
     constructor(public navCtrl: NavController, private estimativaDeInvestimentosFixosService: EstimativaDeInvestimentosFixosService,
         private investimentosPreOperacionaisService: InvestimentosPreoperacionaisService,
         private capitalDeGiroService: CapitalDeGiroService,
-        private estimativaDoFaturamentoMensalService: EstimativaDoFaturamentoMensalService) {
+        private estimativaDoFaturamentoMensalService: EstimativaDoFaturamentoMensalService,
+        private estimativaDosCustosComMaoDeObraService: EstimativaDosCustosComMaoDeObraService,
+        private estimativaDoCustoComDeprecisacaoService: EstimativaDoCustoComDepreciacaoService,
+        private apuracaoDosCustosMateriaisService: ApuracaoDosCustosMateriaisService,
+        private estimacaoDosCustosComComercializacaoService: EstimativaDosCustosDeComercializacaoService,
+        private estimativaDoCustoMensalService: EstimativaDoCustoFixoMensalService) {
 
     }
 
@@ -82,5 +96,24 @@ export class HomePage {
     goToEstimativaDoCustoComDepreciacao(): void {
         this.navCtrl.push(EstimativaDoCustoComDepreciacao);
     }
+    
+    gotToEstimativaDeCustoFixoMensal(): void {
+        this.estimativaDoCustoComDeprecisacaoService.calcularTotais();
+        this.navCtrl.push(EstimativaDoCustoFixoMensal, {
+            salariosEEncargos: this.estimativaDosCustosComMaoDeObraService.calcularTotal(),
+            depreciacao: this.estimativaDoCustoComDeprecisacaoService.totalDepreciacaoAnual
+        });
+    }
+    
+    goToDemonstrativoDeResultados(): void {
+        this.navCtrl.push(DemonstrativoDeResultados, {
+            receitaTotalComVendas: this.estimativaDoFaturamentoMensalService.calcularTotal(),
+            custosComMateriaisDiretos: this.apuracaoDosCustosMateriaisService.calcularTotalCMV(),
+            impostoSobreVendas: this.estimacaoDosCustosComComercializacaoService.calcularSubtotal1(),
+            gastosComVendas: this.estimacaoDosCustosComComercializacaoService.calcularSubtotal2(),
+            custosFixosTotais: this.estimativaDoCustoMensalService.calcularTotal()
+        });
+    }
+
 
 }

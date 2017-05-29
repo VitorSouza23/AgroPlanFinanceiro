@@ -46,6 +46,9 @@ import {EstimativaDoCustoComDepreciacaoModule} from '../pages/estimativa-do-cust
 
 import {EstimativaDoCustoFixoMensalService} from '../providers/estimativa-do-custo-fixo-mensal-service';
 import {EstimativaDoCustoFixoMensalModule} from '../pages/estimativa-do-custo-fixo-mensal/estimativa-do-custo-fixo-mensal.module';
+
+import {DemostrativoDeResultadosService} from '../providers/demostrativo-de-resultados-service';
+import {DemonstrativoDeResultadosModule} from '../pages/demonstrativo-de-resultados/demonstrativo-de-resultados.module';
     @NgModule({
     declarations: [
         MyApp,
@@ -70,6 +73,7 @@ import {EstimativaDoCustoFixoMensalModule} from '../pages/estimativa-do-custo-fi
         ModalCargoModule,
         EstimativaDoCustoComDepreciacaoModule,
         EstimativaDoCustoFixoMensalModule,
+        DemonstrativoDeResultadosModule,
         IonicModule.forRoot(MyApp)
         
     ],
@@ -95,7 +99,8 @@ import {EstimativaDoCustoFixoMensalModule} from '../pages/estimativa-do-custo-fi
         ApuracaoDosCustosMateriaisService,
         EstimativaDosCustosComMaoDeObraService,
         EstimativaDoCustoComDepreciacaoService,
-        EstimativaDoCustoFixoMensalService
+        EstimativaDoCustoFixoMensalService,
+        DemostrativoDeResultadosService
     ]
 })
 export class AppModule {}

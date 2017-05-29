@@ -34,8 +34,17 @@ export class EstimativaDoCustoFixoMensal {
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private estimacaoDoCustoFixoMensalService: EstimativaDoCustoFixoMensalService) {
-        this.estimacaoDoCustoFixoMensalService.salariosEEncargos = this.navParams.get('salariosEEncargos');
-        this.estimacaoDoCustoFixoMensalService.depreciacao = this.navParams.get('depreciacao');
+        if (this.navParams.get('salariosEEncargos') == undefined){
+            this.estimacaoDoCustoFixoMensalService.salariosEEncargos = 0;
+        }else{
+            this.estimacaoDoCustoFixoMensalService.salariosEEncargos = this.navParams.get('salariosEEncargos');
+        }
+        if (this.navParams.get('depreciacao') == undefined){
+            this.estimacaoDoCustoFixoMensalService.depreciacao = 0;
+        }else{
+            this.estimacaoDoCustoFixoMensalService.depreciacao = this.navParams.get('depreciacao');
+        }
+        
         
         this.aluguel = this.estimacaoDoCustoFixoMensalService.aluguel;
         this.condominio = this.estimacaoDoCustoFixoMensalService.condominio;
@@ -57,8 +66,23 @@ export class EstimativaDoCustoFixoMensal {
         this.total = this.estimacaoDoCustoFixoMensalService.calcularTotal();
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad EstimativaDoCustoFixoMensal');
+    calcularTotal(): void {
+        this.estimacaoDoCustoFixoMensalService.aluguel = this.aluguel;
+        this.estimacaoDoCustoFixoMensalService.condominio = this.condominio;
+        this.estimacaoDoCustoFixoMensalService.iptu = this.iptu;
+        this.estimacaoDoCustoFixoMensalService.agua = this.agua;
+        this.estimacaoDoCustoFixoMensalService.energia = this.energia;
+        this.estimacaoDoCustoFixoMensalService.telefone = this.telefone;
+        this.estimacaoDoCustoFixoMensalService.honorariosDoContador = this.honorariosDoContador;
+        this.estimacaoDoCustoFixoMensalService.pro_labore = this.pro_labore;
+        this.estimacaoDoCustoFixoMensalService.manutencaoDosEquipamentos = this.manutencaoDosEquipamentos;
+        this.estimacaoDoCustoFixoMensalService.materialLimpeza = this.materialLimpeza;
+        this.estimacaoDoCustoFixoMensalService.materialEscritorio = this.materialEscritorio;
+        this.estimacaoDoCustoFixoMensalService.combustivel = this.combustivel;
+        this.estimacaoDoCustoFixoMensalService.taxasDiversas = this.taxasDiversas;
+        this.estimacaoDoCustoFixoMensalService.servicoaDeTerceiros = this.servicoaDeTerceiros;
+        this.estimacaoDoCustoFixoMensalService.outrasDespesas = this.outrasDespesas;
+        this.total = this.estimacaoDoCustoFixoMensalService.calcularTotal();
     }
 
 }

@@ -1,0 +1,60 @@
+<!--
+  Generated template for the DemonstrativoDeResultados page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Demonstrativo de Resultados</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-card class="sub-total-final">
+        <ion-card-header>
+            Demonstrativo
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Receita Total com Vendas: R$ {{receitaTotalComVendas}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custos Varíaveis Totais: R$ {{custosVariaveisTotais}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custos com Materiais Diretos e/ou CMV: R$ {{custosComMateriaisDiretos}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Impsotos sobre Vendas: R$ {{impostoSobreVendas}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Gastos com Vendas: R$ {{gastosComVendas}}
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                Subtotal: R$ {{subtotal}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Margem de Contribuição: R$ {{margemDeContribuicao}}
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-usd"></ion-icon>
+                Custos Fixos Totais: R$ {{custosFixosTotais}}
+            </ion-item>
+            <ion-item class="sub-total">
+                <ion-icon name="logo-usd"></ion-icon>
+                Resultado Operacional (Lucro/Prejuízo): R$ {{resultadoOperacional}}
+            </ion-item>
+        </ion-list>
+    </ion-card>
+</ion-content>

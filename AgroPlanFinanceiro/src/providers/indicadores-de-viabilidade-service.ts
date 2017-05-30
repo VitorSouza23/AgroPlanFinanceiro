@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {AbstractPorcentagemConclusao} from  '../class/abstract/AbstractPorcentagemConclusao'
 /*
   Generated class for the IndicadoresDeViabilidadeService provider.
 
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class IndicadoresDeViabilidadeService {
+export class IndicadoresDeViabilidadeService extends AbstractPorcentagemConclusao{
     pontoDeEquilibrio: number;
     custoFixoTotal: number; //demosntrativo de resultados
     receitaTotal: number; // demosntrativo de resultados
@@ -23,6 +23,7 @@ export class IndicadoresDeViabilidadeService {
     prazoRetornoDeInvestimento: number;
     
     constructor() {
+        super();
         this.pontoDeEquilibrio = 0;
         this.custoFixoTotal = 0;
         this.receitaTotal = 0;
@@ -35,6 +36,27 @@ export class IndicadoresDeViabilidadeService {
         this.investimentoTotal = 0;
         
         this.prazoRetornoDeInvestimento = 0;
+    }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.custoFixoTotal > 0){
+            nElementos++;
+        }
+        if (this.receitaTotal > 0){
+            nElementos++;
+        }
+        if (this.custoVariavelTotal > 0){
+            nElementos++;
+        }
+        if (this.lucroLiquido > 0){
+            nElementos++;
+        }
+        if (this.investimentoTotal > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 5);
     }
     
     calcularPontoDeEquilibrio(): number {

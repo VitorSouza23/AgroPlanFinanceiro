@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the DemostrativoDeResultadosService provider.
 
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class DemostrativoDeResultadosService {
+export class DemostrativoDeResultadosService extends AbstractPorcentagemConclusao{
     receitaTotalComVendas: number;
     custosVariaveisTotais: number;
     custosComMateriaisDiretos: number;
@@ -20,6 +20,7 @@ export class DemostrativoDeResultadosService {
     resultadoOperacional: number;
     
     constructor() {
+        super();
         this.receitaTotalComVendas = 0;
         this.custosVariaveisTotais = 0;
         this.custosComMateriaisDiretos = 0;
@@ -29,6 +30,30 @@ export class DemostrativoDeResultadosService {
         this.margemDeContribuicao = 0;
         this.custosFixosTotais = 0;
         this.resultadoOperacional = 0;
+    }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.receitaTotalComVendas > 0){
+            nElementos++;
+        }
+        if (this.custosVariaveisTotais > 0){
+            nElementos++;
+        }
+        if (this.custosFixosTotais > 0){
+            nElementos++;
+        }
+        if (this.impostoSobreVendas > 0){
+            nElementos++;
+        }
+        if (this.gastosComVendas > 0){
+            nElementos++;
+        }
+        if (this.custosComMateriaisDiretos > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 6);
     }
     
     calcularSubtotal(): number {

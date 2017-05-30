@@ -43,6 +43,17 @@ export class CapitalDeGiroPage {
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private capitaldeGiroService: CapitalDeGiroService, private modalController: ModalController,
         private alertCtrl: AlertController) {
+        if (this.navParams.get('custoFixoMensal')){
+            this.capitaldeGiroService.custoFixoMensal = this.navParams.get('custoFixoMensal');
+        }else{
+            this.capitaldeGiroService.custoFixoMensal = 0;
+        }
+        if (this.navParams.get('custoVariavelMensal')){
+            this.capitaldeGiroService.custoVariavelMensal = this.navParams.get('custoVariavelMensal');
+        }else{
+            this.capitaldeGiroService.custoVariavelMensal = 0;
+        }
+        
         this.materiais = this.capitaldeGiroService.materiais;
         this.totalEstimativaEstoqueInicial = this.capitaldeGiroService.totalEstimativaEstoqueInicial;
         this.vendas = this.capitaldeGiroService.vendas;

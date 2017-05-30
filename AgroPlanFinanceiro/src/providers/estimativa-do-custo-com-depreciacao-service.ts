@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-investimentos-fixos-service';
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the EstimativaDoCustoComDepreciacao provider.
 
@@ -8,12 +9,12 @@ import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDoCustoComDepreciacaoService {
+export class EstimativaDoCustoComDepreciacaoService extends AbstractPorcentagemConclusao {
 
     totalVidaUtilEmAnos: number;
     totalDepreciacaoAnual: number;
     totalDepreciacaoMensal: number;
-    
+
     depreciacaoAnualMaquinas: number;
     depreciacaoMensalMaquinas: number;
     depreciacaoAnualEquipamentos: number;
@@ -24,13 +25,13 @@ export class EstimativaDoCustoComDepreciacaoService {
     depreciacaoMensalUtensilios: number;
     depreciacaoAnualVeiculos: number;
     depreciacaoMensalVeiculos: number;
-    
-    constructor(private estimativaFixo: EstimativaDeInvestimentosFixosService) {
 
+    constructor(private estimativaFixo: EstimativaDeInvestimentosFixosService) {
+        super();
         this.totalVidaUtilEmAnos = 0;
         this.totalDepreciacaoAnual = 0.0;
         this.totalDepreciacaoMensal = 0.0
-        
+
         this.depreciacaoAnualMaquinas = 0;
         this.depreciacaoMensalMaquinas = 0;
         this.depreciacaoAnualEquipamentos = 0;
@@ -42,12 +43,28 @@ export class EstimativaDoCustoComDepreciacaoService {
         this.depreciacaoAnualVeiculos = 0;
         this.depreciacaoMensalVeiculos = 0;
     }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.totalVidaUtilEmAnos > 0){
+            nElementos++;
+        }
+        if (this.totalDepreciacaoAnual > 0){
+            nElementos++;
+        }
+        if (this.totalDepreciacaoMensal > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 3);
+    }
+
 
     calcularTotais(): void {
         this.totalVidaUtilEmAnos = 0;
         this.totalDepreciacaoAnual = 0;
         this.totalDepreciacaoMensal = 0;
-        
+
         this.depreciacaoAnualMaquinas = 0;
         this.depreciacaoMensalMaquinas = 0;
         this.depreciacaoAnualEquipamentos = 0;
@@ -58,7 +75,7 @@ export class EstimativaDoCustoComDepreciacaoService {
         this.depreciacaoMensalUtensilios = 0;
         this.depreciacaoAnualVeiculos = 0;
         this.depreciacaoMensalVeiculos = 0;
-        
+
         this.estimativaFixo.maquinas.forEach(maquina => {
             this.totalVidaUtilEmAnos += parseInt(maquina.vidaUtil.toString());
             this.totalDepreciacaoAnual += parseFloat(maquina.calcularDepreciacaoAnual().toString());

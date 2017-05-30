@@ -34,6 +34,8 @@ import {IndicadoresDeViabilidade} from '../indicadores-de-viabilidade/indicadore
 import {DemostrativoDeResultadosService} from '../../providers/demostrativo-de-resultados-service';
 import {InvestimentoTotalService} from '../../providers/investimento-total-service';
 import {EstimativaDeCustoUnitarioService} from '../../providers/estimativa-de-custo-unitario-service';
+import {IndicadoresDeViabilidadeService} from '../../providers/indicadores-de-viabilidade-service';
+
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -51,7 +53,8 @@ export class HomePage {
         private estimativaDoCustoMensalService: EstimativaDoCustoFixoMensalService,
         private demonstrativoDeResultadosService: DemostrativoDeResultadosService,
         private investimentoTotalService: InvestimentoTotalService,
-        private estimativaDoCustoUnitarioService: EstimativaDeCustoUnitarioService) {
+        private estimativaDoCustoUnitarioService: EstimativaDeCustoUnitarioService,
+        private indicadoresDeViabilidadeService: IndicadoresDeViabilidadeService) {
 
     }
 
@@ -60,7 +63,10 @@ export class HomePage {
     }
 
     goToCapitalDeGiroPage(): void {
-        this.navCtrl.push(CapitalDeGiroPage);
+        this.navCtrl.push(CapitalDeGiroPage, {
+            custoFixoMensal: this.estimativaDoCustoMensalService.calcularTotal(),
+            custoVariavelMensal: this.demonstrativoDeResultadosService.calcularSubtotal()
+        });
     }
 
     goToInvestimentosPreoperacionaisPage(): void {

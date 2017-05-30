@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the EstimativaDoCustoFixoMensalService provider.
 
@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDoCustoFixoMensalService {
+export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConclusao{
     aluguel: number;
     condominio: number;
     iptu: number;
@@ -29,6 +29,7 @@ export class EstimativaDoCustoFixoMensalService {
     total: number;
 
     constructor() {
+        super();
         this.aluguel = 0;
         this.condominio = 0;
         this.iptu = 0;
@@ -48,6 +49,64 @@ export class EstimativaDoCustoFixoMensalService {
         this.outrasDespesas = 0;
         this.total = 0;
     }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.aluguel > 0){
+            nElementos++;
+        }
+        if (this.condominio> 0){
+            nElementos++;
+        }
+        if (this.iptu > 0){
+            nElementos++;
+        }
+        if (this.agua > 0){
+            nElementos++;
+        }
+        if (this.energia> 0){
+            nElementos++;
+        }
+        if (this.telefone > 0){
+            nElementos++;
+        }
+        if (this.honorariosDoContador > 0){
+            nElementos++;
+        }
+        if (this.pro_labore > 0){
+            nElementos++;
+        }
+        if (this.manutencaoDosEquipamentos > 0){
+            nElementos++;
+        }
+        if (this.salariosEEncargos > 0){
+            nElementos++;
+        }
+        if (this.materialLimpeza > 0){
+            nElementos++;
+        }
+        if (this.materialEscritorio > 0){
+            nElementos++;
+        }
+        if (this.combustivel > 0){
+            nElementos++;
+        }
+        if (this.taxasDiversas > 0){
+            nElementos++;
+        }
+        if (this.servicoaDeTerceiros > 0){
+            nElementos++;
+        }
+        if (this.depreciacao > 0){
+            nElementos++;
+        }
+        if (this.outrasDespesas > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 17);
+    }
+
     
     calcularTotal(): number {
         return this.total = parseFloat(this.aluguel.toString())

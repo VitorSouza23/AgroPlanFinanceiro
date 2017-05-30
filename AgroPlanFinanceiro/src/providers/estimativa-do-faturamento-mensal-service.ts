@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Produto} from '../class/Produto';
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the EstimativaDoFaturamentoMensalService provider.
 
@@ -9,13 +10,24 @@ import {Produto} from '../class/Produto';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDoFaturamentoMensalService {
+export class EstimativaDoFaturamentoMensalService extends AbstractPorcentagemConclusao{
     produtos: Produto[];
     total: number;
     
     constructor() {
+        super();
         this.produtos = [];
     }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.produtos.length > 0){
+            nElementos++;
+        }
+        
+        return (nElementos * 100);
+    }
+
     
     addProduto(produto: Produto): void {
         this.produtos.push(produto);

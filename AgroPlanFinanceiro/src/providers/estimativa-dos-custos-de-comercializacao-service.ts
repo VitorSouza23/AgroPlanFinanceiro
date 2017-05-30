@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 
 /*
   Generated class for the EstimativaDosCustosDeComercializacaoService provider.
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDosCustosDeComercializacaoService {
+export class EstimativaDosCustosDeComercializacaoService extends AbstractPorcentagemConclusao{
     faturamentoEsperado: number;
 
     simples: number;
@@ -29,6 +29,7 @@ export class EstimativaDosCustosDeComercializacaoService {
     total: number;
     
     constructor() {
+        super();
         this.faturamentoEsperado = 0;
         this.simples = 0;
         this.irpj = 0;
@@ -43,6 +44,42 @@ export class EstimativaDosCustosDeComercializacaoService {
         this.subtotal1 = 0;
         this.subtotal2 = 0;
         this.total = 0;
+    }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.faturamentoEsperado > 0){
+            nElementos++;
+        }
+        if (this.simples > 0){
+            nElementos++;
+        }
+        if (this.irpj > 0){
+            nElementos++;
+        }
+        if (this.pis > 0){
+            nElementos++;
+        }
+        if (this.cofins > 0){
+            nElementos++;
+        }
+        if (this.csll > 0){
+            nElementos++;
+        }
+        if (this.iss > 0){
+            nElementos++;
+        }
+        if (this.comissao > 0){
+            nElementos++;
+        }
+        if (this.propaganda > 0){
+            nElementos++;
+        }
+        if (this.taxaCartaoDeCredito > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 10);
     }
     
     calcularSubtotal1(): number {

@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import {Item} from '../class/Item';
 import {Prazo} from '../class/Prazo';
 import {PrazoEnum} from '../enums/PrazoEnum';
-
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the CapitalDeGiroService provider.
 
@@ -11,7 +11,7 @@ import {PrazoEnum} from '../enums/PrazoEnum';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class CapitalDeGiroService {
+export class CapitalDeGiroService extends AbstractPorcentagemConclusao{
     materiais: Item[];
     totalEstimativaEstoqueInicial: number;
     vendas: Prazo[];
@@ -31,6 +31,7 @@ export class CapitalDeGiroService {
     capitalDeGiro: number;
 
     constructor() {
+        super();
         this.materiais = [];
         this.totalEstimativaEstoqueInicial = 0;
         this.vendas = [];
@@ -48,6 +49,23 @@ export class CapitalDeGiroService {
         this.caixaMinimo = 0;
         
         this.capitalDeGiro = 0;
+    }
+    
+    getPorcentagemConcluido(): number{
+         let nElementos = 0;
+         if (this.materiais.length > 0){
+             nElementos++;
+         }
+         if (this.vendas.length > 0){
+             nElementos++;
+         }
+         if (this.compras.length > 0){
+            nElementos++;
+         }
+         if (this.necessidadeMediaDeEstoques > 0){
+             nElementos++;
+         }
+         return Math.round((nElementos * 100) / 4);
     }
 
     addMaterial(material: Item): void {

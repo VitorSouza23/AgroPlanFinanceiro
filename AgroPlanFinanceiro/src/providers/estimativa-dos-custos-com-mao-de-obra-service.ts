@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Cargo} from '../class/Cargo';
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the EstimativaDosCustosComMaoDeObraService provider.
 
@@ -8,7 +9,7 @@ import {Cargo} from '../class/Cargo';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDosCustosComMaoDeObraService {
+export class EstimativaDosCustosComMaoDeObraService extends AbstractPorcentagemConclusao{
     cargos: Cargo[];
     totalNumeroEmpregados: number;
     totalSalarios: number;
@@ -17,6 +18,7 @@ export class EstimativaDosCustosComMaoDeObraService {
     total: number;
     
     constructor() {
+        super();
         this.cargos = [];
         this.total = 0.0;
         this.totalNumeroEmpregados = 0;
@@ -25,6 +27,25 @@ export class EstimativaDosCustosComMaoDeObraService {
         this.totalEncargos = 0.0;
         this.total = 0.0;
     }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.cargos.length > 0){
+            nElementos++;
+        }
+        if (this.totalSalarios > 0){
+            nElementos++;
+        }
+        if (this.totalEncargos > 0){
+            nElementos++;
+        }
+        if (this.totalNumeroEmpregados > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 4);
+    }
+
     
     calcularTotalNumeroEmpregados(): number {
         this.totalNumeroEmpregados = 0;

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 import {Item} from '../class/Item';
 import {ItemEnum} from '../enums/ItemEnum';
 
@@ -11,7 +11,7 @@ import {ItemEnum} from '../enums/ItemEnum';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDeInvestimentosFixosService {
+export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemConclusao{
     maquinas: Item[];
     equipamentos: Item[];
     moveis: Item[];
@@ -28,6 +28,7 @@ export class EstimativaDeInvestimentosFixosService {
     quantidadeDeItens: number;
 
     constructor() {
+        super();
         this.maquinas = [];
         this.equipamentos = [];
         this.moveis = [];
@@ -43,6 +44,14 @@ export class EstimativaDeInvestimentosFixosService {
         this.subtotal = 0;
         
         this.quantidadeDeItens = 0;
+    }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.maquinas.length > 0 || this.equipamentos.length > 0 || this.moveis.length > 0 || this.utensilios.length > 0 || this.veiculos.length > 0){
+            nElementos++;
+        }
+        return (nElementos * 100);
     }
 
     addMaquina(maquina: Item): void {
@@ -314,5 +323,7 @@ export class EstimativaDeInvestimentosFixosService {
     calcularQuantidadeDeItens(): number {
         return this.quantidadeDeItens = this.maquinas.length + this.equipamentos.length + this.moveis.length + this.utensilios.length + this.veiculos.length;
     }
+    
+    
     
 }

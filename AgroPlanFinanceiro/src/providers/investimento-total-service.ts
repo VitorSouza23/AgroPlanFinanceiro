@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import {CapitalDeGiroService} from '../providers/capital-de-giro-service';
 import {InvestimentosPreoperacionaisService} from '../providers/investimentos-preoperacionais-service';
 import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-investimentos-fixos-service';
+import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the InvestimentoTotalService provider.
 
@@ -10,7 +11,7 @@ import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class InvestimentoTotalService {
+export class InvestimentoTotalService extends AbstractPorcentagemConclusao{
     investimentosFixos: number;
     capitalDeGiro: number;
     investimentosPreOperacionais: number;
@@ -22,6 +23,7 @@ export class InvestimentoTotalService {
     totalFontesDeRecursos: number;
 
     constructor() {
+        super();
         this.investimentosFixos = 0;
         this.capitalDeGiro = 0;
         this.investimentosPreOperacionais = 0;
@@ -31,6 +33,30 @@ export class InvestimentoTotalService {
         this.recurosDeTerceiros = 0;
         this.outros = 0;
         this.totalFontesDeRecursos = 0;
+    }
+    
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.recursosProprios > 0){
+            nElementos++;
+        }
+        if (this.recurosDeTerceiros > 0){
+            nElementos++;
+        }
+        if (this.outros > 0){
+            nElementos++;
+        }
+        if (this.investimentosFixos > 0){
+            nElementos++;
+        }
+        if (this.capitalDeGiro > 0){
+            nElementos++;
+        }
+        if (this.investimentosPreOperacionais > 0){
+            nElementos++;
+        }
+        
+        return Math.round((nElementos * 100) / 6);
     }
 
     calcularTotalDescricaoDosInvestimentos(): number {

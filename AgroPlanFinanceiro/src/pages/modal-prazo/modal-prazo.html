@@ -6,30 +6,33 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{titulo}}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{titulo}}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<ion-list>
+    <ion-list>
         <ion-item>
             <ion-label color="primary" floating>Descricao</ion-label>
             <ion-input type="text" [(ngModel)]="descricao" autofocus></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="primary" floating>Porcentagem</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="porcentagem" (keyup)="calcularMediaPonderadaEmdias()"
-                       (click)="calcularMediaPonderadaEmdias()"></ion-input>
+            <ion-label color="primary" stacked>Porcentagem</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="porcentagem" color="secondary" (ionChange)="calcularMediaPonderadaEmdias()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{porcentagem}}%</ion-badge>
         </ion-item>
         <ion-item>
             <ion-label color="primary" floating>Número de Dias</ion-label>
             <ion-input type="number" min="0"[(ngModel)]="numeroDeDias" 
                        (keyup)="calcularMediaPonderadaEmdias()" (click)="calcularMediaPonderadaEmdias()"></ion-input>
         </ion-item>
-    <ion-item class="sub-total">
+        <ion-item class="sub-total">
             <ion-icon name="sunny"></ion-icon>
             <span>Média Ponderada em Dias: {{mediaPonderadaEmDias}}</span>
         </ion-item>

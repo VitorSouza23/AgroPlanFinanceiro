@@ -64,11 +64,11 @@ export class IndicadoresDeViabilidadeService extends AbstractPorcentagemConclusa
     }
     
     calcularLucratividade(): number {
-        return this.lucratividade = Math.round((this.pontoDeEquilibrio / this.receitaTotal) * 100);
+        return this.lucratividade = Math.round((this.pontoDeEquilibrio / this.receitaTotal) / 100);
     }
     
     calcularRentabilidade(): number {
-        return this.rentabilidade = Math.round((this.lucroLiquido / this.investimentoTotal) * 100);
+        return this.rentabilidade = Math.round((this.lucroLiquido / this.investimentoTotal) / 100);
     }
     
     calcularPrazoRetornoDeInvestimento(): number {

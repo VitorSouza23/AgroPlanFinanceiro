@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams, ModalController, AlertController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ModalController, AlertController, Platform} from 'ionic-angular';
 import {Cargo} from '../../class/Cargo';
 import {EstimativaDosCustosComMaoDeObraService} from '../../providers/estimativa-dos-custos-com-mao-de-obra-service';
 import {ModalCargo} from '../modal-cargo/modal-cargo';
+import {ScreenOrientation} from '@ionic-native/screen-orientation';
 /**
  * Generated class for the EstimativaDosCustosComMaoDeObra page.
  *
@@ -24,14 +25,21 @@ export class EstimativaDosCustosComMaoDeObraPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private estimativaDosCustosComMaoDeObraService: EstimativaDosCustosComMaoDeObraService,
-        private modalController: ModalController, private alertCtrl: AlertController) {
+        private modalController: ModalController, private alertCtrl: AlertController,
+        private screenOrientation: ScreenOrientation, private platform: Platform) {
+        if (this.platform.is('android') || this.platform.is('ios')){
+            this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+        }
         this.cargos = this.estimativaDosCustosComMaoDeObraService.cargos;
         this.totalNumeroEmpregados = this.estimativaDosCustosComMaoDeObraService.calcularTotalNumeroEmpregados();
         this.totalSalarios = this.estimativaDosCustosComMaoDeObraService.calcularTotalSalarios();
         this.totalPercentualDeEncargos = this.estimativaDosCustosComMaoDeObraService.calcularTotalPercentualEncargos();
         this.totalEncargos = this.estimativaDosCustosComMaoDeObraService.calcularTotalEncargos();
         this.total = this.estimativaDosCustosComMaoDeObraService.calcularTotal();
+        
     }
+    
+   
 
     openModal(cargo: Cargo, editar: boolean): void {
         let modal = this.modalController.create(ModalCargo, {

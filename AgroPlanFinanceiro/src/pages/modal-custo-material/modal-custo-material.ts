@@ -18,7 +18,7 @@ export class ModalCustoMaterial {
     produto: Produto;
     custoMaterial: CustoMaterial;
     materialNome: String;
-    quantidade: number;
+    //quantidade: number;
     valor: number;
     total: number;
     totalCustosMateriais: number;
@@ -30,7 +30,7 @@ export class ModalCustoMaterial {
         this.produto = this.navParams.get('produto');
         this.custoMaterial = new CustoMaterial();
         this.materialNome = this.custoMaterial.material.descricao;
-        this.quantidade = this.custoMaterial.material.quantidade;
+        //this.quantidade = this.custoMaterial.material.quantidade;
         this.valor= this.custoMaterial.material.valor;
         this.total = this.custoMaterial.calcularTotal();
         this.totalCustosMateriais = this.produto.calcularTotalCustoMateriais();
@@ -40,12 +40,12 @@ export class ModalCustoMaterial {
     addCustoMaterial(): void {
         this.custoMaterial = new CustoMaterial();
         this.custoMaterial.material.descricao = this.materialNome;
-        this.custoMaterial.material.quantidade = this.quantidade;
+        //this.custoMaterial.material.quantidade = this.quantidade;
         this.custoMaterial.material.valor = this.valor;
         this.estimativaDeCustoUnitarioService.addCustoMaterial(this.produto, this.custoMaterial);
         this.totalCustosMateriais = this.produto.calcularTotalCustoMateriais();
         this.materialNome = "";
-        this.quantidade = 0;
+        //this.quantidade = 0;
         this.valor = 0;
     }
     
@@ -56,7 +56,7 @@ export class ModalCustoMaterial {
     
     clickUpdateCustoMaterial(custoMateril: CustoMaterial): void {
         this.materialNome = custoMateril.material.descricao;
-        this.quantidade = custoMateril.material.quantidade;
+        //this.quantidade = custoMateril.material.quantidade;
         this.valor = custoMateril.material.valor;
         this.custoMaterial = custoMateril;
         this.editar = true;
@@ -65,13 +65,13 @@ export class ModalCustoMaterial {
     updateCustoMaterial(): void {
         let index: number = this.estimativaDeCustoUnitarioService.indexOfCustoMaterial(this.produto, this.custoMaterial);
         this.custoMaterial.material.descricao = this.materialNome;
-        this.custoMaterial.material.quantidade = this.quantidade;
+        //this.custoMaterial.material.quantidade = this.quantidade;
         this.custoMaterial.material.valor = this.valor;
         this.estimativaDeCustoUnitarioService.updateCustoMaterial(this.produto, this.custoMaterial, index);
         this.totalCustosMateriais = this.produto.calcularTotalCustoMateriais();
         this.editar = false;
         this.materialNome = "";
-        this.quantidade = 0;
+        //this.quantidade = 0;
         this.valor = 0;
     }
     

@@ -122,7 +122,7 @@ export class CapitalDeGiroPage {
         this.openModalPrazo(PrazoEnum.Compra, "Compra", new Prazo(), false);
     }
 
-    updateComrpa(compra: Prazo): void {
+    updateCompra(compra: Prazo): void {
         this.openModalPrazo(PrazoEnum.Compra, "Compra", compra, true);
     }
 

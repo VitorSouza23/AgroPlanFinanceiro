@@ -83,19 +83,19 @@ export class EstimativaDosCustosDeComercializacaoService extends AbstractPorcent
     }
     
     calcularSubtotal1(): number {
-        return this.subtotal1 = parseFloat((this.faturamentoEsperado * this.simples).toString()) +
-            parseFloat((this.faturamentoEsperado * this.irpj).toString()) +
-            parseFloat((this.faturamentoEsperado * this.pis).toString()) +
-            parseFloat((this.faturamentoEsperado * this.cofins).toString()) +
-            parseFloat((this.faturamentoEsperado * this.csll).toString()) +
-            parseFloat((this.faturamentoEsperado * this.icms).toString()) +
-            parseFloat((this.faturamentoEsperado * this.iss).toString());
+        return this.subtotal1 = parseFloat((this.faturamentoEsperado * (this.simples / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.irpj / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.pis / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.cofins / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.csll / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.icms / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.iss / 100)).toString());
     }
     
     calcularSubtotal2(): number {
-        return this.subtotal2 = parseFloat((this.faturamentoEsperado * this.comissao).toString()) +
-            parseFloat((this.faturamentoEsperado * this.propaganda).toString()) +
-            parseFloat((this.faturamentoEsperado * this.taxaCartaoDeCredito).toString());
+        return this.subtotal2 = parseFloat((this.faturamentoEsperado * (this.comissao / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.propaganda / 100)).toString()) +
+            parseFloat((this.faturamentoEsperado * (this.taxaCartaoDeCredito / 100)).toString());
     }
     
     calcularTotal(): number {

@@ -9,6 +9,7 @@ export class CustoMaterial{
     total: number;
     constructor(){
         this.material = new Item();
+        this.material.quantidade = 1;
         this.total = 0;
     }
     

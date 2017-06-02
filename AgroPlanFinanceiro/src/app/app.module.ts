@@ -32,7 +32,7 @@ import {EstimativaCustoUnitarioModule} from '../pages/estimativa-custo-unitario/
 import {ModalCustoMaterialModule} from '../pages/modal-custo-material/modal-custo-material.module';
 
 import {EstimativaDosCustosDeComercializacaoService} from '../providers/estimativa-dos-custos-de-comercializacao-service';
-import {EstimativaDosCustosDeComercializacaoModule} from  '../pages/estimativa-dos-custos-de-comercializacao/estimativa-dos-custos-de-comercializacao.module';
+import {EstimativaDosCustosDeComercializacaoModule} from '../pages/estimativa-dos-custos-de-comercializacao/estimativa-dos-custos-de-comercializacao.module';
 
 import {ApuracaoDosCustosMateriaisService} from '../providers/apuracao-dos-custos-materiais-service';
 import {ApuracaoDosCustosMateriaisModule} from '../pages/apuracao-dos-custos-materiais/apuracao-dos-custos-materiais.module';
@@ -41,7 +41,7 @@ import {EstimativaDosCustosComMaoDeObraService} from '../providers/estimativa-do
 import {EstimativaDosCustosComMaoDeObraModule} from '../pages/estimativa-dos-custos-com-mao-de-obra/estimativa-dos-custos-com-mao-de-obra.module';
 import {ModalCargoModule} from '../pages/modal-cargo/modal-cargo.module';
 
-import {EstimativaDoCustoComDepreciacaoService} from  '../providers/estimativa-do-custo-com-depreciacao-service';
+import {EstimativaDoCustoComDepreciacaoService} from '../providers/estimativa-do-custo-com-depreciacao-service';
 import {EstimativaDoCustoComDepreciacaoModule} from '../pages/estimativa-do-custo-com-depreciacao/estimativa-do-custo-com-depreciacao.module';
 
 import {EstimativaDoCustoFixoMensalService} from '../providers/estimativa-do-custo-fixo-mensal-service';
@@ -50,9 +50,10 @@ import {EstimativaDoCustoFixoMensalModule} from '../pages/estimativa-do-custo-fi
 import {DemostrativoDeResultadosService} from '../providers/demostrativo-de-resultados-service';
 import {DemonstrativoDeResultadosModule} from '../pages/demonstrativo-de-resultados/demonstrativo-de-resultados.module';
 
-import {IndicadoresDeViabilidadeService} from  '../providers/indicadores-de-viabilidade-service';
+import {IndicadoresDeViabilidadeService} from '../providers/indicadores-de-viabilidade-service';
 import {IndicadoresDeViabilidadeModule} from '../pages/indicadores-de-viabilidade/indicadores-de-viabilidade.module';
-    @NgModule({
+import {ScreenOrientation} from '@ionic-native/screen-orientation';
+@NgModule({
     declarations: [
         MyApp,
         HomePage,
@@ -79,7 +80,7 @@ import {IndicadoresDeViabilidadeModule} from '../pages/indicadores-de-viabilidad
         DemonstrativoDeResultadosModule,
         IndicadoresDeViabilidadeModule,
         IonicModule.forRoot(MyApp)
-        
+
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -93,6 +94,7 @@ import {IndicadoresDeViabilidadeModule} from '../pages/indicadores-de-viabilidad
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
+        ScreenOrientation,
         EstimativaDeInvestimentosFixosService,
         CapitalDeGiroService,
         InvestimentosPreoperacionaisService,

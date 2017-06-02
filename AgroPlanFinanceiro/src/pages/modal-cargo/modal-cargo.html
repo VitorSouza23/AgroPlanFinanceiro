@@ -17,7 +17,7 @@
     <ion-list>
         <ion-item>
             <ion-label color="primary" floating>Função</ion-label>
-            <ion-input type="text" [(ngModel)]="funcao"></ion-input>
+            <ion-input type="text" [(ngModel)]="funcao" autofocus></ion-input>
         </ion-item>
         <ion-item>
             <ion-label color="primary" floating>Nº de Empregados</ion-label>
@@ -28,8 +28,12 @@
             <ion-input type="number" min="0"[(ngModel)]="salario"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label color="primary" floating>(%) de Encargos Sociais</ion-label>
-            <ion-input type="number" min="0"[(ngModel)]="percentualEncargos"></ion-input>
+            <ion-label color="primary" stacked>(%) de Encargos Sociais</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="percentualEncargos" color="secondary">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{percentualEncargos}}%</ion-badge>
         </ion-item>
     </ion-list>
     <button ion-button full round (click)="confirmar()">Confirmar</button>

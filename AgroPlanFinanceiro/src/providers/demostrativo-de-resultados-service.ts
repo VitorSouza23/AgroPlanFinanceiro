@@ -57,8 +57,8 @@ export class DemostrativoDeResultadosService extends AbstractPorcentagemConclusa
     }
     
     calcularSubtotal(): number {
-        return this.subtotal = this.custosVariaveisTotais - this.custosComMateriaisDiretos
-            - this.impostoSobreVendas - this.gastosComVendas;
+        return this.subtotal = parseFloat(this.custosVariaveisTotais.toString()) + parseFloat(this.custosComMateriaisDiretos.toString())
+            + parseFloat(this.impostoSobreVendas.toString()) + parseFloat(this.gastosComVendas.toString());
     }
     
     calcularMargemDeContribuicao(): number {

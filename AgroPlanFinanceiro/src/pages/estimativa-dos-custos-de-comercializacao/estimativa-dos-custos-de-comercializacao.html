@@ -25,43 +25,71 @@
     </ion-card>
     <ion-card>
         <ion-card-header>
-            Impostos
+            Impostos (%)
         </ion-card-header>
         <ion-item>
-            <ion-label color="primary" floating>SIMPLES</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="simples" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-label color="primary" stacked>SIMPLES (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="simples" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{simples}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>IRPJ</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="irpj" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-label color="primary" stacked>IRPJ (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="irpj" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{irpj}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>PIS</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="pis" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-label color="primary" stacked>PIS (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="pis" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{pis}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>COFINS</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="cofins" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+             <ion-label color="primary" stacked>COFINS (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="cofins" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{cofins}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>CSLL</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="csll" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-label color="primary" stacked>CSLL (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="csll" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{csll}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>ICMS</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="icms" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+             <ion-label color="primary" stacked>ICMS (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="icms" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{icms}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>ISS</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="iss" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-label color="primary" stacked>ISS (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="iss" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{iss}}%</ion-badge>
         </ion-item>
+        
         <ion-item class="sub-total">
             <ion-icon name="logo-usd"></ion-icon>
             Subtotal 1: R$ {{subtotal1}}
@@ -70,23 +98,35 @@
 
     <ion-card>
         <ion-card-header>
-            Gastos com Vendas
+            Gastos com Vendas (%)
         </ion-card-header>
         <ion-item>
-            <ion-label color="primary" floating>Comissões</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="comissao" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+             <ion-label color="primary" stacked>Comissões (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="comissao" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{comissao}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>Propaganda</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="propaganda" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+             <ion-label color="primary" stacked>Propaganda (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="propaganda" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{propaganda}}%</ion-badge>
         </ion-item>
+        
         <ion-item>
-            <ion-label color="primary" floating>Taxa de Administração de Cartão de Crédito</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="taxaCartaoDeCredito" 
-                       (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
+            <ion-label color="primary" stacked>Taxa de Administração de Cartão de Crédito (%)</ion-label>
+            <ion-range min="0" max="100" [(ngModel)]="taxaCartaoDeCredito" color="secondary" (ionChange)="atualizarSubtotais()">
+                <ion-label range-left>0</ion-label>
+                <ion-label range-right>100</ion-label>
+            </ion-range>
+            <ion-badge item-right >{{taxaCartaoDeCredito}}%</ion-badge>
         </ion-item>
+        
         <ion-item class="sub-total">
             <ion-icon name="logo-usd"></ion-icon>
             Subtotal 2: R$ {{subtotal2}}

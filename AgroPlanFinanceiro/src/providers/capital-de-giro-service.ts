@@ -11,7 +11,7 @@ import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentage
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class CapitalDeGiroService extends AbstractPorcentagemConclusao{
+export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
     materiais: Item[];
     totalEstimativaEstoqueInicial: number;
     vendas: Prazo[];
@@ -21,13 +21,13 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao{
     necessidadeMediaDeEstoques: number;
     subtotalDiasRecursoDaEmpresaForaDoSeuCaixa: number;
     subtotalDiasNecessidadeLiquidaDeCapitalDeGiro: number;
-    
+
     custoFixoMensal: number;
     custoVariavelMensal: number;
     custoTotalDaEmpresa: number;
     custoTotalDiario: number;
     caixaMinimo: number;
-    
+
     capitalDeGiro: number;
 
     constructor() {
@@ -47,25 +47,25 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao{
         this.custoTotalDaEmpresa = 0;
         this.custoTotalDiario = 0;
         this.caixaMinimo = 0;
-        
+
         this.capitalDeGiro = 0;
     }
-    
-    getPorcentagemConcluido(): number{
-         let nElementos = 0;
-         if (this.materiais.length > 0){
-             nElementos++;
-         }
-         if (this.vendas.length > 0){
-             nElementos++;
-         }
-         if (this.compras.length > 0){
+
+    getPorcentagemConcluido(): number {
+        let nElementos = 0;
+        if (this.materiais.length > 0) {
             nElementos++;
-         }
-         if (this.necessidadeMediaDeEstoques > 0){
-             nElementos++;
-         }
-         return Math.round((nElementos * 100) / 4);
+        }
+        if (this.vendas.length > 0) {
+            nElementos++;
+        }
+        if (this.compras.length > 0) {
+            nElementos++;
+        }
+        if (this.necessidadeMediaDeEstoques > 0) {
+            nElementos++;
+        }
+        return Math.round((nElementos * 100) / 4);
     }
 
     addMaterial(material: Item): void {
@@ -175,16 +175,59 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao{
     calcularCustoTotalDaEmpresa(): number {
         return this.custoTotalDaEmpresa = parseFloat(this.custoFixoMensal.toString()) + parseFloat(this.custoVariavelMensal.toString());
     }
-    
+
     calcuclarCustoTotalDiario(): number {
         return this.custoTotalDiario = this.calcularCustoTotalDaEmpresa() / 30;
     }
-    
+
     calcularCaixaMinimo(): number {
         return this.caixaMinimo = this.calcuclarCustoTotalDiario() * this.calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro();
     }
 
     calcularCapitalDeGiro(): number {
         return this.capitalDeGiro = parseFloat(this.calcularCaixaMinimo().toString()) + parseFloat(this.calcularTotalEstimativaEstoqueInicial().toString());
+    }
+
+    toJSON(): any {
+        return {
+            materiais: this.materiais,
+            totalEstimativaEstoqueInicial: this.totalEstimativaEstoqueInicial,
+            vendas: this.vendas,
+            compras: this.compras,
+            prazoMedioTotalVendas: this.prazoMedioTotalVendas,
+            prazoMedioTotalCompras: this.prazoMedioTotalCompras,
+            necessidadeMediaDeEstoques: this.necessidadeMediaDeEstoques,
+            subtotalDiasRecursoDaEmpresaForaDoSeuCaixa: this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa,
+            subtotalDiasNecessidadeLiquidaDeCapitalDeGiro: this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro,
+            custoFixoMensal: this.custoFixoMensal,
+            custoVariavelMensal: this.custoVariavelMensal,
+            custoTotalDaEmpresa: this.custoTotalDaEmpresa,
+            custoTotalDiario: this.custoTotalDiario,
+            caixaMinimo: this.caixaMinimo,
+            capitalDeGiro: this.capitalDeGiro
+        }
+    }
+
+    fromJSON(json: any): void {
+        try {
+            this.materiais = json.materiais;
+            this.totalEstimativaEstoqueInicial = json.totalEstimativaEstoqueInicial;
+            this.vendas = json.vendas;
+            this.compras = json.compras;
+            this.prazoMedioTotalVendas = json.prazoMedioTotalVendas;
+            this.prazoMedioTotalCompras = json.prazoMedioTotalCompras;
+            this.necessidadeMediaDeEstoques = json.necessidadeMediaDeEstoques;
+            this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = json.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa;
+            this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = json.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro;
+            this.custoFixoMensal = json.custoFixoMensal;
+            this.custoVariavelMensal = json.custoVariavelMensal;
+            this.custoTotalDaEmpresa = json.custoTotalDaEmpresa;
+            this.custoTotalDiario = json.custoTotalDiario;
+            this.caixaMinimo = json.caixaMinimo;
+            this.capitalDeGiro = json.capitalDeGiro;
+        } catch (e) {
+            alert("Erro ao recuperar os dados salvos!");
+        }
+
     }
 }

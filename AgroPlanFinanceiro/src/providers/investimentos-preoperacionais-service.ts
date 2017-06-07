@@ -26,34 +26,58 @@ export class InvestimentosPreoperacionaisService extends AbstractPorcentagemConc
         this.outrasDespesas = 0;
         this.total = 0;
     }
-    
+
     getPorcentagemConcluido(): number {
         let nElementos = 0;
-        if (this.despesasDeLegalizacao > 0){
+        if (this.despesasDeLegalizacao > 0) {
             nElementos++;
         }
-        if (this.obrasCivisReformas > 0){
+        if (this.obrasCivisReformas > 0) {
             nElementos++;
         }
-        if (this.divulgacao > 0){
+        if (this.divulgacao > 0) {
             nElementos++;
         }
-        if (this.curosETreinamentos > 0){
+        if (this.curosETreinamentos > 0) {
             nElementos++;
         }
-        if (this.outrasDespesas > 0){
+        if (this.outrasDespesas > 0) {
             nElementos++;
         }
-        
+
         return Math.round((nElementos * 100) / 5);
     }
-    
-    calcularTotal(): number{
-        return this.total = parseFloat(this.despesasDeLegalizacao.toString()) + 
+
+    calcularTotal(): number {
+        return this.total = parseFloat(this.despesasDeLegalizacao.toString()) +
             parseFloat(this.obrasCivisReformas.toString()) +
             parseFloat(this.divulgacao.toString()) +
             parseFloat(this.curosETreinamentos.toString()) +
             parseFloat(this.outrasDespesas.toString());
+    }
+
+    toJSON(): any {
+        return {
+            despesasDeLegalizacao: this.despesasDeLegalizacao,
+            obrasCivisReformas: this.obrasCivisReformas,
+            divulgacao: this.divulgacao,
+            curosETreinamentos: this.curosETreinamentos,
+            outrasDespesas: this.outrasDespesas,
+            total: this.total
+        }
+    }
+
+    fromJSON(json: any): void {
+        try {
+            this.despesasDeLegalizacao = json.despesasDeLegalizacao;
+            this.obrasCivisReformas = json.obrasCivisReformas;
+            this.divulgacao = json.divulgacao;
+            this.curosETreinamentos = json.curosETreinamentos;
+            this.outrasDespesas = json.outrasDespesas;
+            this.total = json.total;
+        } catch (e) {
+            alert("Erro ao recuperar os dados salvos!");
+        }
     }
 
 }

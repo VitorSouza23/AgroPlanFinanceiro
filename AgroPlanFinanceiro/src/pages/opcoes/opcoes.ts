@@ -1,37 +1,33 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-
+import {NavController, NavParams, ToastController} from 'ionic-angular';
+import {StorageService} from '../../providers/storage-service';
 @Component({
     selector: 'page-list',
     templateUrl: 'opcoes.html'
 })
 export class OpcoesPage {
-    selectedItem: any;
-    icons: string[];
-    items: Array<{title: string, note: string, icon: string}>;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
-        // If we navigated to this page, we will have an item available as a nav param
-        this.selectedItem = navParams.get('item');
 
-        // Let's populate this page with some filler content for funzies
-        this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-            'american-football', 'boat', 'bluetooth', 'build'];
+    constructor(public navCtrl: NavController, public navParams: NavParams,
+        private storageService: StorageService, private toastCtrl: ToastController) {
+    }
 
-        this.items = [];
-        for (let i = 1; i < 11; i++) {
-            this.items.push({
-                title: 'Item ' + i,
-                note: 'This is item #' + i,
-                icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-            });
+    recuperarTodosOsDadosDoBanco(): void {
+        try {
+            this.storageService.getAll();
+            this.toastCtrl.create({
+                message: 'Dados recuperados com sucesso!',
+                duration: 3000,
+                position: 'bottom'
+            }).present();
+        } catch (e){
+            this.toastCtrl.create({
+                message: 'Erro ao recuperar os dados!',
+                duration: 3000,
+                position: 'middle'
+            }).present();
         }
+
     }
 
-    itemTapped(event, item) {
-        // That's right, we're pushing to ourselves!
-        this.navCtrl.push(OpcoesPage, {
-            item: item
-        });
-    }
 }

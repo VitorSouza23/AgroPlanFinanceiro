@@ -8,7 +8,7 @@ import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentage
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class InvestimentoTotalService extends AbstractPorcentagemConclusao{
+export class InvestimentoTotalService extends AbstractPorcentagemConclusao {
     investimentosFixos: number;
     capitalDeGiro: number;
     investimentosPreOperacionais: number;
@@ -31,28 +31,28 @@ export class InvestimentoTotalService extends AbstractPorcentagemConclusao{
         this.outros = 0;
         this.totalFontesDeRecursos = 0;
     }
-    
+
     getPorcentagemConcluido(): number {
         let nElementos = 0;
-        if (this.recursosProprios > 0){
+        if (this.recursosProprios > 0) {
             nElementos++;
         }
-        if (this.recurosDeTerceiros > 0){
+        if (this.recurosDeTerceiros > 0) {
             nElementos++;
         }
-        if (this.outros > 0){
+        if (this.outros > 0) {
             nElementos++;
         }
-        if (this.investimentosFixos > 0){
+        if (this.investimentosFixos > 0) {
             nElementos++;
         }
-        if (this.capitalDeGiro > 0){
+        if (this.capitalDeGiro > 0) {
             nElementos++;
         }
-        if (this.investimentosPreOperacionais > 0){
+        if (this.investimentosPreOperacionais > 0) {
             nElementos++;
         }
-        
+
         return Math.round((nElementos * 100) / 6);
     }
 
@@ -63,13 +63,41 @@ export class InvestimentoTotalService extends AbstractPorcentagemConclusao{
     calcularTotalFontesDeRecursos(): number {
         return this.totalFontesDeRecursos = parseFloat(this.recursosProprios.toString()) + parseFloat(this.recurosDeTerceiros.toString()) + parseFloat(this.outros.toString());
     }
-    
-    setAtributos(investimentosFixos: number, capitalDeGiro: number, investimentosPreOperacionais: number,): void {
+
+    setAtributos(investimentosFixos: number, capitalDeGiro: number, investimentosPreOperacionais: number, ): void {
         this.investimentosFixos = investimentosFixos;
         this.capitalDeGiro = capitalDeGiro;
         this.investimentosPreOperacionais = investimentosPreOperacionais;
     }
-    
-    
+
+    toJSON(): any {
+        return {
+            investimentosFixos: this.investimentosFixos,
+            capitalDeGiro: this.capitalDeGiro,
+            investimentosPreOperacionais: this.investimentosPreOperacionais,
+            totalDescricaoDosInvestimentos: this.totalDescricaoDosInvestimentos,
+            recursosProprios: this.recursosProprios,
+            recurosDeTerceiros: this.recurosDeTerceiros,
+            outros: this.outros,
+            totalFontesDeRecursos: this.totalFontesDeRecursos
+        }
+    }
+
+    fromJSON(json: any): void {
+        try {
+            this.investimentosFixos = json.investimentosFixos;
+            this.capitalDeGiro = json.capitalDeGiro;
+            this.investimentosPreOperacionais = json.investimentosPreOperacionais;
+            this.totalDescricaoDosInvestimentos = json.totalDescricaoDosInvestimentos;
+            this.recursosProprios = json.recursosProprios;
+            this.recurosDeTerceiros = json.recurosDeTerceiros;
+            this.outros = json.outros;
+            this.totalFontesDeRecursos = json.totalFontesDeRecursos;
+        } catch (e) {
+            alert("Erro ao recuperar os dados salvos!");
+        }
+
+    }
+
 
 }

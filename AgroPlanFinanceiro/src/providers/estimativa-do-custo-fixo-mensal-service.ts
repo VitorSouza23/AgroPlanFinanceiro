@@ -8,7 +8,7 @@ import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentage
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConclusao{
+export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConclusao {
     aluguel: number;
     condominio: number;
     iptu: number;
@@ -49,65 +49,65 @@ export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConcl
         this.outrasDespesas = 0;
         this.total = 0;
     }
-    
+
     getPorcentagemConcluido(): number {
         let nElementos = 0;
-        if (this.aluguel > 0){
+        if (this.aluguel > 0) {
             nElementos++;
         }
-        if (this.condominio> 0){
+        if (this.condominio > 0) {
             nElementos++;
         }
-        if (this.iptu > 0){
+        if (this.iptu > 0) {
             nElementos++;
         }
-        if (this.agua > 0){
+        if (this.agua > 0) {
             nElementos++;
         }
-        if (this.energia> 0){
+        if (this.energia > 0) {
             nElementos++;
         }
-        if (this.telefone > 0){
+        if (this.telefone > 0) {
             nElementos++;
         }
-        if (this.honorariosDoContador > 0){
+        if (this.honorariosDoContador > 0) {
             nElementos++;
         }
-        if (this.pro_labore > 0){
+        if (this.pro_labore > 0) {
             nElementos++;
         }
-        if (this.manutencaoDosEquipamentos > 0){
+        if (this.manutencaoDosEquipamentos > 0) {
             nElementos++;
         }
-        if (this.salariosEEncargos > 0){
+        if (this.salariosEEncargos > 0) {
             nElementos++;
         }
-        if (this.materialLimpeza > 0){
+        if (this.materialLimpeza > 0) {
             nElementos++;
         }
-        if (this.materialEscritorio > 0){
+        if (this.materialEscritorio > 0) {
             nElementos++;
         }
-        if (this.combustivel > 0){
+        if (this.combustivel > 0) {
             nElementos++;
         }
-        if (this.taxasDiversas > 0){
+        if (this.taxasDiversas > 0) {
             nElementos++;
         }
-        if (this.servicoaDeTerceiros > 0){
+        if (this.servicoaDeTerceiros > 0) {
             nElementos++;
         }
-        if (this.depreciacao > 0){
+        if (this.depreciacao > 0) {
             nElementos++;
         }
-        if (this.outrasDespesas > 0){
+        if (this.outrasDespesas > 0) {
             nElementos++;
         }
-        
+
         return Math.round((nElementos * 100) / 17);
     }
 
-    
+
     calcularTotal(): number {
         return this.total = parseFloat(this.aluguel.toString())
             + parseFloat(this.condominio.toString())
@@ -128,4 +128,52 @@ export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConcl
             + parseFloat(this.outrasDespesas.toString());
     }
 
+    toJSON(): any {
+        return {
+            aluguel: this.aluguel,
+            condominio: this.condominio,
+            iptu: this.iptu,
+            agua: this.agua,
+            energia: this.energia,
+            telefone: this.telefone,
+            honorariosDoContador: this.honorariosDoContador,
+            pro_labore: this.pro_labore,
+            manutencaoDosEquipamentos: this.manutencaoDosEquipamentos,
+            salariosEEncargos: this.salariosEEncargos,
+            materialLimpeza: this.materialLimpeza,
+            materialEscritorio: this.materialEscritorio,
+            combustivel: this.combustivel,
+            taxasDiversas: this.taxasDiversas,
+            servicoaDeTerceiros: this.servicoaDeTerceiros,
+            depreciacao: this.depreciacao,
+            outrasDespesas: this.outrasDespesas,
+            total: this.total
+        }
+    }
+
+    fromJSON(json: any): void {
+        try {
+            this.aluguel = json.aluguel;
+            this.condominio = json.condominio;
+            this.iptu = json.iptu;
+            this.agua = json.agua;
+            this.energia = json.energia;
+            this.telefone = json.telefone;
+            this.honorariosDoContador = json.honorariosDoContador;
+            this.pro_labore = json.pro_labore;
+            this.manutencaoDosEquipamentos = json.manutencaoDosEquipamentos;
+            this.salariosEEncargos = json.salariosEEncargos;
+            this.materialLimpeza = json.materialLimpeza;
+            this.materialEscritorio = json.materialEscritorio;
+            this.combustivel = json.combustivel;
+            this.taxasDiversas = json.taxasDiversas;
+            this.servicoaDeTerceiros = json.servicoaDeTerceiros;
+            this.depreciacao = json.depreciacao;
+            this.outrasDespesas = json.outrasDespesas;
+            this.total = json.total;
+        } catch (e) {
+
+        }
+
+    }
 }

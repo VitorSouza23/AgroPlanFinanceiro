@@ -11,20 +11,20 @@ import {ItemEnum} from '../enums/ItemEnum';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemConclusao{
+export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemConclusao {
     maquinas: Item[];
     equipamentos: Item[];
     moveis: Item[];
     utensilios: Item[];
     veiculos: Item[];
-    
+
     subtotalMaquinas: number;
     subtotalEquipamentos: number;
     subtotalMoveis: number;
     subtotalUtensilio: number;
     subtotalVeiculos: number;
     subtotal: number;
-    
+
     quantidadeDeItens: number;
 
     constructor() {
@@ -34,21 +34,21 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         this.moveis = [];
         this.utensilios = [];
         this.veiculos = [];
-        
-        
+
+
         this.subtotalMaquinas = 0;
         this.subtotalEquipamentos = 0;
         this.subtotalMoveis = 0;
         this.subtotalUtensilio = 0;
         this.subtotalVeiculos = 0;
         this.subtotal = 0;
-        
+
         this.quantidadeDeItens = 0;
     }
-    
+
     getPorcentagemConcluido(): number {
         let nElementos = 0;
-        if (this.maquinas.length > 0 || this.equipamentos.length > 0 || this.moveis.length > 0 || this.utensilios.length > 0 || this.veiculos.length > 0){
+        if (this.maquinas.length > 0 || this.equipamentos.length > 0 || this.moveis.length > 0 || this.utensilios.length > 0 || this.veiculos.length > 0) {
             nElementos++;
         }
         return (nElementos * 100);
@@ -78,9 +78,9 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         this.veiculos.push(veiculo);
         this.atualizarSubtotais();
     }
-    
-    addViaEnum(tipo: ItemEnum, item: Item): void{
-        switch(tipo){
+
+    addViaEnum(tipo: ItemEnum, item: Item): void {
+        switch (tipo) {
             case ItemEnum.Maquina:
                 this.addMaquina(item);
                 break;
@@ -97,7 +97,7 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
                 this.addVeiculo(item);
                 break;
         }
-        
+
         this.atualizarSubtotais();
     }
 
@@ -130,9 +130,9 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         this.veiculos.splice(index, 1);
         this.atualizarSubtotais();
     }
-    
-    removeViaEnum(tipo: ItemEnum, item: Item): void{
-        switch(tipo){
+
+    removeViaEnum(tipo: ItemEnum, item: Item): void {
+        switch (tipo) {
             case ItemEnum.Maquina:
                 this.removeMaquina(item);
                 break;
@@ -151,7 +151,7 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         }
         this.atualizarSubtotais();
     }
-    
+
 
     getMaquina(index: number): Item {
         return this.maquinas[index];
@@ -192,7 +192,7 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
     getVeiculos(): Item[] {
         return this.veiculos;
     }
-    
+
     setMaquinas(maquinas: Item[]): void {
         this.maquinas = maquinas;
     }
@@ -212,14 +212,14 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
     setVeiculos(veiculos: Item[]): void {
         this.veiculos = veiculos;
     }
-    
+
     updateMaquina(maquina: Item, index: number): void {
         this.maquinas[index] = maquina;
         this.atualizarSubtotais();
     }
 
     upadateEquipamento(equipamento: Item, index: number): void {
-        this.equipamentos[index]= equipamento;
+        this.equipamentos[index] = equipamento;
         this.atualizarSubtotais();
     }
 
@@ -237,9 +237,9 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         this.veiculos[index] = veiculo;
         this.atualizarSubtotais();
     }
-    
-    updateViaEnum(tipo: ItemEnum, item: Item, index: number): void{
-        switch(tipo){
+
+    updateViaEnum(tipo: ItemEnum, item: Item, index: number): void {
+        switch (tipo) {
             case ItemEnum.Maquina:
                 this.updateMaquina(item, index);
                 break;
@@ -258,59 +258,59 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         }
         this.atualizarSubtotais();
     }
-    
-    indexOfViaEnum(tipo: ItemEnum, item: Item): number{
-         switch(tipo){
+
+    indexOfViaEnum(tipo: ItemEnum, item: Item): number {
+        switch (tipo) {
             case ItemEnum.Maquina:
-                 return this.maquinas.indexOf(item);
+                return this.maquinas.indexOf(item);
             case ItemEnum.Equipamento:
-                 return this.equipamentos.indexOf(item);
+                return this.equipamentos.indexOf(item);
             case ItemEnum.Movel:
-                 return this.moveis.indexOf(item);
+                return this.moveis.indexOf(item);
             case ItemEnum.Utensilio:
-                 return this.utensilios.indexOf(item);
+                return this.utensilios.indexOf(item);
             case ItemEnum.Veiculo:
-                 return this.veiculos.indexOf(item);
+                return this.veiculos.indexOf(item);
         }
     }
-    
+
     calcularSubtotalMaquinas(): number {
         this.subtotalMaquinas = 0;
         this.maquinas.forEach(maquina => this.subtotalMaquinas = this.subtotalMaquinas + maquina.calcularValorTotal());
         return this.subtotalMaquinas;
     }
-    
+
     calcularSubtotalEquipamentos(): number {
         this.subtotalEquipamentos = 0;
         this.equipamentos.forEach(equipamento => this.subtotalEquipamentos = this.subtotalEquipamentos + equipamento.calcularValorTotal());
         return this.subtotalEquipamentos;
     }
-    
+
     calcularSubtotalMoveis(): number {
-        this.subtotalMoveis =  0;
+        this.subtotalMoveis = 0;
         this.moveis.forEach(movel => this.subtotalMoveis = this.subtotalMoveis + movel.calcularValorTotal());
         return this.subtotalMoveis;
     }
-    
+
     calcularSubtotalUtensilios(): number {
         this.subtotalUtensilio = 0;
         this.utensilios.forEach(utensilio => this.subtotalUtensilio = this.subtotalUtensilio + utensilio.calcularValorTotal());
         return this.subtotalUtensilio;
     }
-    
+
     calcularSubtotalVeiculos(): number {
         this.subtotalVeiculos = 0;
         this.veiculos.forEach(veiculo => this.subtotalVeiculos = this.subtotalVeiculos + veiculo.calcularValorTotal());
         return this.subtotalVeiculos;
     }
-    
-    calcularSubTotal(): number{
+
+    calcularSubTotal(): number {
         this.subtotal = 0;
         this.subtotal = this.calcularSubtotalMaquinas() + this.calcularSubtotalEquipamentos() + this.calcularSubtotalMoveis() + this.calcularSubtotalUtensilios() + this.calcularSubtotalVeiculos();
         return this.subtotal;
     }
-    
-    atualizarSubtotais(){
+
+    atualizarSubtotais() {
         this.calcularSubtotalMaquinas();
         this.calcularSubtotalEquipamentos();
         this.calcularSubtotalMoveis();
@@ -319,11 +319,47 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
         this.calcularSubTotal();
         this.calcularQuantidadeDeItens();
     }
-    
+
     calcularQuantidadeDeItens(): number {
         return this.quantidadeDeItens = this.maquinas.length + this.equipamentos.length + this.moveis.length + this.utensilios.length + this.veiculos.length;
     }
-    
-    
-    
+
+    toJSON(): any {
+        return {
+            maquinas: this.maquinas,
+            equipamentos: this.equipamentos,
+            moveis: this.moveis,
+            utensilios: this.utensilios,
+            veiculos: this.veiculos,
+            subtotalMaquinas: this.subtotalMaquinas,
+            subtotalEquipamentos: this.subtotalEquipamentos,
+            subtotalMoveis: this.subtotalMoveis,
+            subtotalUtensilio: this.subtotalUtensilio,
+            subtotalVeiculos: this.subtotalVeiculos,
+            subtotal: this.subtotal,
+            quantidadeDeItens: this.quantidadeDeItens
+        }
+    }
+
+    fromJSON(json: any): void {
+        try {
+            this.maquinas = json.maquinas;
+            this.equipamentos = json.equipamentos;
+            this.moveis = json.moveis;
+            this.utensilios = json.utensilios;
+            this.veiculos = json.veiculos;
+            this.subtotalMaquinas = json.subtotalMaquinas;
+            this.subtotalEquipamentos = json.subtotalEquipamentos;
+            this.subtotalMoveis = json.subtotalMoveis;
+            this.subtotalUtensilio = json.subtotalUtensilio;
+            this.subtotalVeiculos = json.subtotalVeiculos;
+            this.subtotal = json.subtotal;
+            this.quantidadeDeItens = json.quantidadeDeItens;
+        } catch (e) {
+            alert("Erro ao recuperar os dados salvos!");
+        }
+
+    }
+
+
 }

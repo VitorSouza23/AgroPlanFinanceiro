@@ -46,5 +46,20 @@ export class EstimativaDeCustoUnitarioService extends AbstractPorcentagemConclus
         produtos.forEach(produto => this.totalCustoMaterial += parseFloat(produto.calcularTotalCustoMateriais().toString()));
         return this.totalCustoMaterial;
     }
+    
+    toJSON(): any{
+        return {
+            totalCustoMaterial: this.totalCustoMaterial
+        }
+    }
+    
+    fromJSON(json: any): void {
+        try{
+            this.totalCustoMaterial = json.totalCustoMaterial;
+        }catch (e){
+            alert("Erro ao recuperar os dados salvos!");
+        }
+        
+    }
 
 }

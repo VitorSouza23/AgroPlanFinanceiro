@@ -53,6 +53,10 @@ import {DemonstrativoDeResultadosModule} from '../pages/demonstrativo-de-resulta
 import {IndicadoresDeViabilidadeService} from '../providers/indicadores-de-viabilidade-service';
 import {IndicadoresDeViabilidadeModule} from '../pages/indicadores-de-viabilidade/indicadores-de-viabilidade.module';
 import {ScreenOrientation} from '@ionic-native/screen-orientation';
+
+import {IonicStorageModule} from '@ionic/storage';
+import {StorageService} from '../providers/storage-service';
+
 @NgModule({
     declarations: [
         MyApp,
@@ -79,7 +83,8 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation';
         EstimativaDoCustoFixoMensalModule,
         DemonstrativoDeResultadosModule,
         IndicadoresDeViabilidadeModule,
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        IonicStorageModule.forRoot()
 
     ],
     bootstrap: [IonicApp],
@@ -107,7 +112,8 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation';
         EstimativaDoCustoComDepreciacaoService,
         EstimativaDoCustoFixoMensalService,
         DemostrativoDeResultadosService,
-        IndicadoresDeViabilidadeService
+        IndicadoresDeViabilidadeService,
+        StorageService
     ]
 })
 export class AppModule {}

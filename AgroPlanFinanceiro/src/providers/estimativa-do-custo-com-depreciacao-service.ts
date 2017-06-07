@@ -43,19 +43,19 @@ export class EstimativaDoCustoComDepreciacaoService extends AbstractPorcentagemC
         this.depreciacaoAnualVeiculos = 0;
         this.depreciacaoMensalVeiculos = 0;
     }
-    
+
     getPorcentagemConcluido(): number {
         let nElementos = 0;
-        if (this.totalVidaUtilEmAnos > 0){
+        if (this.totalVidaUtilEmAnos > 0) {
             nElementos++;
         }
-        if (this.totalDepreciacaoAnual > 0){
+        if (this.totalDepreciacaoAnual > 0) {
             nElementos++;
         }
-        if (this.totalDepreciacaoMensal > 0){
+        if (this.totalDepreciacaoMensal > 0) {
             nElementos++;
         }
-        
+
         return Math.round((nElementos * 100) / 3);
     }
 
@@ -111,6 +111,45 @@ export class EstimativaDoCustoComDepreciacaoService extends AbstractPorcentagemC
             this.depreciacaoAnualVeiculos += parseFloat(veiculo.calcularDepreciacaoAnual().toString());
             this.depreciacaoMensalVeiculos += parseFloat(veiculo.calcularDepreciacaoMensal().toString());
         });
+    }
+
+    toJSON(): any {
+        return {
+            totalVidaUtilEmAnos: this.totalVidaUtilEmAnos,
+            totalDepreciacaoAnual: this.totalDepreciacaoAnual,
+            totalDepreciacaoMensal: this.totalDepreciacaoMensal,
+            depreciacaoAnualMaquinas: this.depreciacaoAnualMaquinas,
+            depreciacaoMensalMaquinas: this.depreciacaoMensalMaquinas,
+            depreciacaoAnualEquipamentos: this.depreciacaoAnualEquipamentos,
+            depreciacaoMensalEquipamentos: this.depreciacaoMensalEquipamentos,
+            depreciacaoAnualMoveis: this.depreciacaoAnualMoveis,
+            depreciacaoMensalMoveis: this.depreciacaoMensalMoveis,
+            depreciacaoAnualUtensilios: this.depreciacaoAnualUtensilios,
+            depreciacaoMensalUtensilios: this.depreciacaoMensalUtensilios,
+            depreciacaoAnualVeiculos: this.depreciacaoAnualVeiculos,
+            depreciacaoMensalVeiculos: this.depreciacaoMensalVeiculos
+        }
+    }
+
+    fromJSON(json: any): void {
+        try {
+            this.totalVidaUtilEmAnos = json.totalVidaUtilEmAnos;
+            this.totalDepreciacaoAnual = json.totalDepreciacaoAnual;
+            this.totalDepreciacaoMensal = json.totalDepreciacaoMensal;
+            this.depreciacaoAnualMaquinas = json.depreciacaoAnualMaquinas;
+            this.depreciacaoMensalMaquinas = json.depreciacaoMensalMaquinas;
+            this.depreciacaoAnualEquipamentos = json.depreciacaoAnualEquipamentos;
+            this.depreciacaoMensalEquipamentos = json.depreciacaoMensalEquipamentos;
+            this.depreciacaoAnualMoveis = json.depreciacaoAnualMoveis;
+            this.depreciacaoMensalMoveis = json.depreciacaoMensalMoveis;
+            this.depreciacaoAnualUtensilios = json.depreciacaoAnualUtensilios;
+            this.depreciacaoMensalUtensilios = json.depreciacaoMensalUtensilios;
+            this.depreciacaoAnualVeiculos = json.depreciacaoAnualVeiculos;
+            this.depreciacaoMensalVeiculos = json.depreciacaoMensalVeiculos;
+        } catch (e) {
+            alert("Erro ao recuperar os dados salvos!");
+        }
+
     }
 
 

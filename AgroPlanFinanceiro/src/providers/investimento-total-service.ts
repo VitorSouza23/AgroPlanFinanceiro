@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {CapitalDeGiroService} from '../providers/capital-de-giro-service';
-import {InvestimentosPreoperacionaisService} from '../providers/investimentos-preoperacionais-service';
-import {EstimativaDeInvestimentosFixosService} from '../providers/estimativa-de-investimentos-fixos-service';
 import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
 /*
   Generated class for the InvestimentoTotalService provider.

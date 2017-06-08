@@ -138,9 +138,33 @@ export class EstimativaDosCustosDeComercializacaoService extends AbstractPorcent
             this.subtotal2 = json.subtotal2;
             this.total = json.total;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Estimativa dos Custos de Comercialização!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Estimativa dos Custos de Comercialização ===\n\n";
+        texto += "Faturamentos Esperado:\n"
+            + "R$ " + this.faturamentoEsperado + "\n\n";
+        texto += "Impostos(%):\n"
+            + "SIMPLES: " + this.simples + "%\n"
+            + "IRPJ: " + this.irpj + "%\n"
+            + "PIS: " + this.pis + "%\n"
+            + "COFINS: " + this.cofins + "%\n"
+            + "CSLL: " + this.csll + "%\n"
+            + "ICMS: " + this.icms + "%\n"
+            + "ISS: " + this.iss + "%\n"
+            + "Subtotal 1: R$ " + this.subtotal1 + "\n";
+            texto += "\n";
+            texto += "Gastos com Vendas (%):\n"
+                + "Comissões: " + this.comissao + "%\n"
+                + "Propaganda " + this.propaganda + "%\n"
+                + "Taxa de Administração de Cartão de Crédito: " + this.taxaCartaoDeCredito + "%\n"
+                + "Subtotal 2: R$ " + this.subtotal2 + "\n";
+            texto += "\n";
+            texto += "Total (Subtotal 1 + Subtotal 2): R$ " + this.total + "\n";
+            return texto;
     }
 
 }

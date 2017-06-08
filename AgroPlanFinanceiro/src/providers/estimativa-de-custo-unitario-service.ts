@@ -57,9 +57,16 @@ export class EstimativaDeCustoUnitarioService extends AbstractPorcentagemConclus
         try{
             this.totalCustoMaterial = json.totalCustoMaterial;
         }catch (e){
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Estimativa de Custo unitário!");
         }
         
+    }
+    
+    toString(): String {
+        let texto: String = "=== Estimativa de Custo Unitário ===\n\n";
+        texto += "Produtos e/ou Serviços:\n\n";
+        texto += "Total Custo Material: R$ " + this.totalCustoMaterial + "\n";
+        return texto;
     }
 
 }

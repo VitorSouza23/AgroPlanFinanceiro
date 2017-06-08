@@ -101,9 +101,24 @@ export class IndicadoresDeViabilidadeService extends AbstractPorcentagemConclusa
             this.investimentoTotal = json.investimentoTotal;
             this.prazoRetornoDeInvestimento = json.prazoRetornoDeInvestimento;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados dos Indicadores de Viabilidade!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Indicadores de Viabilidade ===\n\n";
+        texto += "Indicadores:\n\n"
+            + "Custo Fixo Total: R$ " + this.custoFixoTotal + "\n"
+            + "Receita Total: R$ " + this.receitaTotal + "\n"
+            + "Custos Variáveis Totais: R$ " + this.custoVariavelTotal + "\n"
+            + "Lucro Líquido: R$ " + this.lucroLiquido + "\n"
+            + "Investimento Total: R$ " + this.investimentoTotal + "\n\n"
+            + "Ponto de Equilíbrio: R$ " + this.pontoDeEquilibrio + "\n\n"
+            + "Lucratividade: " + this.lucratividade + "%\n\n"
+            + "Rentabilidade: " + this.rentabilidade + "% ao ano\n\n"
+            + "Prazo de Retorno de Investimento: " + this.prazoRetornoDeInvestimento + " anos\n\n";
+        return texto;
     }
 
 }

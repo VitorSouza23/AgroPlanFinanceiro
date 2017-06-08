@@ -172,8 +172,32 @@ export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConcl
             this.outrasDespesas = json.outrasDespesas;
             this.total = json.total;
         } catch (e) {
-
+            alert("Erro ao recuperar dados da Estimativa de Custo Fixo Mensal!")
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Apuração dos Custos Materiais ===\n\n";
+        texto += "Custo Total Mensal (R$):\n\n"
+            + "Aluguel: R$ " + this.aluguel + "\n"
+            + "Condomínio: R$ " + this.condominio + "\n"
+            + "IPTU: R$ " + this.iptu + "\n"
+            + "Água: R$ " + this.agua + "\n"
+            + "Energia Elétrica: R$ " + this.energia + "\n"
+            + "Telefone: R$ " + this.telefone + "\n"
+            + "Honorários do Contador: R$ " + this.honorariosDoContador + "\n"
+            + "Pró-labore: R$ " + this.pro_labore + "\n"
+            + "Manutenção dos Equipamentos: R$ " + this.manutencaoDosEquipamentos + "\n"
+            + "Material de Limpeza: R$ " + this.materialLimpeza + "\n"
+            + "Material de Escritório: R$ " + this.materialEscritorio + "\n"
+            + "Combustível: R$ " + this.combustivel + "\n"
+            + "Taxas Diversas: R$ " + this.taxasDiversas + "\n"
+            + "Serviços de Terceiros: R$ " + this.servicoaDeTerceiros + "\n"
+            + "Outras Despesas: R$ " + this.outrasDespesas + "\n"
+            + "Salários + Encargos: R$ " + this.salariosEEncargos + "\n"
+            + "Depreciação: R$ " + this.depreciacao + "\n\n"
+            + "Total: R$ " + this.total + "\n";
+        return texto;
     }
 }

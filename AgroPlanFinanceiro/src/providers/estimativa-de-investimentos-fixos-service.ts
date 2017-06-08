@@ -356,9 +356,52 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
             this.subtotal = json.subtotal;
             this.quantidadeDeItens = json.quantidadeDeItens;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Estimativa de Investimentos Fixos!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Estimativa de Investimentos Fixos ===\n\n";
+        texto += "Máquinas:\n\n";
+        this.maquinas.forEach((item) => {
+            texto += "Descrição: " + item.descricao + "\n"
+                + "Quantidade: " + item.quantidade + "\n"
+                + "Valor: R$ " + item.valor + "\n\n";
+        });
+        texto += "Sub-total Máquinas: R$ " + this.subtotalMaquinas +"\n\n";
+        texto += "Equipamentos:\n\n";
+        this.equipamentos.forEach((item) => {
+            texto += "Descrição: " + item.descricao + "\n"
+                + "Quantidade: " + item.quantidade + "\n"
+                + "Valor: R$ " + item.valor + "\n\n";
+        });
+        texto += "Sub-total Equipamentos: R$ " + this.subtotalEquipamentos +"\n\n";
+        texto += "Móveis:\n\n";
+        this.moveis.forEach((item) => {
+            texto += "Descrição: " + item.descricao + "\n"
+                + "Quantidade: " + item.quantidade + "\n"
+                + "Valor: R$ " + item.valor + "\n\n";
+        });
+        texto += "Sub-total Móveis: R$ " + this.subtotalMoveis +"\n\n";
+        texto += "Utensílios:\n\n";
+        this.utensilios.forEach((item) => {
+            texto += "Descrição: " + item.descricao + "\n"
+                + "Quantidade: " + item.quantidade + "\n"
+                + "Valor: R$ " + item.valor + "\n\n";
+        });
+        texto += "Sub-total Utensílios: R$ " + this.subtotalUtensilio +"\n\n";
+        texto += "Veículos:\n\n";
+        this.veiculos.forEach((item) => {
+            texto += "Descrição: " + item.descricao + "\n"
+                + "Quantidade: " + item.quantidade + "\n"
+                + "Valor: R$ " + item.valor + "\n\n";
+        });
+        texto += "Sub-total Veículos: R$ " + this.subtotalVeiculos +"\n\n";
+        texto += "Sub-total de Investimentos Fixos\n\n"
+            + "Valor: R$ " + this.subtotal + "\n";
+            
+        return texto;
     }
 
 

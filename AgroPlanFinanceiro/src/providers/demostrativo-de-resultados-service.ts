@@ -96,8 +96,23 @@ export class DemostrativoDeResultadosService extends AbstractPorcentagemConclusa
             this.custosFixosTotais = json.custosFixosTotais;
             this.resultadoOperacional = json.resultadoOperacional;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados do Demosntrativo de Resultados!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Demonstrativo de Resultados ===\n\n";
+        texto += "Demosntrativo:\n\n";
+        texto += "Receita Total com Vendas: R$ " + this.receitaTotalComVendas + "\n"
+            + "Custos Varíaveis Totais: R$" + this.custosVariaveisTotais + "\n"
+            + "Custos com Materiais Diretos e/ou CMV: R$ " + this.custosComMateriaisDiretos + "\n"
+            + "Impsotos sobre Vendas: R$ " + this.impostoSobreVendas + "\n"
+            + "Gastos com Vendas: R$ " + this.gastosComVendas + "\n"
+            + "Subtotal: R$ " + this.subtotal + "\n\n"
+            + "Margem de Contribuição: R$ " + this.margemDeContribuicao + "\n"
+            + "Custos Fixos Totais: R$ " + this.custosFixosTotais + "\n"
+            + "Resultado Operacional (Lucro/Prejuízo): R$ " + this.resultadoOperacional + "\n";
+        return texto;
     }
 }

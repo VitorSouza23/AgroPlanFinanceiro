@@ -94,9 +94,25 @@ export class InvestimentoTotalService extends AbstractPorcentagemConclusao {
             this.outros = json.outros;
             this.totalFontesDeRecursos = json.totalFontesDeRecursos;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados do investimento Total!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Investimento Total ===\n\n";
+        texto += "Descrição dos Investimentos:\n"
+            + "Investimentos Fixos: R$ " + this.investimentosFixos + "\n"
+            + "Capital de Giro: R$ " + this.capitalDeGiro + "\n"
+            + "Investimentos Pré-operacionais: R$ " + this.investimentosPreOperacionais + "\n"
+            + "Total: R$ " + this.totalDescricaoDosInvestimentos + "\n";
+        texto += "\n";
+        texto += "Fontes de Recursos:\n"
+            + "Recursos Prórpios: R$ " + this.recursosProprios + "\n"
+            + "Recursos de Terceiros: R$ " + this.recurosDeTerceiros + "\n"
+            + "Outros: R$ " + this.outros + "\n"
+            + "Total: R$ " + this.totalFontesDeRecursos + "\n";
+        return texto;
     }
 
 

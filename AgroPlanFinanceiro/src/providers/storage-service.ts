@@ -13,6 +13,7 @@ import {EstimativaDosCustosComMaoDeObraService} from './estimativa-dos-custos-co
 import {EstimativaDosCustosDeComercializacaoService} from './estimativa-dos-custos-de-comercializacao-service';
 import {IndicadoresDeViabilidadeService} from './indicadores-de-viabilidade-service';
 import {InvestimentosPreoperacionaisService} from './investimentos-preoperacionais-service';
+import * as moment from 'moment';
 /*
   Generated class for the StorageService provider.
 
@@ -22,6 +23,8 @@ import {InvestimentosPreoperacionaisService} from './investimentos-preoperaciona
 @Injectable()
 export class StorageService {
 
+    ultimaAlteracao: any;
+    
     constructor(private storage: Storage,
         private aputacaoDosCustosMateriais: ApuracaoDosCustosMateriaisService,
         private capitalDeGiro: CapitalDeGiroService,
@@ -35,10 +38,14 @@ export class StorageService {
         private estimativaDosCustosDeComercializacao: EstimativaDosCustosDeComercializacaoService,
         private indicadoresDeViabilidade: IndicadoresDeViabilidadeService,
         private investimentosPreoperacionaisService: InvestimentosPreoperacionaisService) {
-       
+        this.storage.get('ultimaAlteracao').then((data) => {
+                this.ultimaAlteracao = data;
+        });
     }
     
     saveAll(): void {
+        this.ultimaAlteracao = moment();
+        this.storage.set('ultimaAlteracao', this.ultimaAlteracao.format());
         this.storage.set('apuracaoDosCustosMateriais', this.aputacaoDosCustosMateriais.toJSON());
         this.storage.set('capitalDeGiro', this.capitalDeGiro.toJSON());
         this.storage.set('demonstrativoDeResultados', this.demonstrativoDeResultados.toJSON());
@@ -94,6 +101,11 @@ export class StorageService {
     
     erroMensage(): void {
         throw new Error("Ops! Erro ao recuperar os dados da meméria!");
+    }
+    
+    dropDatabase(): void {
+        this.storage.clear();
+        this.ultimaAlteracao = null;
     }
 
 }

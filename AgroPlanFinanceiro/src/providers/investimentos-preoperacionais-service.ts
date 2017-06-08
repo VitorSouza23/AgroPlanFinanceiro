@@ -76,8 +76,20 @@ export class InvestimentosPreoperacionaisService extends AbstractPorcentagemConc
             this.outrasDespesas = json.outrasDespesas;
             this.total = json.total;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados dos Investimentos Pré-operacionais!");
         }
+    }
+    
+    toString(): String {
+        let texto: String = "=== Apuração dos Custos Materiais ===\n\n";
+        texto += "Valores(R$):\n\n"
+            + "Despesas de Legalização: R$ " + this.despesasDeLegalizacao + "\n"
+            + "Obras Civís e/ou Reformas: R$ " + this.obrasCivisReformas + "\n"
+            + "Divulgação: R$ " + this.divulgacao + "\n"
+            + "Cursos e Treinamentos: R$ " + this.curosETreinamentos + "\n"
+            + "Outras Despesas: R$ " + this.outrasDespesas + "\n"
+            + "Total: R$ " + this.total + "\n";
+        return texto;
     }
 
 }

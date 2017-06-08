@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {IndicadoresDeViabilidadeService} from '../../providers/indicadores-de-viabilidade-service';
+import {StorageService} from '../../providers/storage-service';
 /**
  * Generated class for the IndicadoresDeViabilidade page.
  *
@@ -24,7 +25,9 @@ export class IndicadoresDeViabilidade {
     prazoRetornoDeInvestimento: number;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
-        private indicadoresDeViabilidadeService: IndicadoresDeViabilidadeService) {
+        private indicadoresDeViabilidadeService: IndicadoresDeViabilidadeService,
+        private storageService: StorageService,
+        private toastCtrl: ToastController) {
         if (this.navParams.get('custoFixoTotal') ==  undefined){
             this.indicadoresDeViabilidadeService.custoFixoTotal = 0;
         }else{
@@ -62,8 +65,22 @@ export class IndicadoresDeViabilidade {
         this.prazoRetornoDeInvestimento = isNaN(this.indicadoresDeViabilidadeService.calcularPrazoRetornoDeInvestimento()) ? 0 : this.indicadoresDeViabilidadeService.calcularPrazoRetornoDeInvestimento();
     }
 
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad IndicadoresDeViabilidade');
+    salvarTodosOsDadosInternamente(): void {
+        try {
+            this.storageService.saveAll();
+            this.toastCtrl.create({
+                message: 'Dados slavos com sucesso!',
+                duration: 3000,
+                position: 'bottom'
+            }).present();
+        } catch (e){
+            this.toastCtrl.create({
+                message: 'Erro ao salvar os dados!',
+                duration: 3000,
+                position: 'middle'
+            }).present();
+        }
     }
+
 
 }

@@ -1,12 +1,25 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Opções</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Opções</ion-title>
+    </ion-navbar>
 </ion-header>
 
+
 <ion-content>
-  <button ion-button full round (click)="recuperarTodosOsDadosDoBanco()">Recuperar Dados</button>
+    <ion-card class="ion-card-content">
+
+    <ion-card-header>
+        Alterações Salvas
+    </ion-card-header>
+    <ion-card-content >
+            <ion-icon name="folder"></ion-icon>
+                Data da Ultima Alteração: {{ultimaAlteracao}}
+    </ion-card-content>
+
+</ion-card>
+    <button ion-button full round (click)="recuperarTodosOsDadosDoBanco()">Recuperar Dados</button>
+    <button ion-button full round color="danger" (click)="apagarBancoDeDados()">Apagar Todos os Dados</button>
 </ion-content>

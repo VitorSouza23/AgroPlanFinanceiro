@@ -46348,3 +46348,7 @@ ion-navbar.toolbar {
 .ios .grid-title > ion-col, .md .grid-title > ion-col {
   border-style: none;
 }
+
+page-list .ion-card-content {
+  background-color: white;
+}

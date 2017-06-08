@@ -226,8 +226,64 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
             this.caixaMinimo = json.caixaMinimo;
             this.capitalDeGiro = json.capitalDeGiro;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados do Capital de Giro!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Capital de Giro ===\n\n";
+        texto += "Materiais:\n";
+        this.materiais.forEach((item) => {
+            texto += "Descrição: " + item.descricao + "\n"
+                + "Quantidade: " + item.quantidade + "\n"
+                + "Valor: R$ " + item.valor + "\n\n";
+        });
+        texto += "\n";
+        texto += "Vendas:\n";
+        this.vendas.forEach((prazo) => {
+            texto += "Descrição: " + prazo.descricao + "\n"
+                + "Procentagem: % " + prazo.porcentagem + "\n"
+                + "Número de Dias: " + prazo.numeroDeDias + "\n"
+                + "Média Ponderada em Dias: " + prazo.mediaPonderadaEmDias + "\n\n"
+        });
+        texto += "Prazo Médio Total de Vendas: " + this.prazoMedioTotalVendas + " dias\n";
+        texto += "\n";
+        texto += "Compras:\n";
+        this.compras.forEach((prazo) => {
+            texto += "Descrição: " + prazo.descricao + "\n"
+                + "Procentagem: % " + prazo.porcentagem + "\n"
+                + "Número de Dias: " + prazo.numeroDeDias + "\n"
+                + "Média Ponderada em Dias: " + prazo.mediaPonderadaEmDias + "\n\n"
+        });
+        texto += "Prazo Médio Total de Compras: " + this.prazoMedioTotalCompras + " dias\n";
+        texto += "\n";
+        texto += "Necessidade Média dos Estoques: " + this.necessidadeMediaDeEstoques + " dias\n";
+        texto += "\n";
+        texto += "Recursos da Empresa Fora do Seu Caixa:\n"
+            + "Contas a Receber (Vendas): " + this.prazoMedioTotalVendas + " dias\n"
+            + "Estoques (Necess. Média): " + this.necessidadeMediaDeEstoques + " dias\n"
+            + "Subtotal 1 (Vendas + Necess. Média): " + this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa + " dias\n";
+        texto += "\n";
+        texto += "Recuros de Terceiros no Caixa da Empresa:\n" 
+            + "Contas a Pagar (Compras): " + this.prazoMedioTotalCompras + " dias\n"
+            + "Subtoal 2 (Fornecedores): " + this.prazoMedioTotalCompras + " dias\n";
+        texto += "\n";
+        texto += "Necessidade Líquida de Capital de Giro em Dias:\n" 
+            + "Subtoal 1 + Subtotal 2: " + this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro + " dias\n";  
+        texto += "\n";
+        texto += "Caixa Mínimo:\n"
+            + "Custo Fixo Total: R$ " + this.custoFixoMensal + "\n"
+            + "Custo Variavel Mensal: R$ " + this.custoVariavelMensal + "\n"
+            + "Custo Total da Empresa: R$" + this.custoTotalDaEmpresa + "\n"
+            + "Custo Total Diário: R$ " + this.custoTotalDiario + "\n"
+            + "Necess. Líquida de Capital de Giro em Dias: " + this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro + " dias\n"
+            + "Total: R$ " + this.caixaMinimo + "\n";
+        texto += "\n";
+        texto += "Capital de Giro (Resumo):\n"
+            + "A - Estimativa de Estoque Inicial: R$ " + this.totalEstimativaEstoqueInicial + "\n"
+            + "B - Caíxa Mínimo: R$ " + this.caixaMinimo + "\n"
+            + "Capital de Giro (A + B): R$ " + this.capitalDeGiro + "\n";
+        return texto;
     }
 }

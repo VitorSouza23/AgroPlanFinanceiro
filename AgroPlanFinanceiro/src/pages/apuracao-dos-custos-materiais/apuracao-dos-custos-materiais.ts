@@ -33,7 +33,6 @@ export class ApuracaoDosCustosMateriaisPage {
         this.totalCustoUnitario = this.apuracaoDosCustosMateriaisService.calcularTotalCustoUnitario();
         this.totalCMD = this.apuracaoDosCustosMateriaisService.calcularTotalCMV();
         
-        
     }
 
 

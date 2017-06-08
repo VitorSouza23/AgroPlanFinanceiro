@@ -147,9 +147,38 @@ export class EstimativaDoCustoComDepreciacaoService extends AbstractPorcentagemC
             this.depreciacaoAnualVeiculos = json.depreciacaoAnualVeiculos;
             this.depreciacaoMensalVeiculos = json.depreciacaoMensalVeiculos;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Estimativa de Custo Com Depreciação!");
         }
 
+    }
+    
+    toString(): String {
+        let texto: String = "=== Estimativa do Custo com Depreciação ===\n\n";
+        texto += "Máquinas:\n"
+            + "Total Depreciação Anual: R$ " + this.depreciacaoAnualMaquinas + "\n"
+            + "Total Depreciação Mensal: R$ " + this.depreciacaoMensalMaquinas + "\n";
+        texto += "\n";
+        texto += "Equipamentos:\n"
+            + "Total Depreciação Anual: R$ " + this.depreciacaoAnualEquipamentos + "\n"
+            + "Total Depreciação Mensal: R$ " + this.depreciacaoMensalEquipamentos + "\n";
+        texto += "\n";
+        texto += "Móveis:\n"
+            + "Total Depreciação Anual: R$ " + this.depreciacaoAnualMoveis + "\n"
+            + "Total Depreciação Mensal: R$ " + this.depreciacaoMensalMoveis + "\n";
+        texto += "\n";
+        texto += "Utensílios:\n"
+            + "Total Depreciação Anual: R$ " + this.depreciacaoAnualUtensilios + "\n"
+            + "Total Depreciação Mensal: R$ " + this.depreciacaoMensalUtensilios+ "\n";
+        texto += "\n";
+        texto += "Veículos:\n"
+            + "Total Depreciação Anual: R$ " + this.depreciacaoAnualVeiculos + "\n"
+            + "Total Depreciação Mensal: R$ " + this.depreciacaoMensalVeiculos + "\n";
+        texto += "\n";
+        texto += "Totais Finais:\n"
+            + "Vida Útil em Anos: R$ " + this.totalVidaUtilEmAnos + "\n"
+            + "Depreciação Anual: R$ " + this.totalDepreciacaoAnual + "\n"
+            + "Depreciação Mensal: R$" + this.totalDepreciacaoMensal + "\n";
+        return texto;
     }
 
 

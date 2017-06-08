@@ -25,7 +25,6 @@ export class EstimativaDosCustosComMaoDeObraService extends AbstractPorcentagemC
         this.totalSalarios = 0.0;
         this.totalPercentualDeEncargos = 0;
         this.totalEncargos = 0.0;
-        this.total = 0.0;
     }
 
     getPorcentagemConcluido(): number {
@@ -114,8 +113,28 @@ export class EstimativaDosCustosComMaoDeObraService extends AbstractPorcentagemC
             this.totalEncargos = json.totalEncargos;
             this.total = json.total;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Estimativa dos Custos com Mão de Obra!");
         }
 
+    }
+    
+    toString(): String {
+         let texto: String = "=== Estimativa dos Custos com Mão de Obra ===\n\n";
+        texto += "Produtos:\n\n";
+        this.cargos.forEach((cargo) => {
+            texto += "Função: " + cargo.funcao + "\n"
+                + "Número de Empregados: " + cargo.numero + "\n"
+                + "Salário Mensal: R$ " + cargo.salario + "\n"
+                + "Percentual de Encargos Sociais " + cargo.percentualEncargos + "%\n"
+                + "Encargos: R$" + cargo.encargos + "\n\n";
+        });
+        texto += "\n";
+        texto += "Totais:\n"
+            + "Número Total de Empregados: " + this.totalNumeroEmpregados + "\n"
+            + "Total de Salários: R$ " + this.totalSalarios + "\n"
+            + "Total Percentual de Encargos: " + this.totalPercentualDeEncargos + "%\n"
+            + "Total Encargos: R$ " + this.totalEncargos + "\n"
+            + "Total: R$ " + this.total + "\n";
+        return texto;
     }
 }

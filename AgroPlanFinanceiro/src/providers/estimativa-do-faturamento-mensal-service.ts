@@ -68,9 +68,22 @@ export class EstimativaDoFaturamentoMensalService extends AbstractPorcentagemCon
             this.produtos = json.produtos;
             this.total = json.total;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Estimativa de Faturamento Mensal!");
         }
 
+    }
+    
+    toString(): String {
+         let texto: String = "=== Estimativa do Faturamento Mensal ===\n\n";
+        texto += "Produtos:\n\n";
+        this.produtos.forEach((produto) => {
+            texto += "Descrição: " + produto.descricao + "\n"
+                + "Estimativa de Venda: " + produto.quantidade + "\n"
+                + "Valor: R$ " + produto.preco + "\n\n";
+        });
+        texto += "\n";
+        texto += "Total: R$ " + this.total + "\n";
+        return texto;
     }
 
 }

@@ -72,8 +72,25 @@ export class ApuracaoDosCustosMateriaisService extends AbstractPorcentagemConclu
             this.totalEstimativaDeVenda = json.totalEstimativaDeVenda;
             this.totalCustoUnitario = json.totalCustoUnitario;
         } catch (e) {
-            alert("Erro ao recuperar os dados salvos!");
+            alert("Erro ao recuperar os dados da Apuração dos Custos Materiais!");
         }
+
+    }
+
+    toString(): String {
+        let texto: String = "=== Apuração dos Custos Materiais ===\n\n";
+        texto += "Produtos:\n\n";
+        this.produtos.forEach((produto) => {
+            texto += "Descrição: " + produto.descricao + "\n"
+                + "Estimativa de Venda: " + produto.quantidade + "\n"
+                + "Custo Unitário por Material: R$ " + produto.calcularTotalCustoMateriais() + "\n"
+                + "CMD/CMV: R$ " + produto.calcularTotalCustoMateriais() * produto.quantidade + "\n\n";
+        });
+        texto += "\n"
+            + "Estimativa de Vendas (Em Unidades): " + this.totalEstimativaDeVenda + "\n"
+            + "Custo Unitário de Materiais/Aquisisção: R$ " + this.totalCustoUnitario + "\n"
+            + "CMD/CMV: R$ " + this.totalCMV;
+            return texto;
 
     }
 

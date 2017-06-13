@@ -65,7 +65,10 @@ export class EstimativaDoFaturamentoMensalService extends AbstractPorcentagemCon
 
     fromJSON(json: any): void {
         try {
-            this.produtos = json.produtos;
+            this.produtos = [];
+            json.produtos.forEach((produto: any) =>{
+                this.produtos.push(Produto.getFromJason(produto));
+            });
             this.total = json.total;
         } catch (e) {
             alert("Erro ao recuperar os dados da Estimativa de Faturamento Mensal!");

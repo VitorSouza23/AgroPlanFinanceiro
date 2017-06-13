@@ -19,5 +19,14 @@ export class Prazo {
     calcularMediaPonderaEmDias(): number {
         return this.mediaPonderadaEmDias = (this.porcentagem / 100) * this.numeroDeDias; 
     }
+    
+    static getFromJson(prazo: any): Prazo {
+        let prazoRes: Prazo = new Prazo();
+        prazoRes.descricao = prazo.descricao;
+        prazoRes.porcentagem = prazo.porcentagem;
+        prazoRes.numeroDeDias = prazo.numeroDeDias;
+        prazoRes.mediaPonderadaEmDias = prazo.mediaPonderadaEmDias;
+        return prazoRes;
+    }
 }
 

@@ -210,10 +210,19 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
 
     fromJSON(json: any): void {
         try {
-            this.materiais = json.materiais;
+            this.materiais = [];
+            this.vendas = [];
+            this.compras = [];
+            json.materiais.forEach((item: any) => {
+                this.materiais.push(Item.getFromJson(item));
+            });
             this.totalEstimativaEstoqueInicial = json.totalEstimativaEstoqueInicial;
-            this.vendas = json.vendas;
-            this.compras = json.compras;
+            json.vendas.forEach((prazo:any) => {
+                this.vendas.push(Prazo.getFromJson(prazo));
+            });
+            json.compras.forEach((prazo:any) =>{
+                this.compras.push(Prazo.getFromJson(prazo));
+            });
             this.prazoMedioTotalVendas = json.prazoMedioTotalVendas;
             this.prazoMedioTotalCompras = json.prazoMedioTotalCompras;
             this.necessidadeMediaDeEstoques = json.necessidadeMediaDeEstoques;

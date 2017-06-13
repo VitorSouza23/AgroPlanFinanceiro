@@ -67,7 +67,10 @@ export class ApuracaoDosCustosMateriaisService extends AbstractPorcentagemConclu
 
     fromJSON(json: any): void {
         try {
-            this.produtos = json.produtos;
+            this.produtos = [];
+            json.produtos.forEach((produto: any) =>{
+                this.produtos.push(Produto.getFromJason(produto));
+            });
             this.totalCMV = json.totalCMV;
             this.totalEstimativaDeVenda = json.totalEstimativaDeVenda;
             this.totalCustoUnitario = json.totalCustoUnitario;

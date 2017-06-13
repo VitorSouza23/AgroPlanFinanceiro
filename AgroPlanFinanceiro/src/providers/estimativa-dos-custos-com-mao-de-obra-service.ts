@@ -106,7 +106,10 @@ export class EstimativaDosCustosComMaoDeObraService extends AbstractPorcentagemC
 
     fromJSON(json: any): void {
         try {
-            this.cargos = json.cargos;
+            this.cargos = [];
+            json.cargos.forEach((cargo: any) => {
+                this.cargos.push(Cargo.getFromJson(cargo));
+            });
             this.totalNumeroEmpregados = json.totalNumeroEmpregados;
             this.totalSalarios = json.totalSalarios;
             this.totalPercentualDeEncargos = json.totalPercentualDeEncargos;

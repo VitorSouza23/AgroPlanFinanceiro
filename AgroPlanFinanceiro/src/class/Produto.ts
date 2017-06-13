@@ -16,6 +16,13 @@ export class CustoMaterial{
     calcularTotal(): number {
         return this.material.calcularValorTotal();
     }
+    
+    static getFromJson(custo: any): CustoMaterial {
+        let custoRes: CustoMaterial = new CustoMaterial();
+        custoRes.material = Item.getFromJson(custo.material);
+        custoRes.total = custo.total;
+        return custoRes;
+    }
 }
 
 
@@ -66,6 +73,20 @@ export class Produto{
         this.totalCustoMaterial = 0;
         this.custoMateriais.forEach(custo => this.totalCustoMaterial += custo.calcularTotal());
         return this.totalCustoMaterial;
+    }
+    
+    static getFromJason(produto: any): Produto {
+        let produtoRes: Produto = new Produto();
+        produtoRes.descricao = produto.descricao;
+        produtoRes.quantidade = produto.quantidade;
+        produtoRes.preco = produto.preco;
+        produtoRes.faturamentoTotal = produto.faturamentoTotal;
+        produtoRes.custoMateriais = [];
+        produto.custoMateriais.forEach((custo: any) => {
+            produtoRes.custoMateriais.push(CustoMaterial.getFromJson(custo));
+        });
+        produtoRes.totalCustoMaterial = produto.totalCustoMaterial;
+        return produtoRes;
     }
 }
 

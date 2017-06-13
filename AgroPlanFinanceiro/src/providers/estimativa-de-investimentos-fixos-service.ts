@@ -342,12 +342,29 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
     }
 
     fromJSON(json: any): void {
+        this.maquinas = [];
+        this.equipamentos = [];
+        this.moveis = [];
+        this.utensilios = [];
+        this.veiculos = [];
+        
         try {
-            this.maquinas = json.maquinas;
-            this.equipamentos = json.equipamentos;
-            this.moveis = json.moveis;
-            this.utensilios = json.utensilios;
-            this.veiculos = json.veiculos;
+            json.maquinas.forEach((item:any) => {
+                this.maquinas.push(Item.getFromJson(item));
+            });
+            json.equipamentos.forEach((item:any) => {
+                this.equipamentos.push(Item.getFromJson(item));
+            });
+            json.moveis.forEach((item:any) => {
+                this.moveis.push(Item.getFromJson(item));
+            });
+            json.utensilios.forEach((item:any) => {
+                this.utensilios.push(Item.getFromJson(item));
+            });
+            json.veiculos.forEach((item:any) => {
+                this.veiculos.push(Item.getFromJson(item));
+            });
+            
             this.subtotalMaquinas = json.subtotalMaquinas;
             this.subtotalEquipamentos = json.subtotalEquipamentos;
             this.subtotalMoveis = json.subtotalMoveis;

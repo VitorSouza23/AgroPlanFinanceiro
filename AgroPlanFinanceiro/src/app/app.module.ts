@@ -56,6 +56,8 @@ import {ScreenOrientation} from '@ionic-native/screen-orientation';
 
 import {IonicStorageModule} from '@ionic/storage';
 import {StorageService} from '../providers/storage-service';
+import {EmailComposer} from '@ionic-native/email-composer';
+import {EmailService} from '../providers/email-service';
 
 @NgModule({
     declarations: [
@@ -113,7 +115,9 @@ import {StorageService} from '../providers/storage-service';
         EstimativaDoCustoFixoMensalService,
         DemostrativoDeResultadosService,
         IndicadoresDeViabilidadeService,
-        StorageService
+        StorageService,
+        EmailComposer,
+        EmailService
     ]
 })
 export class AppModule {}

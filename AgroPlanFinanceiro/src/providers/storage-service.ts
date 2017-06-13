@@ -13,6 +13,7 @@ import {EstimativaDosCustosComMaoDeObraService} from './estimativa-dos-custos-co
 import {EstimativaDosCustosDeComercializacaoService} from './estimativa-dos-custos-de-comercializacao-service';
 import {IndicadoresDeViabilidadeService} from './indicadores-de-viabilidade-service';
 import {InvestimentosPreoperacionaisService} from './investimentos-preoperacionais-service';
+import {InvestimentoTotalService} from './investimento-total-service';
 import * as moment from 'moment';
 /*
   Generated class for the StorageService provider.
@@ -37,7 +38,8 @@ export class StorageService {
         private estimativasDosCustosComMaoDeObra: EstimativaDosCustosComMaoDeObraService,
         private estimativaDosCustosDeComercializacao: EstimativaDosCustosDeComercializacaoService,
         private indicadoresDeViabilidade: IndicadoresDeViabilidadeService,
-        private investimentosPreoperacionaisService: InvestimentosPreoperacionaisService) {
+        private investimentosPreoperacionaisService: InvestimentosPreoperacionaisService,
+        private investimentoTotal: InvestimentoTotalService) {
         this.storage.get('ultimaAlteracao').then((data) => {
                 this.ultimaAlteracao = data;
         });
@@ -57,6 +59,7 @@ export class StorageService {
         this.storage.set('estimativasDosCustosComMaoDeObra', this.estimativasDosCustosComMaoDeObra.toJSON());
         this.storage.set('estimativaDosCustosDeComercializacao', this.estimativaDosCustosDeComercializacao.toJSON());
         this.storage.set('indicadoresDeViabilidade', this.indicadoresDeViabilidade.toJSON());
+        this.storage.set('investimentoTotal', this.investimentoTotal.toJSON());
         this.storage.set('investimentosPreoperacionaisService', this.investimentosPreoperacionaisService.toJSON());
     }
     
@@ -93,6 +96,9 @@ export class StorageService {
         }, () => this.erroMensage());
         this.storage.get('indicadoresDeViabilidade').then((dados) => {
             this.indicadoresDeViabilidade.fromJSON(dados)
+        }, () => this.erroMensage());
+        this.storage.get('investimentoTotal').then((dados) => {
+            this.investimentoTotal.fromJSON(dados)
         }, () => this.erroMensage());
         this.storage.get('investimentosPreoperacionaisService').then((dados) => {
             this.investimentosPreoperacionaisService.fromJSON(dados)

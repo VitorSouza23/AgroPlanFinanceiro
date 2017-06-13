@@ -27,5 +27,14 @@ export class Item{
     calcularDepreciacaoMensal(): String {
         return parseFloat((parseFloat(this.calcularDepreciacaoAnual().toString()) / 12).toString()).toFixed(2);
     }
+    
+    static getFromJson(item: any): Item{
+        let itemRes: Item = new Item();
+        itemRes.descricao = item.descricao;
+        itemRes.quantidade = item.quantidade;
+        itemRes.valor = item.valor;
+        itemRes.vidaUtil = item.vidaUtil;
+        return itemRes;
+    }
 }
 

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {IndicadoresDeViabilidadeService} from '../../providers/indicadores-de-viabilidade-service';
 import {StorageService} from '../../providers/storage-service';
+import {EmailService} from '../../providers/email-service';
 /**
  * Generated class for the IndicadoresDeViabilidade page.
  *
@@ -27,7 +28,7 @@ export class IndicadoresDeViabilidade {
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private indicadoresDeViabilidadeService: IndicadoresDeViabilidadeService,
         private storageService: StorageService,
-        private toastCtrl: ToastController) {
+        private toastCtrl: ToastController, private emailService: EmailService) {
         if (this.navParams.get('custoFixoTotal') ==  undefined){
             this.indicadoresDeViabilidadeService.custoFixoTotal = 0;
         }else{
@@ -80,6 +81,10 @@ export class IndicadoresDeViabilidade {
                 position: 'middle'
             }).present();
         }
+    }
+    
+    mandarTodosOsDadosPorEmial(): void {
+        this.emailService.mandarEmail();
     }
 
 

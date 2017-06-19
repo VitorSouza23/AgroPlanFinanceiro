@@ -13,6 +13,7 @@ export class IndicadoresDeViabilidadeService extends AbstractPorcentagemConclusa
     custoFixoTotal: number; //demosntrativo de resultados
     receitaTotal: number; // demosntrativo de resultados
     custoVariavelTotal: number; // demosntrativo de resultados
+    margemDeContribuicao: number; //demonstrativo de resultados
 
     lucratividade: number;
     lucroLiquido: number; //subtotal do demonstrativo de resultados
@@ -36,6 +37,7 @@ export class IndicadoresDeViabilidadeService extends AbstractPorcentagemConclusa
         this.investimentoTotal = 0;
 
         this.prazoRetornoDeInvestimento = 0;
+        this.margemDeContribuicao = 1;
     }
 
     getPorcentagemConcluido(): number {
@@ -60,19 +62,23 @@ export class IndicadoresDeViabilidadeService extends AbstractPorcentagemConclusa
     }
 
     calcularPontoDeEquilibrio(): number {
-        return this.pontoDeEquilibrio = this.custoFixoTotal / ((this.receitaTotal - this.custoVariavelTotal) / this.receitaTotal);
+        this.pontoDeEquilibrio = this.custoFixoTotal / (this.margemDeContribuicao / this.receitaTotal);
+        return Number(this.pontoDeEquilibrio.toFixed(2));
     }
 
     calcularLucratividade(): number {
-        return this.lucratividade = Math.round((this.pontoDeEquilibrio / this.receitaTotal) / 100);
+        this.lucratividade = (this.pontoDeEquilibrio / this.receitaTotal) * 100;
+        return Number(this.lucratividade.toFixed(2));
     }
 
     calcularRentabilidade(): number {
-        return this.rentabilidade = Math.round((this.lucroLiquido / this.investimentoTotal) / 100);
+        this.rentabilidade = (this.lucroLiquido / this.investimentoTotal) * 100;
+        return Number(this.rentabilidade.toFixed(2));
     }
 
     calcularPrazoRetornoDeInvestimento(): number {
-        return this.prazoRetornoDeInvestimento = this.investimentoTotal / this.lucroLiquido;
+        this.prazoRetornoDeInvestimento = this.investimentoTotal / this.lucroLiquido;
+        return Number(this.prazoRetornoDeInvestimento.toFixed(2));
     }
 
     toJSON(): any {

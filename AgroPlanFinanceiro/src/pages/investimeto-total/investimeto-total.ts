@@ -63,12 +63,14 @@ export class InvestimetoTotalPage {
     }
     
     atualizarPercentos(): void {
-        let somaInvestimentos: number = parseFloat(this.investimentosFixos.toString()) + parseFloat(this.capitalDeGiro.toString()) + parseFloat(this.investimentosPreOperacionais.toString()) | 1;
+        let somaVerificacao: number = Number(this.investimentosFixos) + Number(this.capitalDeGiro) + Number(this.investimentosPreOperacionais);
+        let somaInvestimentos: number = somaVerificacao > 1 ? somaVerificacao : 1;
         this.percentoInvestimentoFixo = ((this.investimentosFixos / somaInvestimentos) * 100).toFixed(2);
         this.percentocapitalDeGiro = ((this.capitalDeGiro / somaInvestimentos) * 100).toFixed(2);
         this.percentoInvestimentoPreOperacionais = ((this.investimentosPreOperacionais / somaInvestimentos) * 100).toFixed(2);
         
-        let somaRecurso: number = parseFloat(this.recursosProprios.toString()) + parseFloat(this.recurosDeTerceiros.toString()) + parseFloat(this.outros.toString()) | 1;
+        let somaVerificacao2: number = Number(this.recursosProprios) + Number(this.recurosDeTerceiros) + Number(this.outros);
+        let somaRecurso: number = somaVerificacao2 > 1 ? somaVerificacao2 : 1;
         this.percentoRecursosProprios = ((this.recursosProprios / somaRecurso) * 100).toFixed(2);
         this.percentoRecursosDeTerceiros = ((this.recurosDeTerceiros / somaRecurso) * 100).toFixed(2);
         this.percentoOutros = ((this.outros / somaRecurso) * 100).toFixed(2);

@@ -43,8 +43,8 @@ export class EstimativaDeCustoUnitarioService extends AbstractPorcentagemConclus
     
     calcularTotalCustosMateriais(produtos: Produto[]): number {
         this.totalCustoMaterial = 0;
-        produtos.forEach(produto => this.totalCustoMaterial += parseFloat(produto.calcularTotalCustoMateriais().toString()));
-        return this.totalCustoMaterial;
+        produtos.forEach(produto => this.totalCustoMaterial += Number(produto.calcularTotalCustoMateriais()));
+        return Number(this.totalCustoMaterial.toFixed(2));
     }
     
     toJSON(): any{

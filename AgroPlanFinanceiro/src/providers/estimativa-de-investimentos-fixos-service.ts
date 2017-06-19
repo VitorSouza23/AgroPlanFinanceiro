@@ -276,38 +276,38 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
 
     calcularSubtotalMaquinas(): number {
         this.subtotalMaquinas = 0;
-        this.maquinas.forEach(maquina => this.subtotalMaquinas = this.subtotalMaquinas + maquina.calcularValorTotal());
-        return this.subtotalMaquinas;
+        this.maquinas.forEach(maquina => this.subtotalMaquinas += Number(maquina.calcularValorTotal()));
+        return Number(this.subtotalMaquinas.toFixed(2));
     }
 
     calcularSubtotalEquipamentos(): number {
         this.subtotalEquipamentos = 0;
-        this.equipamentos.forEach(equipamento => this.subtotalEquipamentos = this.subtotalEquipamentos + equipamento.calcularValorTotal());
-        return this.subtotalEquipamentos;
+        this.equipamentos.forEach(equipamento => this.subtotalEquipamentos += Number(equipamento.calcularValorTotal()));
+        return Number(this.subtotalEquipamentos.toFixed(2));
     }
 
     calcularSubtotalMoveis(): number {
         this.subtotalMoveis = 0;
-        this.moveis.forEach(movel => this.subtotalMoveis = this.subtotalMoveis + movel.calcularValorTotal());
-        return this.subtotalMoveis;
+        this.moveis.forEach(movel => this.subtotalMoveis += Number(movel.calcularValorTotal()));
+        return Number(this.subtotalMoveis.toFixed(2));
     }
 
     calcularSubtotalUtensilios(): number {
         this.subtotalUtensilio = 0;
-        this.utensilios.forEach(utensilio => this.subtotalUtensilio = this.subtotalUtensilio + utensilio.calcularValorTotal());
-        return this.subtotalUtensilio;
+        this.utensilios.forEach(utensilio => this.subtotalUtensilio += Number(utensilio.calcularValorTotal()));
+        return Number(this.subtotalUtensilio.toFixed(2));
     }
 
     calcularSubtotalVeiculos(): number {
         this.subtotalVeiculos = 0;
-        this.veiculos.forEach(veiculo => this.subtotalVeiculos = this.subtotalVeiculos + veiculo.calcularValorTotal());
-        return this.subtotalVeiculos;
+        this.veiculos.forEach(veiculo => this.subtotalVeiculos += Number(veiculo.calcularValorTotal()));
+        return Number(this.subtotalVeiculos.toFixed(2));
     }
 
     calcularSubTotal(): number {
         this.subtotal = 0;
-        this.subtotal = this.calcularSubtotalMaquinas() + this.calcularSubtotalEquipamentos() + this.calcularSubtotalMoveis() + this.calcularSubtotalUtensilios() + this.calcularSubtotalVeiculos();
-        return this.subtotal;
+        this.subtotal = Number(this.calcularSubtotalMaquinas()) + Number(this.calcularSubtotalEquipamentos()) + Number(this.calcularSubtotalMoveis()) + Number(this.calcularSubtotalUtensilios()) + Number(this.calcularSubtotalVeiculos());
+        return Number(this.subtotal.toFixed(2));
     }
 
     atualizarSubtotais() {
@@ -321,7 +321,7 @@ export class EstimativaDeInvestimentosFixosService extends AbstractPorcentagemCo
     }
 
     calcularQuantidadeDeItens(): number {
-        return this.quantidadeDeItens = this.maquinas.length + this.equipamentos.length + this.moveis.length + this.utensilios.length + this.veiculos.length;
+        return this.quantidadeDeItens = Number(this.maquinas.length) + Number(this.equipamentos.length) + Number(this.moveis.length) + Number(this.utensilios.length) + Number(this.veiculos.length);
     }
 
     toJSON(): any {

@@ -71,7 +71,7 @@ export class Produto{
     
     calcularTotalCustoMateriais(): number {
         this.totalCustoMaterial = 0;
-        this.custoMateriais.forEach(custo => this.totalCustoMaterial += custo.calcularTotal());
+        this.custoMateriais.forEach(custo => this.totalCustoMaterial += Number(custo.calcularTotal()));
         return this.totalCustoMaterial;
     }
     

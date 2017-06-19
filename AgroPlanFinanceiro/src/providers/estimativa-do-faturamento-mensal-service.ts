@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Produto} from '../class/Produto';
 import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentagemConclusao';
@@ -48,8 +47,8 @@ export class EstimativaDoFaturamentoMensalService extends AbstractPorcentagemCon
 
     calcularTotal(): number {
         this.total = 0;
-        this.produtos.forEach(produto => this.total += parseFloat(produto.calcularFaturamentoTotal().toString()));
-        return this.total;
+        this.produtos.forEach(produto => this.total += Number(produto.calcularFaturamentoTotal()));
+        return Number(this.total.toFixed(2));
     }
 
     indexOfProduto(produto: Produto): number {

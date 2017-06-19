@@ -57,16 +57,19 @@ export class DemostrativoDeResultadosService extends AbstractPorcentagemConclusa
     }
 
     calcularSubtotal(): number {
-        return this.subtotal = parseFloat(this.custosVariaveisTotais.toString()) + parseFloat(this.custosComMateriaisDiretos.toString())
-            + parseFloat(this.impostoSobreVendas.toString()) + parseFloat(this.gastosComVendas.toString());
+        this.subtotal = Number(this.custosVariaveisTotais) + Number(this.custosComMateriaisDiretos)
+            + Number(this.impostoSobreVendas) + Number(this.gastosComVendas);
+        return Number(this.subtotal.toFixed(2));
     }
 
     calcularMargemDeContribuicao(): number {
-        return this.margemDeContribuicao = this.receitaTotalComVendas - this.calcularSubtotal();
+        this.margemDeContribuicao = this.receitaTotalComVendas - this.calcularSubtotal();
+        return Number(this.margemDeContribuicao.toFixed(2));
     }
 
     calcularResultadoOperacional(): number {
-        return this.resultadoOperacional = this.calcularMargemDeContribuicao() - this.custosFixosTotais;
+        this.resultadoOperacional = this.calcularMargemDeContribuicao() - this.custosFixosTotais;
+        return Number(this.resultadoOperacional.toFixed(2))
     }
 
 

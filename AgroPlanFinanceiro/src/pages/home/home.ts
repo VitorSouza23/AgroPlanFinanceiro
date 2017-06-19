@@ -136,7 +136,8 @@ export class HomePage {
             receitaTotal: this.demonstrativoDeResultadosService.receitaTotalComVendas,
             custoVariavelTotal: this.demonstrativoDeResultadosService.custosVariaveisTotais,
             lucroLiquido: this.demonstrativoDeResultadosService.calcularSubtotal(),
-            investimentoTotal: this.investimentoTotalService.calcularTotalDescricaoDosInvestimentos()
+            investimentoTotal: this.investimentoTotalService.calcularTotalDescricaoDosInvestimentos(),
+            margemDeContribuicao: this.demonstrativoDeResultadosService.calcularMargemDeContribuicao()
         })
     }
 

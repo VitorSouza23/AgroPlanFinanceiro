@@ -24,7 +24,8 @@ export class Cargo{
     }
     
     calcularValorTotal(): number {
-        return this.total = parseFloat(this.calcularValorEncargo().toString()) + parseFloat(this.salario.toString());
+        return Number(this.calcularValorEncargo()) + Number(this.salario);
+        //return this.total = parseFloat(this.calcularValorEncargo().toString()) + parseFloat(.toString());
     }
     
     static getFromJson(cargo: any): Cargo {

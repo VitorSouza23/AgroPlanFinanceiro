@@ -24,6 +24,7 @@ export class IndicadoresDeViabilidade {
     rentabilidade:number;
     investimentoTotal: number;
     prazoRetornoDeInvestimento: number;
+    margemDeContribuicao: number;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private indicadoresDeViabilidadeService: IndicadoresDeViabilidadeService,
@@ -54,14 +55,19 @@ export class IndicadoresDeViabilidade {
         }else{
             this.indicadoresDeViabilidadeService.investimentoTotal = this.navParams.get('investimentoTotal');
         }
+        if (this.navParams.get('margemDeContribuicao') ==  undefined){
+            this.indicadoresDeViabilidadeService.margemDeContribuicao = 1;
+        }else{
+            this.indicadoresDeViabilidadeService.margemDeContribuicao = this.navParams.get('margemDeContribuicao');
+        }
         
         this.pontoDeEquilibrio = isNaN(this.indicadoresDeViabilidadeService.calcularPontoDeEquilibrio()) ? 0 : this.indicadoresDeViabilidadeService.calcularPontoDeEquilibrio();
         this.custoFixoTotal = this.indicadoresDeViabilidadeService.custoFixoTotal;
         this.receitaTotal = this.indicadoresDeViabilidadeService.receitaTotal;
         this.custoVariavelTotal = this.indicadoresDeViabilidadeService.custoVariavelTotal;
-        this.lucratividade = isNaN(this.indicadoresDeViabilidadeService.calcularLucratividade()) ? 0 : this.indicadoresDeViabilidadeService.calcularLucratividade();
+        this.lucratividade = isNaN(this.indicadoresDeViabilidadeService.calcularLucratividade()) ? 0 : Number(this.indicadoresDeViabilidadeService.calcularLucratividade().toFixed(2));
         this.lucroLiquido = this.indicadoresDeViabilidadeService.lucroLiquido;
-        this.rentabilidade = isNaN(this.indicadoresDeViabilidadeService.calcularRentabilidade()) ? 0 : this.indicadoresDeViabilidadeService.calcularRentabilidade();
+        this.rentabilidade = isNaN(this.indicadoresDeViabilidadeService.calcularRentabilidade()) ? 0 : Number(this.indicadoresDeViabilidadeService.calcularRentabilidade().toFixed(2));
         this.investimentoTotal = this.indicadoresDeViabilidadeService.investimentoTotal;
         this.prazoRetornoDeInvestimento = isNaN(this.indicadoresDeViabilidadeService.calcularPrazoRetornoDeInvestimento()) ? 0 : this.indicadoresDeViabilidadeService.calcularPrazoRetornoDeInvestimento();
     }

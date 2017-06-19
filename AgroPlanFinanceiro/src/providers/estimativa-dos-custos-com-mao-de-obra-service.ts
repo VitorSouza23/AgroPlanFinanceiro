@@ -48,32 +48,32 @@ export class EstimativaDosCustosComMaoDeObraService extends AbstractPorcentagemC
 
     calcularTotalNumeroEmpregados(): number {
         this.totalNumeroEmpregados = 0;
-        this.cargos.forEach(cargo => this.totalNumeroEmpregados += parseInt(cargo.numero.toString()));
+        this.cargos.forEach(cargo => this.totalNumeroEmpregados += Number(cargo.numero));
         return this.totalNumeroEmpregados;
     }
 
     calcularTotalSalarios(): number {
         this.totalSalarios = 0.0;
-        this.cargos.forEach(cargo => this.totalSalarios += parseFloat(cargo.salario.toString()));
-        return this.totalSalarios;
+        this.cargos.forEach(cargo => this.totalSalarios += Number(cargo.salario));
+        return Number(this.totalSalarios.toFixed(2));
     }
 
     calcularTotalPercentualEncargos(): number {
         this.totalPercentualDeEncargos = 0;
-        this.cargos.forEach(cargo => this.totalPercentualDeEncargos += parseInt(cargo.percentualEncargos.toString()));
+        this.cargos.forEach(cargo => this.totalPercentualDeEncargos += Number(cargo.percentualEncargos));
         return this.totalPercentualDeEncargos;
     }
 
     calcularTotalEncargos(): number {
         this.totalEncargos = 0.0;
-        this.cargos.forEach(cargo => this.totalEncargos += parseFloat(cargo.encargos.toString()));
+        this.cargos.forEach(cargo => this.totalEncargos += Number(cargo.encargos));
         return this.totalEncargos;
     }
 
     calcularTotal(): number {
         this.total = 0.0;
-        this.cargos.forEach(cargo => this.total += parseFloat(cargo.calcularValorTotal().toString()));
-        return this.total;
+        this.cargos.forEach(cargo => this.total += Number(cargo.calcularValorTotal()));
+        return Number(this.total.toFixed(2));
     }
 
     addCargo(cargo: Cargo): void {

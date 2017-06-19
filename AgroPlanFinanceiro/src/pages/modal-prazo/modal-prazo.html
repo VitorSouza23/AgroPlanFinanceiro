@@ -21,9 +21,9 @@
         </ion-item>
         <ion-item>
             <ion-label color="primary" stacked>Porcentagem</ion-label>
-            <ion-range min="0" max="100" [(ngModel)]="porcentagem" color="secondary" (ionChange)="calcularMediaPonderadaEmdias()">
+            <ion-range min="0" [max]="porcentagemRestante" [(ngModel)]="porcentagem" color="secondary" (ionChange)="calcularMediaPonderadaEmdias()">
                 <ion-label range-left>0</ion-label>
-                <ion-label range-right>100</ion-label>
+                <ion-label range-right>{{porcentagemRestante}}</ion-label>
             </ion-range>
             <ion-badge item-right >{{porcentagem}}%</ion-badge>
         </ion-item>

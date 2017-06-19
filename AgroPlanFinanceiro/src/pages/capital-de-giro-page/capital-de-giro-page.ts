@@ -30,30 +30,30 @@ export class CapitalDeGiroPage {
     necessidadeMediaDeEstoques: number;
     subtotalDiasRecursoDaEmpresaForaDoSeuCaixa: number;
     subtotalDiasNecessidadeLiquidaDeCapitalDeGiro: number;
-    
+
     custoFixoMensal: number;
     custoVariavelMensal: number;
     custoTotalDaEmpresa: number;
     custoTotalDiario: number;
     caixaMinimo: number;
-    
+
     capitalDeGiro: number;
 
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
         private capitaldeGiroService: CapitalDeGiroService, private modalController: ModalController,
         private alertCtrl: AlertController) {
-        if (this.navParams.get('custoFixoMensal')){
+        if (this.navParams.get('custoFixoMensal')) {
             this.capitaldeGiroService.custoFixoMensal = this.navParams.get('custoFixoMensal');
-        }else{
+        } else {
             this.capitaldeGiroService.custoFixoMensal = 0;
         }
-        if (this.navParams.get('custoVariavelMensal')){
+        if (this.navParams.get('custoVariavelMensal')) {
             this.capitaldeGiroService.custoVariavelMensal = this.navParams.get('custoVariavelMensal');
-        }else{
+        } else {
             this.capitaldeGiroService.custoVariavelMensal = 0;
         }
-        
+
         this.materiais = this.capitaldeGiroService.materiais;
         this.totalEstimativaEstoqueInicial = this.capitaldeGiroService.totalEstimativaEstoqueInicial;
         this.vendas = this.capitaldeGiroService.vendas;
@@ -63,13 +63,14 @@ export class CapitalDeGiroPage {
         this.necessidadeMediaDeEstoques = this.capitaldeGiroService.necessidadeMediaDeEstoques;
         this.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa = this.capitaldeGiroService.subtotalDiasRecursoDaEmpresaForaDoSeuCaixa;
         this.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro = this.capitaldeGiroService.subtotalDiasNecessidadeLiquidaDeCapitalDeGiro;
-        
+
         this.custoFixoMensal = this.capitaldeGiroService.custoFixoMensal;
         this.custoVariavelMensal = this.capitaldeGiroService.custoVariavelMensal;
         this.custoTotalDaEmpresa = this.capitaldeGiroService.calcularCustoTotalDaEmpresa();
         this.custoTotalDiario = this.capitaldeGiroService.calcuclarCustoTotalDiario();
         this.caixaMinimo = this.capitaldeGiroService.calcularCaixaMinimo();
         this.capitalDeGiro = this.capitaldeGiroService.calcularCapitalDeGiro();
+
     }
 
     openModalItem(tipo: ItemEnum, titulo: String, item: Item, editar: boolean): void {
@@ -152,5 +153,6 @@ export class CapitalDeGiroPage {
             buttons: ['OK']
         }).present();
     }
+
 
 }

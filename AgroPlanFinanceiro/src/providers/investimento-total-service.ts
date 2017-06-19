@@ -57,14 +57,16 @@ export class InvestimentoTotalService extends AbstractPorcentagemConclusao {
     }
 
     calcularTotalDescricaoDosInvestimentos(): number {
-        return this.totalDescricaoDosInvestimentos = parseFloat(this.investimentosFixos.toString()) + parseFloat(this.capitalDeGiro.toString()) + parseFloat(this.investimentosPreOperacionais.toString());
+        this.totalDescricaoDosInvestimentos = Number(this.investimentosFixos) + Number(this.capitalDeGiro) + Number(this.investimentosPreOperacionais);
+        return Number(this.totalDescricaoDosInvestimentos.toFixed(2));
     }
 
     calcularTotalFontesDeRecursos(): number {
-        return this.totalFontesDeRecursos = parseFloat(this.recursosProprios.toString()) + parseFloat(this.recurosDeTerceiros.toString()) + parseFloat(this.outros.toString());
+        this.totalFontesDeRecursos = Number(this.recursosProprios) + Number(this.recurosDeTerceiros) + Number(this.outros);
+        return Number(this.totalFontesDeRecursos.toFixed(2));
     }
 
-    setAtributos(investimentosFixos: number, capitalDeGiro: number, investimentosPreOperacionais: number, ): void {
+    setAtributos(investimentosFixos: number, capitalDeGiro: number, investimentosPreOperacionais: number): void {
         this.investimentosFixos = investimentosFixos;
         this.capitalDeGiro = capitalDeGiro;
         this.investimentosPreOperacionais = investimentosPreOperacionais;

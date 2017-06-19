@@ -12,6 +12,7 @@ import {AbstractPorcentagemConclusao} from '../class/abstract/AbstractPorcentage
 */
 @Injectable()
 export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
+    
     materiais: Item[];
     totalEstimativaEstoqueInicial: number;
     vendas: Prazo[];
@@ -29,6 +30,9 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
     caixaMinimo: number;
 
     capitalDeGiro: number;
+    
+    porcentagemVenda: number;
+    porcentageCompra: number;
 
     constructor() {
         super();
@@ -49,6 +53,9 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
         this.caixaMinimo = 0;
 
         this.capitalDeGiro = 0;
+        
+        this.porcentagemVenda = 100;
+        this.porcentageCompra = 100;
     }
 
     getPorcentagemConcluido(): number {
@@ -128,7 +135,7 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
     calcularTotalEstimativaEstoqueInicial(): number {
         this.totalEstimativaEstoqueInicial = 0;
         this.materiais.forEach(material => this.totalEstimativaEstoqueInicial += material.calcularValorTotal());
-        return this.totalEstimativaEstoqueInicial;
+        return Number(this.totalEstimativaEstoqueInicial.toFixed(2));
     }
 
     calcularPrazoMedioTotalVendas(): number {
@@ -173,19 +180,23 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
     }
 
     calcularCustoTotalDaEmpresa(): number {
-        return this.custoTotalDaEmpresa = parseFloat(this.custoFixoMensal.toString()) + parseFloat(this.custoVariavelMensal.toString());
+        this.custoTotalDaEmpresa = Number(this.custoFixoMensal) + Number(this.custoVariavelMensal);
+        return Number(this.custoTotalDaEmpresa.toFixed(2));
     }
 
     calcuclarCustoTotalDiario(): number {
-        return this.custoTotalDiario = this.calcularCustoTotalDaEmpresa() / 30;
+        this.custoTotalDiario = this.calcularCustoTotalDaEmpresa() / 30;
+        return Number(this.custoTotalDiario.toFixed(2));
     }
 
     calcularCaixaMinimo(): number {
-        return this.caixaMinimo = this.calcuclarCustoTotalDiario() * this.calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro();
+        this.caixaMinimo = this.calcuclarCustoTotalDiario() * this.calculaSubtotalDiasNecessidadeLiquidaDeCapitalDeGiro();
+        return Number(this.caixaMinimo.toFixed(2));
     }
 
     calcularCapitalDeGiro(): number {
-        return this.capitalDeGiro = parseFloat(this.calcularCaixaMinimo().toString()) + parseFloat(this.calcularTotalEstimativaEstoqueInicial().toString());
+        this.capitalDeGiro = Number(this.calcularCaixaMinimo()) + Number(this.calcularTotalEstimativaEstoqueInicial());
+        return Number(this.capitalDeGiro.toFixed(2));
     }
 
     toJSON(): any {
@@ -294,5 +305,17 @@ export class CapitalDeGiroService extends AbstractPorcentagemConclusao {
             + "B - Caíxa Mínimo: R$ " + this.caixaMinimo + "\n"
             + "Capital de Giro (A + B): R$ " + this.capitalDeGiro + "\n";
         return texto;
+    }
+    
+    calcularPorcentagemVenda(): number {
+        this.porcentagemVenda = 100;
+        this.vendas.forEach((venda) => this.porcentagemVenda -= venda.porcentagem);
+        return this.porcentagemVenda;
+    }
+    
+    calcularPorcentageCompra(): number {
+        this.porcentageCompra = 100;
+        this.compras.forEach((compra) => this.porcentageCompra -= compra.porcentagem);
+        return this.porcentageCompra;
     }
 }

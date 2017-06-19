@@ -49,11 +49,12 @@ export class InvestimentosPreoperacionaisService extends AbstractPorcentagemConc
     }
 
     calcularTotal(): number {
-        return this.total = parseFloat(this.despesasDeLegalizacao.toString()) +
-            parseFloat(this.obrasCivisReformas.toString()) +
-            parseFloat(this.divulgacao.toString()) +
-            parseFloat(this.curosETreinamentos.toString()) +
-            parseFloat(this.outrasDespesas.toString());
+        this.total = Number(this.despesasDeLegalizacao) +
+            Number(this.obrasCivisReformas) +
+            Number(this.divulgacao) +
+            Number(this.curosETreinamentos) +
+            Number(this.outrasDespesas);
+        return Number(this.total.toFixed(2));
     }
 
     toJSON(): any {

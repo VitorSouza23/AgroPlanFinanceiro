@@ -23,19 +23,19 @@ export class ApuracaoDosCustosMateriaisService extends AbstractPorcentagemConclu
     calcularTotalCMV(): number {
         this.totalCMV = 0;
         this.produtos.forEach(produto => this.totalCMV += produto.quantidade * produto.calcularTotalCustoMateriais());
-        return this.totalCMV;
+        return Number(this.totalCMV.toFixed(2));
     }
 
     calcularTotalCustoUnitario(): number {
         this.totalCustoUnitario = 0;
-        this.produtos.forEach(produto => this.totalCustoUnitario += parseFloat(produto.calcularTotalCustoMateriais().toString()));
-        return this.totalCustoUnitario
+        this.produtos.forEach(produto => this.totalCustoUnitario += Number(produto.calcularTotalCustoMateriais()));
+        return Number(this.totalCustoUnitario.toFixed(2));
     }
 
     calcularTotalEstimaTivaDevendas(): number {
         this.totalEstimativaDeVenda = 0;
-        this.produtos.forEach(produto => this.totalEstimativaDeVenda += parseFloat(produto.quantidade.toString()));
-        return this.totalEstimativaDeVenda;
+        this.produtos.forEach(produto => this.totalEstimativaDeVenda += Number(produto.quantidade));
+        return Number(this.totalEstimativaDeVenda.toFixed(2));
     }
 
     getPorcentagemConcluido(): number {

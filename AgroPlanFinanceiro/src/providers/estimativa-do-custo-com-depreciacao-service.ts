@@ -77,39 +77,39 @@ export class EstimativaDoCustoComDepreciacaoService extends AbstractPorcentagemC
         this.depreciacaoMensalVeiculos = 0;
 
         this.estimativaFixo.maquinas.forEach(maquina => {
-            this.totalVidaUtilEmAnos += parseInt(maquina.vidaUtil.toString());
-            this.totalDepreciacaoAnual += parseFloat(maquina.calcularDepreciacaoAnual().toString());
-            this.totalDepreciacaoMensal += parseFloat(maquina.calcularDepreciacaoMensal().toString());
-            this.depreciacaoAnualMaquinas += parseFloat(maquina.calcularDepreciacaoAnual().toString());
-            this.depreciacaoMensalMaquinas += parseFloat(maquina.calcularDepreciacaoMensal().toString());
+            this.totalVidaUtilEmAnos += Number(maquina.vidaUtil);
+            this.totalDepreciacaoAnual += Number(maquina.calcularDepreciacaoAnual());
+            this.totalDepreciacaoMensal += Number(maquina.calcularDepreciacaoMensal());
+            this.depreciacaoAnualMaquinas += Number(maquina.calcularDepreciacaoAnual());
+            this.depreciacaoMensalMaquinas += Number(maquina.calcularDepreciacaoMensal());
         });
         this.estimativaFixo.equipamentos.forEach(equipamento => {
-            this.totalVidaUtilEmAnos += parseInt(equipamento.vidaUtil.toString());
-            this.totalDepreciacaoAnual += parseFloat(equipamento.calcularDepreciacaoAnual().toString());
-            this.totalDepreciacaoMensal += parseFloat(equipamento.calcularDepreciacaoMensal().toString());
-            this.depreciacaoAnualEquipamentos += parseFloat(equipamento.calcularDepreciacaoAnual().toString());
-            this.depreciacaoMensalEquipamentos += parseFloat(equipamento.calcularDepreciacaoMensal().toString());
+            this.totalVidaUtilEmAnos += Number(equipamento.vidaUtil);
+            this.totalDepreciacaoAnual += Number(equipamento.calcularDepreciacaoAnual());
+            this.totalDepreciacaoMensal += Number(equipamento.calcularDepreciacaoMensal());
+            this.depreciacaoAnualEquipamentos += Number(equipamento.calcularDepreciacaoAnual());
+            this.depreciacaoMensalEquipamentos += Number(equipamento.calcularDepreciacaoMensal());
         });
         this.estimativaFixo.moveis.forEach(movel => {
-            this.totalVidaUtilEmAnos += parseInt(movel.vidaUtil.toString());
-            this.totalDepreciacaoAnual += parseFloat(movel.calcularDepreciacaoAnual().toString());
-            this.totalDepreciacaoMensal += parseFloat(movel.calcularDepreciacaoMensal().toString());
-            this.depreciacaoAnualMoveis += parseFloat(movel.calcularDepreciacaoAnual().toString());
-            this.depreciacaoMensalMoveis += parseFloat(movel.calcularDepreciacaoMensal().toString());
+            this.totalVidaUtilEmAnos += Number(movel.vidaUtil);
+            this.totalDepreciacaoAnual += Number(movel.calcularDepreciacaoAnual());
+            this.totalDepreciacaoMensal += Number(movel.calcularDepreciacaoMensal());
+            this.depreciacaoAnualMoveis += Number(movel.calcularDepreciacaoAnual());
+            this.depreciacaoMensalMoveis += Number(movel.calcularDepreciacaoMensal());
         });
         this.estimativaFixo.utensilios.forEach(utensilio => {
-            this.totalVidaUtilEmAnos += parseInt(utensilio.vidaUtil.toString());
-            this.totalDepreciacaoAnual += parseFloat(utensilio.calcularDepreciacaoAnual().toString());
-            this.totalDepreciacaoMensal += parseFloat(utensilio.calcularDepreciacaoMensal().toString());
-            this.depreciacaoAnualUtensilios += parseFloat(utensilio.calcularDepreciacaoAnual().toString());
-            this.depreciacaoMensalUtensilios += parseFloat(utensilio.calcularDepreciacaoMensal().toString());
+            this.totalVidaUtilEmAnos += Number(utensilio.vidaUtil);
+            this.totalDepreciacaoAnual += Number(utensilio.calcularDepreciacaoAnual());
+            this.totalDepreciacaoMensal += Number(utensilio.calcularDepreciacaoMensal());
+            this.depreciacaoAnualUtensilios += Number(utensilio.calcularDepreciacaoAnual());
+            this.depreciacaoMensalUtensilios += Number(utensilio.calcularDepreciacaoMensal());
         });
         this.estimativaFixo.veiculos.forEach(veiculo => {
-            this.totalVidaUtilEmAnos += parseInt(veiculo.vidaUtil.toString());
-            this.totalDepreciacaoAnual += parseFloat(veiculo.calcularDepreciacaoAnual().toString());
-            this.totalDepreciacaoMensal += parseFloat(veiculo.calcularDepreciacaoMensal().toString());
-            this.depreciacaoAnualVeiculos += parseFloat(veiculo.calcularDepreciacaoAnual().toString());
-            this.depreciacaoMensalVeiculos += parseFloat(veiculo.calcularDepreciacaoMensal().toString());
+            this.totalVidaUtilEmAnos += Number(veiculo.vidaUtil);
+            this.totalDepreciacaoAnual += Number(veiculo.calcularDepreciacaoAnual());
+            this.totalDepreciacaoMensal += Number(veiculo.calcularDepreciacaoMensal());
+            this.depreciacaoAnualVeiculos += Number(veiculo.calcularDepreciacaoAnual());
+            this.depreciacaoMensalVeiculos += Number(veiculo.calcularDepreciacaoMensal());
         });
     }
 

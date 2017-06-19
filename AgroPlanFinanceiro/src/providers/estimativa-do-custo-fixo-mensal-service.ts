@@ -109,23 +109,23 @@ export class EstimativaDoCustoFixoMensalService extends AbstractPorcentagemConcl
 
 
     calcularTotal(): number {
-        return this.total = parseFloat(this.aluguel.toString())
-            + parseFloat(this.condominio.toString())
-            + parseFloat(this.iptu.toString())
-            + parseFloat(this.agua.toString())
-            + parseFloat(this.energia.toString())
-            + parseFloat(this.telefone.toString())
-            + parseFloat(this.honorariosDoContador.toString())
-            + parseFloat(this.pro_labore.toString())
-            + parseFloat(this.manutencaoDosEquipamentos.toString())
-            + parseFloat(this.salariosEEncargos.toString())
-            + parseFloat(this.materialLimpeza.toString())
-            + parseFloat(this.materialEscritorio.toString())
-            + parseFloat(this.combustivel.toString())
-            + parseFloat(this.taxasDiversas.toString())
-            + parseFloat(this.servicoaDeTerceiros.toString())
-            + parseFloat(this.depreciacao.toString())
-            + parseFloat(this.outrasDespesas.toString());
+        return this.total = Number(this.aluguel)
+            + Number(this.condominio)
+            + Number(this.iptu)
+            + Number(this.agua)
+            + Number(this.energia)
+            + Number(this.telefone)
+            + Number(this.honorariosDoContador)
+            + Number(this.pro_labore)
+            + Number(this.manutencaoDosEquipamentos)
+            + Number(this.salariosEEncargos)
+            + Number(this.materialLimpeza)
+            + Number(this.materialEscritorio)
+            + Number(this.combustivel)
+            + Number(this.taxasDiversas)
+            + Number(this.servicoaDeTerceiros)
+            + Number(this.depreciacao)
+            + Number(this.outrasDespesas);
     }
 
     toJSON(): any {

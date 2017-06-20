@@ -21,11 +21,11 @@ export class Item{
     }
     
     calcularDepreciacaoAnual(): String {
-        return parseFloat((this.valor / this.vidaUtil).toString()).toFixed(2);
+        return Number(this.valor / this.vidaUtil).toFixed(2);
     }
     
     calcularDepreciacaoMensal(): String {
-        return parseFloat((parseFloat(this.calcularDepreciacaoAnual().toString()) / 12).toString()).toFixed(2);
+        return Number(Number(this.calcularDepreciacaoAnual()) / 12).toFixed(2);
     }
     
     static getFromJson(item: any): Item{

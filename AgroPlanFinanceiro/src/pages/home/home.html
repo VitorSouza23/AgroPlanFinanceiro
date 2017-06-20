@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
-        <ion-card-header>
+    <ion-card class="ion-card-round">
+        <ion-card-header >
             Bem-vindo(a) ao AgroPlan Finanaceiro!
         </ion-card-header>
     </ion-card>
 
-    <ion-card>
+    <ion-card class="ion-card-round">
         <ion-card-header>
             Ferramentas
         </ion-card-header>
@@ -22,79 +22,79 @@
             <button ion-item (click)="gotToEstimativaDeInvestimentosFixosPage()">
                 <ion-icon name="cube" item-left></ion-icon>
                 Estimativa de Investimentos Fixos
-                <ion-badge item-right [color]="estimativaDeInvestimentosFixosService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDeInvestimentosFixosService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimativaDeInvestimentosFixosService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDeInvestimentosFixosService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
 
             <button ion-item (click)="goToCapitalDeGiroPage()">
                 <ion-icon name="swap" item-left></ion-icon>
                 Capital de Giro
-                <ion-badge item-right [color]="capitalDeGiroService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{capitalDeGiroService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="capitalDeGiroService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{capitalDeGiroService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
 
             <button ion-item (click)="goToInvestimentosPreoperacionaisPage()">
                 <ion-icon name="hammer" item-left></ion-icon>
                 Investimentos Pré-Operacionais
-                <ion-badge item-right [color]="investimentosPreOperacionaisService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{investimentosPreOperacionaisService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="investimentosPreOperacionaisService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{investimentosPreOperacionaisService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
 
             <button ion-item (click)="goToInvestimentoTotalPage()"> 
                 <ion-icon name="log-in" item-left ></ion-icon>
                 Investimento Total (Resumo)
-                <ion-badge item-right [color]="investimentoTotalService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{investimentoTotalService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="investimentoTotalService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{investimentoTotalService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
 
             <button ion-item (click)="goToEstimativaDoFaturamentoMensal()">
                 <ion-icon name="list-box" item-left></ion-icon>
                 Estimativa do Faturamento Mensal da Empresa
-                <ion-badge item-right [color]="estimativaDoFaturamentoMensalService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoFaturamentoMensalService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimativaDoFaturamentoMensalService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoFaturamentoMensalService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
 
             <button ion-item (click)="goToEstimativaCustoUnitarioPage()">
                 <ion-icon name="construct" item-left></ion-icon>
                 Estimativa do Custo Unitário de Materiais
-                <ion-badge item-right [color]="estimativaDoCustoUnitarioService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoCustoUnitarioService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimativaDoCustoUnitarioService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoCustoUnitarioService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
             
             <button ion-item (click)="goToEstimatiDosCustosComerciais()">
                 <ion-icon name="pricetags" item-left></ion-icon>
                 Estimativa do Custo de Comercialização
-                <ion-badge item-right [color]="estimacaoDosCustosComComercializacaoService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimacaoDosCustosComComercializacaoService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimacaoDosCustosComComercializacaoService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimacaoDosCustosComComercializacaoService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
             
             <button ion-item (click)="goToApuracaoDosCustosMateriaisPage()">
                 <ion-icon name="stats" item-left></ion-icon>
                 Apuração dos Custos
-                <ion-badge item-right [color]="apuracaoDosCustosMateriaisService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{apuracaoDosCustosMateriaisService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="apuracaoDosCustosMateriaisService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{apuracaoDosCustosMateriaisService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
                
             <button ion-item (click)="goToEstimativaDosCustosComMaoDeObra()">
                 <ion-icon name="contacts" item-left></ion-icon>
                 Estimativa do Custo com Mão de Obra
-                <ion-badge item-right [color]="estimativaDosCustosComMaoDeObraService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDosCustosComMaoDeObraService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimativaDosCustosComMaoDeObraService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDosCustosComMaoDeObraService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
             
             <button ion-item (click)="goToEstimativaDoCustoComDepreciacao()">
                 <ion-icon name="repeat" item-left></ion-icon>
                 Estimativa do Custo com Depreciação
-                <ion-badge item-right [color]="estimativaDoCustoComDeprecisacaoService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoCustoComDeprecisacaoService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimativaDoCustoComDeprecisacaoService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoCustoComDeprecisacaoService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
             
             <button ion-item (click)="gotToEstimativaDeCustoFixoMensal()">
                 <ion-icon name="pie" item-left></ion-icon>
                 Estimativa do Custo Fixos Mensais
-                <ion-badge item-right [color]="estimativaDoCustoMensalService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoCustoMensalService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="estimativaDoCustoMensalService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{estimativaDoCustoMensalService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
             
             <button ion-item (click)="goToDemonstrativoDeResultados()">
                 <ion-icon name="logo-usd" item-left></ion-icon>
                 Demonstrativo de Resultados
-                <ion-badge item-right [color]="demonstrativoDeResultadosService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{demonstrativoDeResultadosService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="demonstrativoDeResultadosService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{demonstrativoDeResultadosService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
             
             <button ion-item (click)="goToIndicadoresDeViabilidade()">
                 <ion-icon name="trending-up" item-left></ion-icon>
                 Indicadores de Viabilidade
-                <ion-badge item-right [color]="indicadoresDeViabilidadeService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{indicadoresDeViabilidadeService.getPorcentagemConcluido()}}% Concluído</ion-badge>
+                <ion-badge item-right [color]="indicadoresDeViabilidadeService.getPorcentagemConcluido() < 100 ? 'danger' : 'secondary'">{{indicadoresDeViabilidadeService.getPorcentagemConcluido()}}%</ion-badge>
             </button>
 
         </ion-list>

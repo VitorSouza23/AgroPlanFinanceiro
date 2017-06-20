@@ -42,21 +42,21 @@ ligth-orange:       #ff944d
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
+$badge-ios-border-radius: 10px;
 
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$badge-md-border-radius: 10px;
 
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
+$badge-wp-border-radius: 10px;
 
 
 
@@ -66,6 +66,8 @@ ligth-orange:       #ff944d
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
+$text-input-highlight-color-valid: #FFFFFF;
+$text-input-highlight-color-invalid: #FFFFFF;
 
 @import "ionic.theme.default";
 

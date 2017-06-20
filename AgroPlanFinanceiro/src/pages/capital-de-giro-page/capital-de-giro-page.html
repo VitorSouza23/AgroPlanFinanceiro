@@ -18,7 +18,7 @@
     <ion-card>
         <ion-card-header>
             <ion-item>
-                Materiais
+                Estimativa do Estoque Inicial
                 <button ion-button round item-right icon-right (click)="addMaterial()">
                         Adicionar 
                         <ion-icon name="add-circle"></ion-icon></button>
@@ -121,9 +121,9 @@
         <ion-card-header>
             Necessidade Média dos Estoques
         </ion-card-header>
-        <ion-item>
+        <ion-item class="input-botton-border">
             <ion-label color="primary" floating>Número de dias</ion-label>
-            <ion-input type="number" min="0" [(ngModel)]="necessidadeMediaDeEstoques" 
+            <ion-input type="number" min="0"  [(ngModel)]="necessidadeMediaDeEstoques" 
                        (click)="atualizarSubtotais()" (keyup)="atualizarSubtotais()"></ion-input>
         </ion-item>
     </ion-card>

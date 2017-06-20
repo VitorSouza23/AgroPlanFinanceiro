@@ -19,6 +19,9 @@
 .ios, .md{
     ion-card{
         background-color: map-get($colors, florest-green);
+        border: solid;
+        border-color: map-get($colors, dark-green);
+        border-radius: 10px;
     }
     
     ion-card-header{
